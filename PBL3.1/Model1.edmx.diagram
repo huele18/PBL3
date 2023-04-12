@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d57105b4b574c9da64e85611dc606e2" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyQuanCafe2Model.n" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafe2Model.Bill" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafe2Model.Food" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafe2Model.FoodCategory" Width="1.5" PointX="2.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafe2Model.TableFood" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyQuanCafe2Model.FK__Bill__idAccount__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyQuanCafe2Model.FK__Bill__idAccount__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyQuanCafe2Model.FK__Food__idCategory__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
