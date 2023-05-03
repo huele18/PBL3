@@ -83,30 +83,25 @@ namespace PBL3.BLL
             }
             return 2;
         }
-        public int changePassword(int id, string passOld, string passOld1, string passNew, string passNew1)
+        public bool checkUsername(int id, string username)
         {
-            int focus = 1;
-            if (passOld1 != passOld)
+            Account acc = getAccountByID(id);
+            if(username != acc.UserName)
             {
-                MessageBox.Show("Mật khẩu cũ không đúng. Vui lòng nhập lại.", "Cảnh báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return focus = 1;
-            }
-            else
-            {
-                if (passNew1 != passNew)
+                if(getAccountByUsername(username) != null)
                 {
-                    MessageBox.Show("Nhập lại mật khẩu không trùng khớp. Vui lòng nhập lại.", "Cảnh báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return focus = 2;
-                }
-                else
-                {
-                    Account_DAL.Instance.changePassword(id, passNew);
-                    focus = 0;
+                    return false;
                 }
             }
-            return focus;
+            return true;
+        }
+        public void editAccount(Account after)
+        {
+            Account_DAL.Instance.update(after);
+        }
+        public void changePassword(int id, string passNew)
+        {
+            Account_DAL.Instance.changePassword(id, passNew);
         }
 
         // staffManager

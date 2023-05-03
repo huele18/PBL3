@@ -25,12 +25,14 @@ namespace PBL3.DAL
         }
         public TableFood getTableById(string id)
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            foreach (TableFood f in db.TableFoods)
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                if (f.idTableFood.ToString() == id)
+                foreach (TableFood f in db.TableFoods)
                 {
-                    return f;
+                    if (f.idTableFood.ToString() == id)
+                    {
+                        return f;
+                    }
                 }
             }
             return null;
@@ -38,8 +40,10 @@ namespace PBL3.DAL
         public List<TableFood> getTableFoodList()
         {
             List<TableFood> table = new List<TableFood>();
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            table.AddRange(db.TableFoods.ToList());
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                table.AddRange(db.TableFoods.ToList());
+            }
             return table;
         }
         public void add(TableFood tf)
@@ -55,10 +59,12 @@ namespace PBL3.DAL
         public DataGridView search(string search)
         {
             DataGridView table = new DataGridView();
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            table.DataSource = db.TableFoods
-                .Where(p => p.name.ToUpper().Contains(search.ToUpper()))
-                .Select(p => new { p.idTableFood, p.name, p.status }).ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                table.DataSource = db.TableFoods
+                    .Where(p => p.name.ToUpper().Contains(search.ToUpper()))
+                    .Select(p => new { p.idTableFood, p.name, p.status }).ToList();
+            }
             return table;
         }
         public void edit(TableFood after)

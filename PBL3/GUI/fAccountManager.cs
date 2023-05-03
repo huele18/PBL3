@@ -85,16 +85,23 @@ namespace PBL3.GUI
                 txtEmail.Focus();
                 return false;
             }
-            return true;
+            if (!Account_BLL.Instance.checkUsername(Convert.ToInt32(txtIDAccount.Text), txtUserName.Text))
+            {
+                MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUserName.Focus();
+                return false;
+            }
+                return true;
         }
 
         private void btUpdateInf_Click(object sender, EventArgs e)
         {
             if (checkData())
             {
-                Account acc = new Account();
                 try
                 {
+                    Account acc = new Account();
                     acc.idAccount = Convert.ToInt32(txtIDAccount.Text);
                     acc.DisplayName = txtDisplayName.Text;
                     acc.SDT = txtSDT.Text;
@@ -116,23 +123,17 @@ namespace PBL3.GUI
                     acc.Password = txtPass.Text;
                     acc.Calam = txtCalam.Text;
                     acc.Type = Convert.ToInt32(txtType.Text);
-                if (pictureBox1.Image != null)
-                {
-                    MemoryStream ms = new MemoryStream();
-                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    byte[] imageData = ms.ToArray();
-                    acc.anh = imageData;
-                }
-                    int update = Account_BLL.Instance.updateAccount(acc);
-                    switch (update)
+                    if (pictureBox1.Image != null)
                     {
-                        case 0:
-                            GUI(acc);
-                            break;
-                        case 1:
-                            txtUserName.Focus();
-                            break;
+                        MemoryStream ms = new MemoryStream();
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        byte[] imageData = ms.ToArray();
+                        acc.anh = imageData;
                     }
+                    else
+                        acc.anh = null;
+
+                    Account_BLL.Instance.editAccount(acc);
                 }
                 catch (Exception ex)
                 {
@@ -143,25 +144,27 @@ namespace PBL3.GUI
 
         private void btsetPass_Click(object sender, EventArgs e)
         {
-            int change = Account_BLL.Instance.changePassword(Convert.ToInt32(txtIDAccount.Text),
-               txtPass.Text,
-               txtOldPass.Text,
-               txtNewPass1.Text,
-               txtNewPass2.Text);
-            switch (change)
+            if(txtPass.Text != txtOldPass.Text)
             {
-                case 0:
+                MessageBox.Show("Mật khẩu cũ không đúng. Vui lòng nhập lại.", "Cảnh báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtOldPass.Focus();
+            }
+            else
+            {
+                if (txtNewPass2.Text != txtNewPass1.Text)
+                {
+                    MessageBox.Show("Nhập lại mật khẩu không trùng khớp. Vui lòng nhập lại.", "Cảnh báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Account_BLL.Instance.changePassword(Convert.ToInt32(txtIDAccount.Text), txtNewPass1.Text);
                     txtPass.Text = txtNewPass1.Text;
                     txtOldPass.Text = "";
                     txtNewPass1.Text = "";
                     txtNewPass2.Text = "";
-                    break;
-                case 1:
-                    txtOldPass.Focus();
-                    break;
-                case 2:
-                    txtNewPass2.Focus();
-                    break;
+                }
             }
         }
 

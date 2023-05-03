@@ -28,12 +28,13 @@ namespace PBL3.DAL
         }
         public List<Account> getAccountList()
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             List<Account> list = new List<Account>();
-            list = db.Accounts.ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                list = db.Accounts.ToList();
+            }
             return list;
         }
-
         public void update(Account after)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())

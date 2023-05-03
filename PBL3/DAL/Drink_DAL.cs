@@ -26,27 +26,34 @@ namespace PBL3.DAL
         }
         public DataGridView getDrink()
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             DataGridView drink = new DataGridView();
-            drink.DataSource = db.Foods
-                .Select(p => new { p.idFood, p.FoodCategory.Category, p.NameFood, p.price, p.imageFood }).ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                drink.DataSource = db.Foods
+                    .Select(p => new { p.idFood, p.FoodCategory.Category, p.NameFood, p.price, p.imageFood }).ToList();
+            }
             return drink;
         }
         public List<FoodCategory> getAllFoodCategories()
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+            //QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             List<FoodCategory> fc = new List<FoodCategory>();
-            fc = db.FoodCategories.Select(p => p).ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                fc = db.FoodCategories.Select(p => p).ToList();
+            }
             return fc;
         }
         public Food getDrinkById(string id)
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            foreach (Food f in db.Foods)
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                if (f.idFood.ToString() == id)
+                foreach (Food f in db.Foods)
                 {
-                    return f;
+                    if (f.idFood.ToString() == id)
+                    {
+                        return f;
+                    }
                 }
             }
             return null;
@@ -96,32 +103,39 @@ namespace PBL3.DAL
         }
         public DataGridView search(string search)
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+            //QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             DataGridView drink = new DataGridView();
-            drink.DataSource = db.Foods.Where
-                (
-                    p => p.NameFood.ToUpper().Contains(search.ToUpper()) ||
-                         p.FoodCategory.Category.ToUpper().Contains(search.ToUpper())
-                )
-                .Select(p => new { p.idFood, p.FoodCategory.Category, p.NameFood, p.price }).ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                drink.DataSource = db.Foods.Where
+                    (
+                        p => p.NameFood.ToUpper().Contains(search.ToUpper()) ||
+                             p.FoodCategory.Category.ToUpper().Contains(search.ToUpper())
+                    )
+                    .Select(p => new { p.idFood, p.FoodCategory.Category, p.NameFood, p.price }).ToList();
+            }
             return drink;
         }
         
         public List<Food> getMenuDrink()
         {
             List<Food> f = new List<Food>();
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            f = db.Foods.ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                f = db.Foods.ToList();
+            }
             return f;
         }
         public List<Food> getMenuByCategory(int idcategory)
         {
             List<Food> f = new List<Food>();
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-            if(idcategory == 0)
-                f = db.Foods.ToList();
-            else
-                f = db.Foods.Where(p => p.idCategory == idcategory).ToList();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                if (idcategory == 0)
+                    f = db.Foods.ToList();
+                else
+                    f = db.Foods.Where(p => p.idCategory == idcategory).ToList();
+            }
             return f;
         }
     }

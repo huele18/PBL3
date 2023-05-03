@@ -30,32 +30,40 @@ namespace PBL3.GUI
         {
             dgvFood.DataSource = Drink_BLL.Instance.showDGV().DataSource;
         }
-
-        private void btAdd_Click(object sender, EventArgs e)
+        public bool checkData()
         {
             if (string.IsNullOrEmpty(txtID.Text))
             {
                 MessageBox.Show("Chưa nhập vào ID món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtID.Focus();
+                return false;
             }
-            else if (string.IsNullOrWhiteSpace(txtName.Text))
+            if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 MessageBox.Show("Chưa nhập vào tên món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtName.Focus();
+                return false;
             }
-            else if (string.IsNullOrEmpty(cbbCategory.Text))
+            if (string.IsNullOrEmpty(cbbCategory.Text))
             {
                 MessageBox.Show("Chưa chọn phân loại món!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbbCategory.Focus();
+                return false;
             }
-            else if (string.IsNullOrWhiteSpace(txtPrice.Text))
+            if (string.IsNullOrWhiteSpace(txtPrice.Text))
             {
                 MessageBox.Show("Chưa nhập vào giá tiền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrice.Focus();
+                return false;
             }
-            else
-            {
+            return true;
+        }
+
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            
+            if (checkData()) {
                 Food f = new Food
                 {
                     idFood = Convert.ToInt32(txtID.Text),
@@ -77,24 +85,7 @@ namespace PBL3.GUI
 
         private void btEdit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cbbCategory.Text))
-            {
-                MessageBox.Show("Chưa chọn phân loại món!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbbCategory.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Chưa nhập vào tên món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtName.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(txtPrice.Text))
-            {
-                MessageBox.Show("Chưa nhập vào giá tiền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPrice.Focus();
-            }
-            else
-            {
+            if (checkData()) {
                 Food f = new Food();
                 f.idFood = Convert.ToInt32(txtID.Text);
                 f.NameFood = txtName.Text;

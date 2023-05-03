@@ -17,8 +17,6 @@ namespace PBL3
     public partial class fMain : Form
     {
         private Button currentButton;
-        //private Random random;
-        //private int tempIndex;
         private Form activeForm;
 
         private Account acc = null;
@@ -31,19 +29,7 @@ namespace PBL3
                 lbPosition.Text = "(Quản lý)";
             if (acc.Type == 0)
                 lbPosition.Text = "(Nhân viên)";
-            //random = new Random();
         }
-        //private Color SelectThemeColor()
-        //{
-        //    int index = random.Next(ThemeColor.Colorlist.Count);
-        //    while(tempIndex == index)
-        //    {
-        //        index = random.Next(ThemeColor.Colorlist.Count);
-        //    }
-        //    tempIndex = index;
-        //    string color = ThemeColor.Colorlist[index];
-        //    return ColorTranslator.FromHtml(color);
-        //}
         private void ActivateButton(object btSender)
         {
             if(btSender != null)
@@ -51,9 +37,7 @@ namespace PBL3
                 if(currentButton != (Button)btSender)
                 {
                     DisableButton();
-                    //Color color = SelectThemeColor();
                     currentButton = (Button)btSender;
-                    //currentButton.BackColor = color;
                     currentButton.Font = new Font("Lucida Handwriting", 13.8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 }
             }
@@ -64,7 +48,6 @@ namespace PBL3
             {
                 if(previousBt.GetType() == typeof(Button))
                 {
-                    //previousBt.BackColor = Color.FromArgb(176, 125, 55);
                     previousBt.Font = new Font("Lucida Handwriting", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 }
             }
