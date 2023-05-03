@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CB1EDAC-EAFB-4803-8726-A896C03202ED}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PBL3</RootNamespace>
+    <AssemblyName>PBL3</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Account_BLL.cs" />
+    <Compile Include="BLL\Bill_BLL.cs" />
+    <Compile Include="BLL\Drink_BLL.cs" />
+    <Compile Include="BLL\FoodCategory_BLL.cs" />
+    <Compile Include="BLL\QLCF_BLL.cs" />
+    <Compile Include="BLL\Table_BLL.cs" />
+    <Compile Include="DAL\Account_DAL.cs" />
+    <Compile Include="DAL\Bill_DAL.cs" />
+    <Compile Include="DAL\Drink_DAL.cs" />
+    <Compile Include="DAL\FoodCategory_DAL.cs" />
+    <Compile Include="DAL\Table_DAL.cs" />
+    <Compile Include="DTO\Account.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Bill.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\BillInfo.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\CBBItem.cs" />
+    <Compile Include="DTO\Food.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\FoodCategory.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QLCF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QLCF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QLCF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\TableFood.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fAccountManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fAccountManager.Designer.cs">
+      <DependentUpon>fAccountManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fAddCategoryFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fAddCategoryFood.Designer.cs">
+      <DependentUpon>fAddCategoryFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fBillManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fBillManager.Designer.cs">
+      <DependentUpon>fBillManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fMenu.Designer.cs">
+      <DependentUpon>fMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fMenuManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fMenuManager.Designer.cs">
+      <DependentUpon>fMenuManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fOrder.Designer.cs">
+      <DependentUpon>fOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fStaffManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fStaffManager.Designer.cs">
+      <DependentUpon>fStaffManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fStatistic.Designer.cs">
+      <DependentUpon>fStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fTableManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fTableManager.Designer.cs">
+      <DependentUpon>fTableManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Table.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Table.Designer.cs">
+      <DependentUpon>Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ucFood.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucFood.Designer.cs">
+      <DependentUpon>ucFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DTO\ThemeColor.cs" />
+    <EmbeddedResource Include="GUI\fAccountManager.resx">
+      <DependentUpon>fAccountManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fAddCategoryFood.resx">
+      <DependentUpon>fAddCategoryFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fBillManager.resx">
+      <DependentUpon>fBillManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fMenu.resx">
+      <DependentUpon>fMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fMenuManager.resx">
+      <DependentUpon>fMenuManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fOrder.resx">
+      <DependentUpon>fOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fStaffManager.resx">
+      <DependentUpon>fStaffManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fStatistic.resx">
+      <DependentUpon>fStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fTableManager.resx">
+      <DependentUpon>fTableManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Table.resx">
+      <DependentUpon>Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucFood.resx">
+      <DependentUpon>ucFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="DTO\QLCF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLCF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DTO\QLCF.edmx.diagram">
+      <DependentUpon>QLCF.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dining-table %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0114da8ffec0735564574492c6ee4e05 %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DTO\QLCF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLCF.edmx</DependentUpon>
+      <LastGenOutput>QLCF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DTO\QLCF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLCF.edmx</DependentUpon>
+      <LastGenOutput>QLCF.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

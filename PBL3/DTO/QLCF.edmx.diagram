@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84985620c6ee40f58ed9617c2722b99b" Name="Diagram1">
+        <EntityTypeShape EntityType="QLCFModel.Account" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCFModel.Bill" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCFModel.BillInfo" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCFModel.Food" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCFModel.FoodCategory" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCFModel.TableFood" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="QLCFModel.FK__Bill__idAccount__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCFModel.FK__Bill__status__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCFModel.FK__BillInfo__count__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCFModel.FK__BillInfo__idFood__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCFModel.FK__Food__imageFood__403A8C7D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
