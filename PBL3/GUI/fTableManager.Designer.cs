@@ -222,7 +222,7 @@
             // 
             // dgvTable
             // 
-            this.dgvTable.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dgvTable.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTableFood,

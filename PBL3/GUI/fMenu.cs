@@ -16,6 +16,8 @@ namespace PBL3.GUI
 {
     public partial class fMenu : Form
     {
+        public delegate void AddDataToGridView(int data1);
+        public AddDataToGridView addDataToGridViewDelegate;
         public fMenu()
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace PBL3.GUI
         {
             foreach(ucFood i in Drink_BLL.Instance.getMenu(0))
             {
+                //i.btSelect.Tag = i.lbID.Text;
+                i.btSelect.Click += BtSelect_Click;
                 flowLayoutPanel1.Controls.Add(i);
             }
         }
@@ -41,8 +45,20 @@ namespace PBL3.GUI
             int idcategory = ((CBBItem)cbbCategory.SelectedItem).Value;
             foreach (ucFood i in Drink_BLL.Instance.getMenu(idcategory))
             {
+                //i.btSelect.Tag = i.lbID.Text;
+                i.btSelect.Click += BtSelect_Click;
+                
                 flowLayoutPanel1.Controls.Add(i);
             }
+        }
+
+        private void BtSelect_Click(object sender, EventArgs e)
+        {
+            Button bt = (Button)sender;
+            int idfood = Convert.ToInt32(bt.Tag);
+            if (bt.Tag != null)
+                if (addDataToGridViewDelegate != null)
+                    addDataToGridViewDelegate(idfood);
         }
     }
 }

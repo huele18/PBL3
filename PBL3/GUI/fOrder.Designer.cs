@@ -30,7 +30,7 @@
         {
             this.pnOrder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -55,9 +55,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.grbTable = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -84,7 +89,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.dgvOrders);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -96,18 +101,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết gọi món:";
             // 
-            // dataGridView2
+            // dgvOrders
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Info;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(146)))), ((int)(((byte)(160)))));
-            this.dataGridView2.Location = new System.Drawing.Point(3, 113);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(650, 453);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvOrders.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idFood,
+            this.NameFood,
+            this.count,
+            this.price,
+            this.Total});
+            this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(146)))), ((int)(((byte)(160)))));
+            this.dgvOrders.Location = new System.Drawing.Point(3, 113);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.RowHeadersWidth = 51;
+            this.dgvOrders.RowTemplate.Height = 24;
+            this.dgvOrders.Size = new System.Drawing.Size(650, 453);
+            this.dgvOrders.TabIndex = 1;
             // 
             // panel1
             // 
@@ -370,6 +381,45 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(684, 746);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // idFood
+            // 
+            this.idFood.DataPropertyName = "idFood";
+            this.idFood.HeaderText = "ID";
+            this.idFood.MinimumWidth = 6;
+            this.idFood.Name = "idFood";
+            this.idFood.Width = 125;
+            // 
+            // NameFood
+            // 
+            this.NameFood.DataPropertyName = "NameFood";
+            this.NameFood.HeaderText = "Tên Đồ uống";
+            this.NameFood.MinimumWidth = 6;
+            this.NameFood.Name = "NameFood";
+            this.NameFood.Width = 125;
+            // 
+            // count
+            // 
+            this.count.DataPropertyName = "count";
+            this.count.HeaderText = "Số lượng";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 125;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Đơn giá";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Tổng Tiền";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
+            // 
             // fOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -382,7 +432,7 @@
             this.Text = "Order";
             this.pnOrder.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -419,12 +469,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameFood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

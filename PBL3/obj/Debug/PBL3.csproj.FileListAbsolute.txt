@@ -3,7 +3,6 @@ D:\visualstudio\PBL3\PBL3\bin\Debug\PBL3.exe
 D:\visualstudio\PBL3\PBL3\bin\Debug\PBL3.pdb
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.csproj.AssemblyReference.cache
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.csproj.SuggestedBindingRedirects.cache
-D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.fMain.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.Properties.Resources.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.csproj.GenerateResource.cache
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.csproj.CoreCompileInputs.cache
@@ -22,7 +21,9 @@ D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.SqlServer.dll
 D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.xml
 D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.SqlServer.xml
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.csproj.CopyComplete
-D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.Table.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fMenu.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.ucFood.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fAddCategoryFood.resources
+D:\visualstudio\PBL3\PBL3\bin\Debug\Guna.UI2.dll
+D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fMainStaff.resources
+D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.fMainAdmin.resources

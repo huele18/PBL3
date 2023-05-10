@@ -49,7 +49,30 @@ namespace PBL3.BLL
             }
             return data;
         }
-        
+        public bool checkID(int id)
+        {
+            foreach (FoodCategory f in Drink_DAL.Instance.getAllFoodCategories())
+            {
+                if (f.idFoodCategory == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void addFoodCategory(FoodCategory f)
+        {
+            Drink_DAL.Instance.addCategory(f);
+        }
+        public Food getFoodById(string id)
+        {
+            foreach(Food f in Drink_DAL.Instance.GetFoods())
+            {
+                if(f.idFood.ToString() == id)
+                    return f;
+            }
+            return null;
+        }
         public bool checkIDFood(string id)
         {
             if(Drink_DAL.Instance.getDrinkById(id) == null)
@@ -111,12 +134,13 @@ namespace PBL3.BLL
                     Image image = Image.FromStream(ms);
                     f.pictureBox1.Image = image;
                 }
+                f.lbID.Text = dr.idFood.ToString();
                 f.lbNameFood.Text = dr.NameFood;
-                f.lbPrice.Text = dr.price + " VNĐ";
+                f.lbPrice.Text = dr.price.ToString();
+                f.btSelect.Tag = dr.idFood;
                 uc.Add(f);
             }
             return uc;
         }
-
     }
 }

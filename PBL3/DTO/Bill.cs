@@ -21,11 +21,11 @@ namespace PBL3.DTO
         }
     
         public int idBill { get; set; }
-        public System.DateTime DateCheckIn { get; set; }
-        public Nullable<System.DateTime> DateCheckOut { get; set; }
         public int idTable { get; set; }
         public bool status { get; set; }
         public Nullable<int> idAccount { get; set; }
+        public Nullable<System.DateTime> paymenttime { get; set; }
+        public string Customer { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual TableFood TableFood { get; set; }

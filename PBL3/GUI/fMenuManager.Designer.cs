@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btAddCategory = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btDelete = new System.Windows.Forms.Button();
             this.btEdit = new System.Windows.Forms.Button();
             this.btAdd = new System.Windows.Forms.Button();
@@ -50,13 +52,11 @@
             this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageFood = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btAddCategory = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,6 +82,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết:";
+            // 
+            // btAddCategory
+            // 
+            this.btAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btAddCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAddCategory.ForeColor = System.Drawing.Color.White;
+            this.btAddCategory.Location = new System.Drawing.Point(228, 569);
+            this.btAddCategory.Name = "btAddCategory";
+            this.btAddCategory.Size = new System.Drawing.Size(281, 47);
+            this.btAddCategory.TabIndex = 13;
+            this.btAddCategory.Text = "Thêm Loại Đồ uống";
+            this.btAddCategory.UseVisualStyleBackColor = false;
+            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBox1.Location = new System.Drawing.Point(217, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 172);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btDelete
             // 
@@ -235,7 +259,7 @@
             // 
             // dgvFood
             // 
-            this.dgvFood.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dgvFood.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idFood,
@@ -295,30 +319,6 @@
             this.imageFood.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.imageFood.Width = 125;
             // 
-            // btAddCategory
-            // 
-            this.btAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btAddCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddCategory.ForeColor = System.Drawing.Color.White;
-            this.btAddCategory.Location = new System.Drawing.Point(228, 569);
-            this.btAddCategory.Name = "btAddCategory";
-            this.btAddCategory.Size = new System.Drawing.Size(281, 47);
-            this.btAddCategory.TabIndex = 13;
-            this.btAddCategory.Text = "Thêm Loại Đồ uống";
-            this.btAddCategory.UseVisualStyleBackColor = false;
-            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox1.Location = new System.Drawing.Point(217, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 172);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // fMenuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -332,11 +332,11 @@
             this.Text = "Quản lý danh sách đồ uống";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -26,11 +26,11 @@
             <PropertyRef Name="idBill" />
           </Key>
           <Property Name="idBill" Type="int" Nullable="false" />
-          <Property Name="DateCheckIn" Type="date" Nullable="false" />
-          <Property Name="DateCheckOut" Type="date" />
           <Property Name="idTable" Type="int" Nullable="false" />
           <Property Name="status" Type="bit" Nullable="false" />
           <Property Name="idAccount" Type="int" />
+          <Property Name="paymenttime" Type="datetime" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="BillInfo">
           <Key>
@@ -181,11 +181,11 @@
             <PropertyRef Name="idBill" />
           </Key>
           <Property Name="idBill" Type="Int32" Nullable="false" />
-          <Property Name="DateCheckIn" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateCheckOut" Type="DateTime" Precision="0" />
           <Property Name="idTable" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Boolean" Nullable="false" />
           <Property Name="idAccount" Type="Int32" />
+          <Property Name="paymenttime" Type="DateTime" Precision="3" />
+          <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__656C112C" FromRole="Bill" ToRole="Account" />
           <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__status__440B1D61" FromRole="Bill" ToRole="TableFood" />
           <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__count__47DBAE45" FromRole="Bill" ToRole="BillInfo" />
@@ -345,11 +345,11 @@
             <EntityTypeMapping TypeName="QLCFModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
                 <ScalarProperty Name="idBill" ColumnName="idBill" />
-                <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
-                <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
                 <ScalarProperty Name="idTable" ColumnName="idTable" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+                <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

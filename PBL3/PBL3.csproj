@@ -39,11 +39,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,13 +65,11 @@
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Bill_BLL.cs" />
     <Compile Include="BLL\Drink_BLL.cs" />
-    <Compile Include="BLL\FoodCategory_BLL.cs" />
     <Compile Include="BLL\QLCF_BLL.cs" />
     <Compile Include="BLL\Table_BLL.cs" />
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Bill_DAL.cs" />
     <Compile Include="DAL\Drink_DAL.cs" />
-    <Compile Include="DAL\FoodCategory_DAL.cs" />
     <Compile Include="DAL\Table_DAL.cs" />
     <Compile Include="DTO\Account.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
@@ -125,11 +129,17 @@
     <Compile Include="GUI\fLogin.Designer.cs">
       <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fMain.cs">
+    <Compile Include="GUI\fMainAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\fMain.Designer.cs">
-      <DependentUpon>fMain.cs</DependentUpon>
+    <Compile Include="GUI\fMainAdmin.Designer.cs">
+      <DependentUpon>fMainAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fMainStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fMainStaff.Designer.cs">
+      <DependentUpon>fMainStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fMenu.cs">
       <SubType>Form</SubType>
@@ -167,12 +177,6 @@
     <Compile Include="GUI\fTableManager.Designer.cs">
       <DependentUpon>fTableManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Table.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Table.Designer.cs">
-      <DependentUpon>Table.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ucFood.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,8 +197,11 @@
     <EmbeddedResource Include="GUI\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fMain.resx">
-      <DependentUpon>fMain.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\fMainAdmin.resx">
+      <DependentUpon>fMainAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fMainStaff.resx">
+      <DependentUpon>fMainStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fMenu.resx">
       <DependentUpon>fMenu.cs</DependentUpon>
@@ -213,9 +220,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Table.resx">
-      <DependentUpon>Table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucFood.resx">
       <DependentUpon>ucFood.cs</DependentUpon>

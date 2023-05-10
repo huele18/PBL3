@@ -51,10 +51,8 @@
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymenttime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhtoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderedDrink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbborder = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
@@ -270,10 +268,8 @@
             this.Customer,
             this.idAccount,
             this.paymenttime,
-            this.thanhtoan,
+            this.status,
             this.name,
-            this.idTable,
-            this.orderedDrink,
             this.cbborder,
             this.tong});
             this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -284,6 +280,7 @@
             this.dgvInvoice.RowTemplate.Height = 24;
             this.dgvInvoice.Size = new System.Drawing.Size(555, 712);
             this.dgvInvoice.TabIndex = 2;
+            this.dgvInvoice.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInvoice_RowHeaderMouseClick);
             // 
             // idBill
             // 
@@ -317,15 +314,15 @@
             this.paymenttime.Name = "paymenttime";
             this.paymenttime.Width = 125;
             // 
-            // thanhtoan
+            // status
             // 
-            this.thanhtoan.DataPropertyName = "thanhtoan";
-            this.thanhtoan.FalseValue = "false";
-            this.thanhtoan.HeaderText = "Thanh toán";
-            this.thanhtoan.MinimumWidth = 6;
-            this.thanhtoan.Name = "thanhtoan";
-            this.thanhtoan.TrueValue = "true";
-            this.thanhtoan.Width = 125;
+            this.status.DataPropertyName = "status";
+            this.status.FalseValue = "false";
+            this.status.HeaderText = "Thanh toán";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.TrueValue = "true";
+            this.status.Width = 125;
             // 
             // name
             // 
@@ -334,24 +331,6 @@
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
             this.name.Width = 125;
-            // 
-            // idTable
-            // 
-            this.idTable.DataPropertyName = "idTable";
-            this.idTable.HeaderText = "id bàn";
-            this.idTable.MinimumWidth = 6;
-            this.idTable.Name = "idTable";
-            this.idTable.Visible = false;
-            this.idTable.Width = 125;
-            // 
-            // orderedDrink
-            // 
-            this.orderedDrink.DataPropertyName = "orderedDrink";
-            this.orderedDrink.HeaderText = "orderedDrink";
-            this.orderedDrink.MinimumWidth = 6;
-            this.orderedDrink.Name = "orderedDrink";
-            this.orderedDrink.Visible = false;
-            this.orderedDrink.Width = 125;
             // 
             // cbborder
             // 
@@ -411,10 +390,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn idAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymenttime;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn thanhtoan;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderedDrink;
         private System.Windows.Forms.DataGridViewComboBoxColumn cbborder;
         private System.Windows.Forms.DataGridViewTextBoxColumn tong;
     }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbPass = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btExit = new System.Windows.Forms.Button();
-            this.btLogin = new System.Windows.Forms.Button();
+            this.btExit = new Guna.UI2.WinForms.Guna2Button();
+            this.btLogin = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -64,20 +64,45 @@
             // 
             // txtPass
             // 
-            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(214, 361);
+            this.txtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPass.DefaultText = "";
+            this.txtPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPass.ForeColor = System.Drawing.Color.Black;
+            this.txtPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPass.Location = new System.Drawing.Point(214, 354);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(311, 30);
-            this.txtPass.TabIndex = 1;
+            this.txtPass.PlaceholderText = "Password";
+            this.txtPass.SelectedText = "";
+            this.txtPass.Size = new System.Drawing.Size(311, 37);
+            this.txtPass.TabIndex = 6;
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(214, 284);
+            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtName.DefaultText = "";
+            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.Location = new System.Drawing.Point(214, 277);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(311, 30);
-            this.txtName.TabIndex = 0;
+            this.txtName.PasswordChar = '\0';
+            this.txtName.PlaceholderText = "Username";
+            this.txtName.SelectedText = "";
+            this.txtName.Size = new System.Drawing.Size(311, 37);
+            this.txtName.TabIndex = 5;
             // 
             // lbPass
             // 
@@ -115,33 +140,41 @@
             this.panel4.Controls.Add(this.btLogin);
             this.panel4.Location = new System.Drawing.Point(3, 552);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(580, 69);
+            this.panel4.Size = new System.Drawing.Size(580, 62);
             this.panel4.TabIndex = 1;
             // 
             // btExit
             // 
-            this.btExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btExit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btExit.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.btExit.Location = new System.Drawing.Point(289, 3);
+            this.btExit.BorderRadius = 20;
+            this.btExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btExit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btExit.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btExit.ForeColor = System.Drawing.Color.White;
+            this.btExit.Location = new System.Drawing.Point(285, 3);
             this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(152, 61);
-            this.btExit.TabIndex = 1;
+            this.btExit.Size = new System.Drawing.Size(180, 57);
+            this.btExit.TabIndex = 5;
             this.btExit.Text = "Thoát";
-            this.btExit.UseVisualStyleBackColor = false;
             this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // btLogin
             // 
-            this.btLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btLogin.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(111, 3);
+            this.btLogin.BorderRadius = 20;
+            this.btLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btLogin.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btLogin.ForeColor = System.Drawing.Color.White;
+            this.btLogin.Location = new System.Drawing.Point(77, 3);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(152, 61);
-            this.btLogin.TabIndex = 0;
+            this.btLogin.Size = new System.Drawing.Size(180, 57);
+            this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Đăng nhập";
-            this.btLogin.UseVisualStyleBackColor = false;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // label1
@@ -189,13 +222,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btExit;
-        private System.Windows.Forms.Button btLogin;
-        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label lbPass;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Button btExit;
+        private Guna.UI2.WinForms.Guna2Button btLogin;
+        private Guna.UI2.WinForms.Guna2TextBox txtPass;
+        private Guna.UI2.WinForms.Guna2TextBox txtName;
     }
 }

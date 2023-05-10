@@ -32,9 +32,18 @@ namespace PBL3.BLL
             list = Table_DAL.Instance.getTableFoodList();
             return list;
         }
-        public bool checkIDTable(string id)
+        public TableFood getTableFoodById(int id)
         {
-            if(Table_DAL.Instance.getTableById(id) == null)
+            foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
+            {
+                if(i.idTableFood == id)
+                    return i;
+            }
+            return null;
+        }
+        public bool checkIDTable(int id)
+        {
+            if(getTableFoodById(id) == null)
             {
                 return false; // không tồn tại
             }
@@ -42,7 +51,7 @@ namespace PBL3.BLL
         }
         public bool checkData(TableFood tb)
         {
-            if (checkIDTable(tb.idTableFood.ToString()))
+            if (checkIDTable(tb.idTableFood))
             {
                 MessageBox.Show("ID bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -70,22 +79,23 @@ namespace PBL3.BLL
             dgv.DataSource = Table_DAL.Instance.search(s).DataSource;
             return dgv;
         }
-        public List<Table> GetTables()
+        public List<Button> GetTables()
         {
-            List<Table> tables = new List<Table>();
+            List<Button> tables = new List<Button>();
             foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
             {
-                Table uc = new Table();
-                uc.Size = new Size(110, 110);
-                uc.btNameTable.Text = i.name;
+                Button uc = new Button();
+                uc.Size = new Size(200, 200);
+                uc.Text = i.idTableFood.ToString();
                 if (i.status == "Có Người") 
-                    uc.btNameTable.BackColor = Color.FromArgb(176, 125, 55); 
+                    uc.BackColor = Color.FromArgb(176, 125, 55); 
                 else 
-                    uc.btNameTable.BackColor = Color.FromArgb(240, 226, 182);
+                    uc.BackColor = Color.FromArgb(240, 226, 182);
                 tables.Add(uc);
             }
             return tables;
         }
+
         public List<CBBItem> setCBBTable()
         {
             return Table_DAL.Instance.GetCBBTable();

@@ -55,34 +55,16 @@ namespace PBL3.BLL
             }
             return null;
         }
-        public bool checkLogin(string name, string pass)
+        public int checkLogin(string name, string pass)
         {
-            bool login = false;
-            if (getAccountByUsernameAndPass(name, pass) != null)
-            {
-                login = true;
-            }
-            return login;
-        }
-        public int updateAccount(Account after)
-        {
-            Account acc = getAccountByID(after.idAccount);
-            if (after.UserName != acc.UserName)
-            {
-                if (getAccountByUsername(after.UserName) != null)
-                {
-                    MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return 1;
-                }
-            }
-            else
-            {
-                Account_DAL.Instance.update(after);
+            Account acc = getAccountByUsernameAndPass(name, pass);
+            if (acc != null && acc.Type == 0)
                 return 0;
-            }
-            return 2;
+            if (acc != null && acc.Type == 1)
+                return 1;
+            return -1;
         }
+        
         public bool checkUsername(int id, string username)
         {
             Account acc = getAccountByID(id);
@@ -140,6 +122,25 @@ namespace PBL3.BLL
                 Account_DAL.Instance.add(nv);
                 return 0;
             }
+        }
+        public int updateAccount(Account after)
+        {
+            Account acc = getAccountByID(after.idAccount);
+            if (after.UserName != acc.UserName)
+            {
+                if (getAccountByUsername(after.UserName) != null)
+                {
+                    MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return 1;
+                }
+            }
+            else
+            {
+                Account_DAL.Instance.update(after);
+                return 0;
+            }
+            return 2;
         }
         public bool checkIDAccount(int id)
         {

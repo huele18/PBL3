@@ -22,11 +22,11 @@
       <PropertyRef Name="idBill" />
     </Key>
     <Property Name="idBill" Type="Int32" Nullable="false" />
-    <Property Name="DateCheckIn" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DateCheckOut" Type="DateTime" Precision="0" />
     <Property Name="idTable" Type="Int32" Nullable="false" />
     <Property Name="status" Type="Boolean" Nullable="false" />
     <Property Name="idAccount" Type="Int32" />
+    <Property Name="paymenttime" Type="DateTime" Precision="3" />
+    <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__656C112C" FromRole="Bill" ToRole="Account" />
     <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__status__440B1D61" FromRole="Bill" ToRole="TableFood" />
     <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__count__47DBAE45" FromRole="Bill" ToRole="BillInfo" />

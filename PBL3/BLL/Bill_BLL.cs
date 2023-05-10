@@ -23,28 +23,26 @@ namespace PBL3.BLL
                 return instance;
             }
         }
-        //public DataGridView showDGV()
-        //{
-        //    DataGridView dgv = new DataGridView();
-        //    dgv.DataSource = Bill_DAL.Instance.getBill().DataSource;
-        //    return dgv;
-        //}
-        //public List<CBBItem> getOrderedDrinnkCBB(string ids)
-        //{
-        //    return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
-        //}
-        //public int getTotal(string ids)
-        //{
-        //    return Bill_DAL.Instance.getTotal(ids);
-        //}
+        public DataGridView showDGV()
+        {
+            return Bill_DAL.Instance.getBill();
+        }
+        public List<CBBItem> getOrderedDrinnkCBB(string ids)
+        {
+            return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
+        }
+        public int getTotal(string ids)
+        {
+            return Bill_DAL.Instance.getTotal(ids);
+        }
 
-        //public void delBill(string id)
-        //{
-        //    Bill_DAL.Instance.del(id);
-        //}
-        //public void editBill(Bill b)
-        //{
-        //    Bill_DAL.Instance.edit(b);
-        //}
+        public void delBill(string id)
+        {
+            Bill_DAL.Instance.del(id);
+        }
+        public void editBill(Bill b)
+        {
+            Bill_DAL.Instance.edit(b);
+        }
     }
 }

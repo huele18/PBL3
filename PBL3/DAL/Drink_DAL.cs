@@ -44,6 +44,23 @@ namespace PBL3.DAL
             }
             return fc;
         }
+        public void addCategory(FoodCategory fc)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                db.FoodCategories.Add(fc);
+                db.SaveChanges();
+            }
+        }
+        public List<Food> GetFoods()
+        {
+            List<Food> lf = new List<Food>();
+            using(QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                lf = db.Foods.Select(p => p).ToList();
+            }
+            return lf;
+        }
         public Food getDrinkById(string id)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())

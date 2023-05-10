@@ -22,11 +22,11 @@
       <EntityTypeMapping TypeName="QLCFModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
-          <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
           <ScalarProperty Name="idTable" ColumnName="idTable" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

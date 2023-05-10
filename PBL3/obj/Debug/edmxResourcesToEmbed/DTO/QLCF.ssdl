@@ -21,11 +21,11 @@
       <PropertyRef Name="idBill" />
     </Key>
     <Property Name="idBill" Type="int" Nullable="false" />
-    <Property Name="DateCheckIn" Type="date" Nullable="false" />
-    <Property Name="DateCheckOut" Type="date" />
     <Property Name="idTable" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="idAccount" Type="int" />
+    <Property Name="paymenttime" Type="datetime" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="BillInfo">
     <Key>

@@ -17,8 +17,19 @@ namespace PBL3.GUI
             InitializeComponent();
         }
 
-        private void lbNameFood_Click(object sender, EventArgs e)
+        private void btSelect_Click(object sender, EventArgs e)
         {
+            //if(addDataToGridViewDelegate != null)
+            //{
+            //    addDataToGridViewDelegate(lbNameFood.Text, lbPrice.Text);
+            //}
+            //if (fOrder.infoForm == null)
+            //{
+            //    fOrder.infoForm = new fOrder();
+            //}
+            //else 
+            //GUI.fOrder.infoForm.addDataToGridViewDelegate(lbNameFood.Text, lbPrice.Text);
+
 
         }
     }

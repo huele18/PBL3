@@ -24,11 +24,11 @@ namespace PBL3.GUI
             FoodCategory fc = new FoodCategory();
             fc.idFoodCategory = Convert.ToInt32(txtID.Text);
             fc.Category = txtName.Text;
-            if (FoodCategory_BLL.Instance.checkID(fc.idFoodCategory))
+            if (Drink_BLL.Instance.checkID(fc.idFoodCategory))
                 MessageBox.Show("ID loại đồ uống đã tồn tại");
             else
             {
-                FoodCategory_BLL.Instance.addFoodCategory(fc);
+                Drink_BLL.Instance.addFoodCategory(fc);
                 this.Close();
             }
         }
