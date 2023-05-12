@@ -27,10 +27,6 @@ namespace PBL3.BLL
         {
             return Bill_DAL.Instance.getBill();
         }
-        public List<CBBItem> getOrderedDrinnkCBB(string ids)
-        {
-            return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
-        }
         public int getTotal(string ids)
         {
             return Bill_DAL.Instance.getTotal(ids);
@@ -43,6 +39,21 @@ namespace PBL3.BLL
         public void editBill(Bill b)
         {
             Bill_DAL.Instance.edit(b);
+        }
+
+
+
+        public Bill getBillTableByIdTable(int idtable)
+        {
+            return Bill_DAL.Instance.getBillTableByIdTable(idtable);
+        }
+        public List<ItemOrder> getBillInfoByIdBill(int idtable)
+        {
+            return Bill_DAL.Instance.GetBillInfoByIdBill(idtable);
+        }
+        public DataGridView getDetailBill(string ids)
+        {
+            return Bill_DAL.Instance.getDetailBill(ids);
         }
     }
 }

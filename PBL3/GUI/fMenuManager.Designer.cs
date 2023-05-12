@@ -317,6 +317,7 @@
             this.imageFood.Name = "imageFood";
             this.imageFood.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.imageFood.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.imageFood.Visible = false;
             this.imageFood.Width = 125;
             // 
             // fMenuManager
@@ -361,11 +362,11 @@
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btAddCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewImageColumn imageFood;
-        private System.Windows.Forms.Button btAddCategory;
     }
 }

@@ -109,7 +109,7 @@ namespace PBL3.GUI
                 nv.Password = pw;
                 nv.Calam = tbShift.Text;
                 nv.Type = Convert.ToInt32(tbAccessCode.Text);
-                nv.anh = ImageToByteArray(pictureBox1);
+                nv.Anh = ImageToByteArray(pictureBox1);
                 int add = Account_BLL.Instance.addNV(nv);
                 switch (add)
                 {
@@ -151,7 +151,7 @@ namespace PBL3.GUI
                 nv.email = tbEmail.Text;
                 nv.address = tbAddress.Text;
                 nv.UserName = tbUsername.Text;
-                nv.anh = ImageToByteArray(pictureBox1);
+                nv.Anh = ImageToByteArray(pictureBox1);
                 nv.Calam = tbShift.Text;
                 int Type = Convert.ToInt32(tbAccessCode.Text);
                 int update = Account_BLL.Instance.updateAccount(nv);

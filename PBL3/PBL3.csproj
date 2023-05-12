@@ -77,14 +77,14 @@
     <Compile Include="DTO\Bill.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\BillInfo.cs">
-      <DependentUpon>QLCF.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\CBBItem.cs" />
     <Compile Include="DTO\Food.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\FoodCategory.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\ItemOrder.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\QLCF.Context.cs">
@@ -104,6 +104,12 @@
     </Compile>
     <Compile Include="DTO\TableFood.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailBill.Designer.cs">
+      <DependentUpon>DetailBill.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fAccountManager.cs">
       <SubType>Form</SubType>
@@ -185,6 +191,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\DetailBill.resx">
+      <DependentUpon>DetailBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\fAccountManager.resx">
       <DependentUpon>fAccountManager.cs</DependentUpon>
     </EmbeddedResource>

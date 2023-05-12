@@ -45,9 +45,9 @@ namespace PBL3.GUI
             {
                 txtCalam.ReadOnly = false;
             }
-            if (acc.anh != null)
+            if (acc.Anh != null)
             {
-                byte[] imageData = (byte[])acc.anh;
+                byte[] imageData = (byte[])acc.Anh;
                 MemoryStream ms = new MemoryStream(imageData);
                 Image image = Image.FromStream(ms);
                 pictureBox1.Image = image;
@@ -128,10 +128,10 @@ namespace PBL3.GUI
                         MemoryStream ms = new MemoryStream();
                         pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         byte[] imageData = ms.ToArray();
-                        acc.anh = imageData;
+                        acc.Anh = imageData;
                     }
                     else
-                        acc.anh = null;
+                        acc.Anh = null;
 
                     Account_BLL.Instance.editAccount(acc);
                 }
