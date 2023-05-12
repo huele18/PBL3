@@ -34,16 +34,23 @@ namespace PBL3.BLL
         }
         public TableFood getTableFoodById(int id)
         {
-            foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
-            {
-                if(i.idTableFood == id)
-                    return i;
-            }
-            return null;
+            return Table_DAL.Instance.getTableById(id);
+        }
+        public TableFood getTableByName(string name)
+        {
+            return Table_DAL.Instance.getTableByName(name);
         }
         public bool checkIDTable(int id)
         {
             if(getTableFoodById(id) == null)
+            {
+                return false; // không tồn tại
+            }
+            return true;
+        }
+        public bool checkTableName(string name)
+        {
+            if (getTableByName(name) == null)
             {
                 return false; // không tồn tại
             }
@@ -54,6 +61,11 @@ namespace PBL3.BLL
             if (checkIDTable(tb.idTableFood))
             {
                 MessageBox.Show("ID bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else if (checkTableName(tb.name))
+            {
+                MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -67,7 +79,14 @@ namespace PBL3.BLL
         }
         public void editTable(TableFood tb)
         {
-            Table_DAL.Instance.edit(tb);
+            if(!checkTableName(tb.name) == null)
+            {
+                Table_DAL.Instance.edit(tb);
+            }
+            else
+            {
+                MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public void delTable(int id)
         {
@@ -82,15 +101,16 @@ namespace PBL3.BLL
         public List<Button> GetTables()
         {
             List<Button> tables = new List<Button>();
-            foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
+            foreach (TableFood i in Table_DAL.Instance.getTableFoodList())
             {
                 Button uc = new Button();
                 uc.Size = new Size(200, 200);
                 uc.Text = i.idTableFood.ToString();
-                if (i.status == "Có Người") 
-                    uc.BackColor = Color.FromArgb(176, 125, 55); 
-                else 
+                if (i.status == "Có Người")
+                    uc.BackColor = Color.FromArgb(176, 125, 55);
+                else
                     uc.BackColor = Color.FromArgb(240, 226, 182);
+                uc.Tag = i.idTableFood;
                 tables.Add(uc);
             }
             return tables;
@@ -99,6 +119,10 @@ namespace PBL3.BLL
         public List<CBBItem> setCBBTable()
         {
             return Table_DAL.Instance.GetCBBTable();
+        }
+        public int getTableIDByName(string name)
+        {
+            return Table_DAL.Instance.getTableIDByName(name);
         }
     }
 }

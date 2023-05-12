@@ -76,7 +76,6 @@ C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fMenu.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fMenuManager.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fOrder.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fStaffManager.resources
-C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fStatistic.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fTableManager.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.ucFood.resources
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.Properties.Resources.resources

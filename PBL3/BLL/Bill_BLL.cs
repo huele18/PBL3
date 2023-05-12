@@ -32,7 +32,7 @@ namespace PBL3.BLL
             return Bill_DAL.Instance.getTotal(ids);
         }
 
-        public void delBill(string id)
+        public void delBill(int id)
         {
             Bill_DAL.Instance.del(id);
         }
@@ -54,6 +54,21 @@ namespace PBL3.BLL
         public DataGridView getDetailBill(string ids)
         {
             return Bill_DAL.Instance.getDetailBill(ids);
+        }
+        public bool idBillExit(int id)
+        {
+            return false;
+        }
+        public void addBill(Bill bill, List<ItemOrder> lio)
+        {
+            if( !idBillExit(bill.idBill) )
+            {
+                Bill_DAL.Instance.addBill(bill, lio);
+            }
+            else
+            {
+                MessageBox.Show("ID hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

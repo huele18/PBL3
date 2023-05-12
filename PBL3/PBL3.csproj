@@ -65,7 +65,6 @@
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Bill_BLL.cs" />
     <Compile Include="BLL\Drink_BLL.cs" />
-    <Compile Include="BLL\QLCF_BLL.cs" />
     <Compile Include="BLL\Table_BLL.cs" />
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Bill_DAL.cs" />
@@ -171,12 +170,6 @@
     <Compile Include="GUI\fStaffManager.Designer.cs">
       <DependentUpon>fStaffManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fStatistic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fStatistic.Designer.cs">
-      <DependentUpon>fStatistic.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fTableManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,9 +216,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fStaffManager.resx">
       <DependentUpon>fStaffManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fStatistic.resx">
-      <DependentUpon>fStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>

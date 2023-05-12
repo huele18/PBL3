@@ -23,13 +23,27 @@ namespace PBL3.DAL
             }
             private set { }
         }
-        public TableFood getTableById(string id)
+        public TableFood getTableById(int id)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
                 foreach (TableFood f in db.TableFoods)
                 {
-                    if (f.idTableFood.ToString() == id)
+                    if (f.idTableFood == id)
+                    {
+                        return f;
+                    }
+                }
+            }
+            return null;
+        }
+        public TableFood getTableByName(string name)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                foreach (TableFood f in db.TableFoods)
+                {
+                    if (f.name.ToUpper() == name.ToUpper())
                     {
                         return f;
                     }
@@ -103,6 +117,20 @@ namespace PBL3.DAL
                 }
             }
             return cbb;
+        }
+        public int getTableIDByName(string name)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                foreach (TableFood f in db.TableFoods)
+                {
+                    if (f.name.ToUpper() == name.ToUpper())
+                    {
+                        return f.idTableFood;
+                    }
+                }
+            }
+            return 0;
         }
     }
 }

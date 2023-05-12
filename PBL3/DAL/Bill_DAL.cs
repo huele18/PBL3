@@ -32,7 +32,6 @@ namespace PBL3.DAL
                 bill.DataSource = db.Bills
                     .Select(p => new {
                         p.idBill,
-                        p.Customer,
                         p.idAccount,
                         p.paymenttime,
                         p.thanhtoan,
@@ -69,10 +68,17 @@ namespace PBL3.DAL
             }
             return tprice;
         }
-        public void del(string id)
+        public void del(int id)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
+                foreach(ItemOrder d in db.ItemOrders)
+                {
+                    if(d.idBill == id)
+                    {
+                        db.ItemOrders.Remove(d);
+                    }
+                }
                 Bill b = db.Bills.Find(id);
                 db.Bills.Remove(b);
                 db.SaveChanges();
@@ -83,7 +89,6 @@ namespace PBL3.DAL
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
                 Bill bill = db.Bills.Find(newBill.idBill);
-                bill.Customer = newBill.Customer;
                 bill.paymenttime = newBill.paymenttime;
                 bill.thanhtoan = newBill.thanhtoan;
                 bill.idAccount = newBill.idAccount;
@@ -126,6 +131,17 @@ namespace PBL3.DAL
 
             }
             return list;
+        }
+        public void addBill(Bill bill, List<ItemOrder> lio)
+        {
+            using(QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                db.Bills.Add(bill);
+                db.ItemOrders.AddRange(lio);
+                db.SaveChanges();
+                MessageBox.Show("Đã thêm hóa đơn thành công", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
