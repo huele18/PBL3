@@ -26,6 +26,7 @@ namespace PBL3.GUI
         }
         public void setDGV()
         {
+            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             dgvInvoice.DataSource = Bill_BLL.Instance.showDGV().DataSource;
             for (int i = 0; i < dgvInvoice.Rows.Count; i++)
             {
@@ -47,7 +48,7 @@ namespace PBL3.GUI
                 idBill = Convert.ToInt32(txtIdBill.Text),
                 Customer = txtNameCustomer.Text,
                 paymenttime = (DateTime)billDate.Value,
-                status = check,
+                thanhtoan = check,
                 idTable = ((CBBItem)cbbTable.SelectedItem).Value,
                 idAccount = Convert.ToInt32(txtIdAcc.Text),
             };
@@ -76,6 +77,12 @@ namespace PBL3.GUI
             setDGV();
         }
 
+        private void fBillManager_Load_1(object sender, EventArgs e)
+        {
+            setDGV();
+        }
+
+
         private void dgvInvoice_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
@@ -85,7 +92,7 @@ namespace PBL3.GUI
                 txtNameCustomer.Text = dgvInvoice.Rows[index].Cells["Customer"].Value.ToString();
                 txtIdAcc.Text = dgvInvoice.Rows[index].Cells["idAccount"].Value.ToString();
                 billDate.Text = dgvInvoice.Rows[index].Cells["paymenttime"].Value.ToString();
-                if (Convert.ToBoolean(dgvInvoice.Rows[index].Cells["status"].Value))
+                if (Convert.ToBoolean(dgvInvoice.Rows[index].Cells["thanhtoan"].Value))
                 {
                     rbPaid.Checked = true;
                 }
@@ -95,14 +102,20 @@ namespace PBL3.GUI
                 }
                 cbbTable.Text = dgvInvoice.Rows[index].Cells["name"].Value.ToString();
 
-
-                cbborder.DataSource = null;
-                cbborder.DataSource = Bill_BLL.Instance.getOrderedDrinnkCBB(txtIdBill.Text);
                 string tongtien = Bill_BLL.Instance.getTotal(txtIdBill.Text).ToString();
                 total.Text = tongtien;
                 dgvInvoice.Rows[index].Cells["tong"].Value = tongtien;
             }
             catch (Exception ex) { }
+        }
+
+
+
+        private void dgvInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string idbill = dgvInvoice.Rows[e.RowIndex].Cells["idBill"].Value.ToString();
+            DetailBill dtb = new DetailBill(idbill);
+            dtb.ShowDialog();
         }
     }
 }

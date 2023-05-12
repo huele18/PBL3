@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,31 +33,23 @@ namespace PBL3.DAL
                     .Select(p => new {
                         p.idBill,
                         p.Customer,
+                        p.idAccount,
                         p.paymenttime,
-                        p.status,
-                        p.TableFood.name,
-                        p.idAccount
+                        p.thanhtoan,
+                        p.TableFood.name 
                     }).ToList();
                 return bill;
             }
         }
-        public List<CBBItem> getOrderedDrinnkCBB(string ids)
+        public DataGridView getDetailBill(string ids)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                List<CBBItem> items = new List<CBBItem>();
-                foreach (BillInfo d in db.BillInfoes)
-                {
-                    if (d.idBill.ToString() == ids)
-                    {
-
-                        items.Add(new CBBItem
-                        {
-                            Value = (int)d.idFood,
-                            Text = d.Food.NameFood + " (x" + d.count + "):  " + (d.count * d.Food.price) + "đ"
-                        });
-                    }
-                }
+                DataGridView items = new DataGridView();
+                items.DataSource = db.ItemOrders.
+                    Where(p => p.idBill.ToString() == ids).
+                    Select(p => new { p.Food.NameFood, p.billquantity, p.Food.price }).
+                    ToList();
                 return items;
             }
         }
@@ -65,12 +58,12 @@ namespace PBL3.DAL
             int tprice = 0;
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                foreach (BillInfo d in db.BillInfoes)
+                foreach (ItemOrder d in db.ItemOrders)
                 {
                     if (d.idBill.ToString() == s)
                     {
 
-                        tprice += (int)(d.count * d.Food.price);
+                        tprice += (int)(d.billquantity * d.Food.price);
                     }
                 }
             }
@@ -92,7 +85,7 @@ namespace PBL3.DAL
                 Bill bill = db.Bills.Find(newBill.idBill);
                 bill.Customer = newBill.Customer;
                 bill.paymenttime = newBill.paymenttime;
-                bill.status = newBill.status;
+                bill.thanhtoan = newBill.thanhtoan;
                 bill.idAccount = newBill.idAccount;
                 bill.idTable = newBill.idTable;
                 db.SaveChanges();
@@ -102,20 +95,37 @@ namespace PBL3.DAL
         }
 
 
+        //tra ve Bill chua thanh toan
+        public Bill getBillTableByIdTable(int idtable)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                foreach (Bill b in db.Bills.Where(p => p.idTable == idtable).ToList())
+                {
+                    if (b.thanhtoan == false)
+                        return b;
 
+                }
+            }
+            return null;
+        }
+        public List<ItemOrder> GetBillInfoByIdBill(int idtable)
+        {
+            List<ItemOrder> list = new List<ItemOrder>();
+            Bill bill = getBillTableByIdTable(idtable);
+            if (bill != null)
+            {
+                using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+                {
+                    foreach (ItemOrder bi in db.ItemOrders)
+                    {
+                        if (bi.idBill == bill.idBill)
+                            list.Add(bi);
+                    }
+                }
 
-        //public DataGridView getBillInfoByIdBillInfo()
-        //{
-        //    DataGridView dgv = new DataGridView();
-        //    using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
-        //    {
-        //        var v = db.BillInfoes
-        //            .Where
-        //            .Select(x => new {x.idBillInfo, x.idBill, x.Food.NameFood, x.Food.price, x.count});
-        //        dgv.DataSource = v;
-        //    }
-        //    return dgv;
-        //}
-        
+            }
+            return list;
+        }
     }
 }

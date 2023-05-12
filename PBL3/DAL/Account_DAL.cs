@@ -47,7 +47,7 @@ namespace PBL3.DAL
                 acc.email = after.email;
                 acc.UserName = after.UserName;
                 acc.Calam = after.Calam;
-                acc.anh = after.anh;
+                acc.Anh = after.Anh;
                 db.SaveChanges();
                 MessageBox.Show("Đã cập nhật thành công thông tin tài khoản của bạn", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -81,7 +81,7 @@ namespace PBL3.DAL
                     p.UserName,
                     p.Calam,
                     p.Type,
-                    p.anh
+                    p.Anh
                 });
                 foreach (var jacc in j)
                 {
@@ -96,7 +96,7 @@ namespace PBL3.DAL
                         UserName = jacc.UserName,
                         Calam = jacc.Calam,
                         Type = jacc.Type,
-                        anh = jacc.anh,
+                        Anh = jacc.Anh,
                     };
                     ac.Add(acc);
                 }
@@ -169,7 +169,7 @@ namespace PBL3.DAL
                         p.UserName,
                         p.Calam,
                         p.Type,
-                        p.anh
+                        p.Anh
                     });
                 foreach (var jacc in j)
                 {
@@ -184,7 +184,7 @@ namespace PBL3.DAL
                         UserName = jacc.UserName,
                         Calam = jacc.Calam,
                         Type = jacc.Type,
-                        anh = jacc.anh,
+                        Anh = jacc.Anh,
                     };
                     ac.Add(acc);
                 }

@@ -17,19 +17,19 @@ namespace PBL3.DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bill()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
+            this.ItemOrders = new HashSet<ItemOrder>();
         }
     
         public int idBill { get; set; }
-        public int idTable { get; set; }
-        public bool status { get; set; }
-        public Nullable<int> idAccount { get; set; }
-        public Nullable<System.DateTime> paymenttime { get; set; }
         public string Customer { get; set; }
+        public Nullable<System.DateTime> paymenttime { get; set; }
+        public Nullable<bool> thanhtoan { get; set; }
+        public int idTable { get; set; }
+        public int idAccount { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual TableFood TableFood { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
+        public virtual ICollection<ItemOrder> ItemOrders { get; set; }
     }
 }
