@@ -91,7 +91,9 @@
             // rbUnpaid
             // 
             this.rbUnpaid.AutoSize = true;
+            this.rbUnpaid.Enabled = false;
             this.rbUnpaid.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.rbUnpaid.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbUnpaid.Location = new System.Drawing.Point(326, 525);
             this.rbUnpaid.Name = "rbUnpaid";
             this.rbUnpaid.Size = new System.Drawing.Size(193, 31);
@@ -103,6 +105,7 @@
             // rbPaid
             // 
             this.rbPaid.AutoSize = true;
+            this.rbPaid.Enabled = false;
             this.rbPaid.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.rbPaid.Location = new System.Drawing.Point(34, 525);
             this.rbPaid.Name = "rbPaid";
