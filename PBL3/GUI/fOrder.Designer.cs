@@ -37,8 +37,8 @@
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtIdBill = new System.Windows.Forms.TextBox();
+            this.txtTable = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -49,9 +49,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttoncancel = new System.Windows.Forms.Button();
             this.buttongiam = new System.Windows.Forms.Button();
             this.btOrder = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonThanhToan = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.buttonLuu = new System.Windows.Forms.Button();
             this.grbTable = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonThanhToan = new System.Windows.Forms.Button();
-            this.buttoncancel = new System.Windows.Forms.Button();
             this.pnOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -163,8 +163,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtIdBill);
+            this.panel1.Controls.Add(this.txtTable);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -173,21 +173,22 @@
             this.panel1.Size = new System.Drawing.Size(650, 83);
             this.panel1.TabIndex = 0;
             // 
-            // textBox5
+            // txtIdBill
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox5.Location = new System.Drawing.Point(256, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(385, 34);
-            this.textBox5.TabIndex = 2;
+            this.txtIdBill.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIdBill.Location = new System.Drawing.Point(256, 44);
+            this.txtIdBill.Name = "txtIdBill";
+            this.txtIdBill.Size = new System.Drawing.Size(385, 34);
+            this.txtIdBill.TabIndex = 2;
             // 
-            // textBox4
+            // txtTable
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox4.Location = new System.Drawing.Point(256, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(385, 34);
-            this.textBox4.TabIndex = 2;
+            this.txtTable.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTable.Location = new System.Drawing.Point(256, 3);
+            this.txtTable.Name = "txtTable";
+            this.txtTable.ReadOnly = true;
+            this.txtTable.Size = new System.Drawing.Size(385, 34);
+            this.txtTable.TabIndex = 2;
             // 
             // label6
             // 
@@ -293,6 +294,18 @@
             this.panel5.Size = new System.Drawing.Size(656, 85);
             this.panel5.TabIndex = 5;
             // 
+            // buttoncancel
+            // 
+            this.buttoncancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.buttoncancel.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.buttoncancel.Location = new System.Drawing.Point(332, 39);
+            this.buttoncancel.Name = "buttoncancel";
+            this.buttoncancel.Size = new System.Drawing.Size(324, 40);
+            this.buttoncancel.TabIndex = 6;
+            this.buttoncancel.Text = "Hủy gọi món";
+            this.buttoncancel.UseVisualStyleBackColor = false;
+            this.buttoncancel.Click += new System.EventHandler(this.buttoncancel_Click);
+            // 
             // buttongiam
             // 
             this.buttongiam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
@@ -303,6 +316,7 @@
             this.buttongiam.TabIndex = 1;
             this.buttongiam.Text = "Giảm";
             this.buttongiam.UseVisualStyleBackColor = false;
+            this.buttongiam.Click += new System.EventHandler(this.buttongiam_Click);
             // 
             // btOrder
             // 
@@ -331,6 +345,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(656, 125);
             this.panel3.TabIndex = 6;
+            // 
+            // buttonThanhToan
+            // 
+            this.buttonThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.buttonThanhToan.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.buttonThanhToan.Location = new System.Drawing.Point(0, 83);
+            this.buttonThanhToan.Name = "buttonThanhToan";
+            this.buttonThanhToan.Size = new System.Drawing.Size(656, 39);
+            this.buttonThanhToan.TabIndex = 10;
+            this.buttonThanhToan.Text = "Thanh toán";
+            this.buttonThanhToan.UseVisualStyleBackColor = false;
+            this.buttonThanhToan.Click += new System.EventHandler(this.buttonThanhToan_Click);
             // 
             // comboBox1
             // 
@@ -385,6 +411,7 @@
             this.buttonLuu.TabIndex = 6;
             this.buttonLuu.Text = "Lưu";
             this.buttonLuu.UseVisualStyleBackColor = false;
+            this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
             // grbTable
             // 
@@ -407,28 +434,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(684, 746);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // buttonThanhToan
-            // 
-            this.buttonThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.buttonThanhToan.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.buttonThanhToan.Location = new System.Drawing.Point(0, 83);
-            this.buttonThanhToan.Name = "buttonThanhToan";
-            this.buttonThanhToan.Size = new System.Drawing.Size(656, 39);
-            this.buttonThanhToan.TabIndex = 10;
-            this.buttonThanhToan.Text = "Thanh toán";
-            this.buttonThanhToan.UseVisualStyleBackColor = false;
-            // 
-            // buttoncancel
-            // 
-            this.buttoncancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.buttoncancel.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.buttoncancel.Location = new System.Drawing.Point(332, 39);
-            this.buttoncancel.Name = "buttoncancel";
-            this.buttoncancel.Size = new System.Drawing.Size(324, 40);
-            this.buttoncancel.TabIndex = 6;
-            this.buttoncancel.Text = "Hủy gọi món";
-            this.buttoncancel.UseVisualStyleBackColor = false;
             // 
             // fOrder
             // 
@@ -480,8 +485,8 @@
         private System.Windows.Forms.Button buttonLuu;
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtIdBill;
+        private System.Windows.Forms.TextBox txtTable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

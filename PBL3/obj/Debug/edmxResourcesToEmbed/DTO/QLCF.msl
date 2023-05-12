@@ -22,7 +22,6 @@
       <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="Customer" ColumnName="Customer" />
           <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
           <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
           <ScalarProperty Name="idTable" ColumnName="idTable" />

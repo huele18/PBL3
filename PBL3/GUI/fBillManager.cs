@@ -46,7 +46,6 @@ namespace PBL3.GUI
             Bill bill = new Bill
             {
                 idBill = Convert.ToInt32(txtIdBill.Text),
-                Customer = txtNameCustomer.Text,
                 paymenttime = (DateTime)billDate.Value,
                 thanhtoan = check,
                 idTable = ((CBBItem)cbbTable.SelectedItem).Value,
@@ -55,7 +54,6 @@ namespace PBL3.GUI
             Bill_BLL.Instance.editBill(bill);
             txtIdBill.Text = "";
             txtIdAcc.Text = "";
-            txtNameCustomer.Text = "";
             total.Text = "";
             cbbTable.Text = "";
             setDGV();
@@ -67,10 +65,10 @@ namespace PBL3.GUI
             {
                 foreach (DataGridViewRow i in dgvInvoice.SelectedRows)
                 {
-                    string id = i.Cells["idBill"].Value.ToString();
+                    int id = Convert.ToInt32(i.Cells["idBill"].Value);
                     Bill_BLL.Instance.delBill(id);
                 }
-                MessageBox.Show("Đã xóa thành công bàn ra khỏi danh sách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã xóa thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
                 MessageBox.Show("Chưa chọn cột muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,7 +87,6 @@ namespace PBL3.GUI
             {
                 int index = e.RowIndex;
                 txtIdBill.Text = dgvInvoice.Rows[index].Cells["idBill"].Value.ToString();
-                txtNameCustomer.Text = dgvInvoice.Rows[index].Cells["Customer"].Value.ToString();
                 txtIdAcc.Text = dgvInvoice.Rows[index].Cells["idAccount"].Value.ToString();
                 billDate.Text = dgvInvoice.Rows[index].Cells["paymenttime"].Value.ToString();
                 if (Convert.ToBoolean(dgvInvoice.Rows[index].Cells["thanhtoan"].Value))
