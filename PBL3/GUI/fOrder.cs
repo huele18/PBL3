@@ -190,7 +190,7 @@ namespace PBL3.GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Sai định dạng ID!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("ERROR!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -221,7 +221,7 @@ namespace PBL3.GUI
                         //hiện hóa đơn
                         TableFood table = Table_BLL.Instance.getTableFoodById(Convert.ToInt32(txtTable.Text));
                         Account acc = Account_BLL.Instance.getAccountByID(idacc);
-                        fBill fbill = new fBill(txtIdBill.Text, table.name, acc.DisplayName, (DataTable)dgvOrders.DataSource);
+                        fBill fbill = new fBill(txtIdBill.Text, table.name, acc.DisplayName);
                         fbill.ShowDialog();
                         //thay đổi trên form
                         txtIdBill.Text = "";
