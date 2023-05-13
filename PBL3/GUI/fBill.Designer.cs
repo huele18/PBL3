@@ -263,7 +263,7 @@
             // 
             // count
             // 
-            this.count.DataPropertyName = "count";
+            this.count.DataPropertyName = "billquantity";
             this.count.HeaderText = "Số lượng";
             this.count.MinimumWidth = 6;
             this.count.Name = "count";
@@ -284,7 +284,7 @@
             this.Total.Name = "Total";
             this.Total.Width = 125;
             // 
-            // Bill
+            // fBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,8 +292,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "Bill";
+            this.Name = "fBill";
             this.Text = "Bill";
+            this.Load += new System.EventHandler(this.fBill_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);

@@ -47,7 +47,7 @@ namespace PBL3.DAL
                 DataGridView items = new DataGridView();
                 items.DataSource = db.ItemOrders.
                     Where(p => p.idBill.ToString() == ids).
-                    Select(p => new { p.Food.NameFood, p.billquantity, p.Food.price }).
+                    Select(p => new {p.idFood, p.Food.NameFood, p.billquantity, p.Food.price }).
                     ToList();
                 return items;
             }

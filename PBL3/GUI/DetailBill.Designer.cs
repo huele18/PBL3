@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvdetailbill = new System.Windows.Forms.DataGridView();
+            this.IdFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +44,7 @@
             this.dgvdetailbill.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
             this.dgvdetailbill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdetailbill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdFood,
             this.NameFood,
             this.billquantity,
             this.price,
@@ -55,6 +57,14 @@
             this.dgvdetailbill.RowTemplate.Height = 24;
             this.dgvdetailbill.Size = new System.Drawing.Size(691, 452);
             this.dgvdetailbill.TabIndex = 0;
+            // 
+            // IdFood
+            // 
+            this.IdFood.DataPropertyName = "IdFood";
+            this.IdFood.HeaderText = "ID";
+            this.IdFood.MinimumWidth = 6;
+            this.IdFood.Name = "IdFood";
+            this.IdFood.Width = 125;
             // 
             // NameFood
             // 
@@ -111,6 +121,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvdetailbill;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn billquantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
