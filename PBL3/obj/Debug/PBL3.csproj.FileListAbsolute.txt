@@ -85,3 +85,4 @@ C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.csproj.CopyComplete
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.exe
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.pdb
 C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.DetailBill.resources
+C:\Users\nguye\OneDrive\Desktop\PBL3\PBL3\obj\Debug\PBL3.GUI.fBill.resources

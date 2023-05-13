@@ -158,6 +158,7 @@ namespace PBL3.GUI
                 switch (update)
                 {
                     case 0:
+                        btAddEmployee.Enabled = true;
                         tbEmployeeId.ReadOnly = false;
                         tbEmployeeId.Text = "";
                         tbEmployeeName.Text = "";
@@ -207,6 +208,7 @@ namespace PBL3.GUI
 
         private void dgvEmployee_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            btAddEmployee.Enabled = false;
             tbEmployeeId.ReadOnly = true;
             int index = e.RowIndex;
             tbEmployeeId.Text = dgvEmployee.Rows[index].Cells[0].Value.ToString();
@@ -244,14 +246,14 @@ namespace PBL3.GUI
         private void browse_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Please choose a picture";
-            ofd.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
-            ofd.Multiselect = false;
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //PictureBox pb = new PictureBox();
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                this.pictureBox1.ImageLocation = ofd.FileName;
-
+                pictureBox1.Image = new Bitmap(ofd.FileName);
+                MemoryStream ms = new MemoryStream();
+                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
             }
+            else pictureBox1.Image = null;
         }
     }
 }

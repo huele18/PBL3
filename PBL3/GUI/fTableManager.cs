@@ -61,6 +61,7 @@ namespace PBL3.GUI
 
         private void btEdit_Click(object sender, EventArgs e)
         {
+            bool oldName = true;
             string tt;
             if (rbTrong.Checked == true)
             {
@@ -70,13 +71,18 @@ namespace PBL3.GUI
             {
                 tt = "Có Người";
             }
+            string name = Table_BLL.Instance.getTableFoodById(Convert.ToInt32(txtID.Text)).name;
             TableFood tf = new TableFood
             {
                 idTableFood = Convert.ToInt32(txtID.Text),
                 name = txtName.Text,
                 status = tt
             };
-            Table_BLL.Instance.editTable(tf);
+            if (tf.name != name) 
+            {
+                oldName = false;
+            }
+            Table_BLL.Instance.editTable(tf, oldName);
             btAdd.Enabled = true;
             txtID.ReadOnly = false;
             txtID.Text = "";

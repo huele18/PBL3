@@ -104,6 +104,12 @@
     <Compile Include="DTO\TableFood.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
+    <Compile Include="GUI\fBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fBill.Designer.cs">
+      <DependentUpon>fBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DetailBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\fBill.resx">
+      <DependentUpon>fBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DetailBill.resx">
       <DependentUpon>DetailBill.cs</DependentUpon>
     </EmbeddedResource>
