@@ -15,7 +15,6 @@ D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fAccountManager.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fBillManager.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fMenuManager.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fStaffManager.resources
-D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fStatistic.resources
 D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.dll
 D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.SqlServer.dll
 D:\visualstudio\PBL3\PBL3\bin\Debug\EntityFramework.xml

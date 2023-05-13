@@ -68,7 +68,7 @@ namespace PBL3
 
         private void btHome_Click(object sender, EventArgs e)
         {
-            openChildForm(new GUI.fOrder(), sender);
+            openChildForm(new GUI.fOrder(acc.idAccount), sender);
         }
 
         private void btTable_Click(object sender, EventArgs e)
@@ -89,11 +89,6 @@ namespace PBL3
         private void btBill_Click(object sender, EventArgs e)
         {
             openChildForm(new GUI.fBillManager(), sender);
-        }
-
-        private void btStatistic_Click(object sender, EventArgs e)
-        {
-            openChildForm(new GUI.fStatistic(), sender);
         }
 
         private void btAccount_Click(object sender, EventArgs e)

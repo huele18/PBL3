@@ -75,8 +75,6 @@ namespace PBL3.DAL
                 tf.name = after.name;
                 tf.status = after.status;
                 db.SaveChanges();
-                MessageBox.Show("Đã cập nhật thành công thông tin bàn", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         public void del(int idtable)

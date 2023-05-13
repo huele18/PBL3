@@ -77,6 +77,9 @@ namespace PBL3.GUI
                 status = tt
             };
             Table_BLL.Instance.editTable(tf);
+            MessageBox.Show("Đã cập nhật thành công thông tin bàn", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             btAdd.Enabled = true;
             txtID.ReadOnly = false;
             txtID.Text = "";

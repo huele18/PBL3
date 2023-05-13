@@ -91,6 +91,7 @@ namespace PBL3.BLL
                     uc.BackColor = Color.FromArgb(176, 125, 55); 
                 else 
                     uc.BackColor = Color.FromArgb(240, 226, 182);
+                uc.Tag = i.idTableFood;
                 tables.Add(uc);
             }
             return tables;

@@ -30,7 +30,7 @@ namespace PBL3.DTO
         public string Password { get; set; }
         public string Calam { get; set; }
         public int Type { get; set; }
-        public byte[] anh { get; set; }
+        public byte[] Anh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

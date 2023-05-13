@@ -51,7 +51,6 @@
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymenttime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbborder = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -268,7 +267,6 @@
             this.Customer,
             this.idAccount,
             this.paymenttime,
-            this.status,
             this.name,
             this.cbborder,
             this.tong});
@@ -314,19 +312,8 @@
             this.paymenttime.Name = "paymenttime";
             this.paymenttime.Width = 125;
             // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.FalseValue = "false";
-            this.status.HeaderText = "Thanh toán";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.TrueValue = "true";
-            this.status.Width = 125;
-            // 
             // name
             // 
-            this.name.DataPropertyName = "name";
             this.name.HeaderText = "Bàn";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
@@ -390,7 +377,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn idAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymenttime;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewComboBoxColumn cbborder;
         private System.Windows.Forms.DataGridViewTextBoxColumn tong;

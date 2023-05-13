@@ -77,14 +77,14 @@
     <Compile Include="DTO\Bill.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\BillInfo.cs">
-      <DependentUpon>QLCF.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\CBBItem.cs" />
     <Compile Include="DTO\Food.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\FoodCategory.cs">
+      <DependentUpon>QLCF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\ItemOrder.cs">
       <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\QLCF.Context.cs">
@@ -165,12 +165,6 @@
     <Compile Include="GUI\fStaffManager.Designer.cs">
       <DependentUpon>fStaffManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\fStatistic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\fStatistic.Designer.cs">
-      <DependentUpon>fStatistic.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fTableManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,9 +208,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fStaffManager.resx">
       <DependentUpon>fStaffManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\fStatistic.resx">
-      <DependentUpon>fStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>

@@ -31,9 +31,14 @@
             this.pnOrder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtIdBill = new System.Windows.Forms.TextBox();
+            this.txtTable = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -44,22 +49,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btGiam = new System.Windows.Forms.Button();
             this.btOrder = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btThanhToan = new System.Windows.Forms.Button();
             this.grbTable = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btXoa = new System.Windows.Forms.Button();
+            this.btLuu = new System.Windows.Forms.Button();
             this.pnOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -96,7 +93,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 85);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(656, 569);
+            this.groupBox2.Size = new System.Drawing.Size(656, 611);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết gọi món:";
@@ -117,14 +114,53 @@
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(650, 453);
+            this.dgvOrders.Size = new System.Drawing.Size(650, 495);
             this.dgvOrders.TabIndex = 1;
+            // 
+            // idFood
+            // 
+            this.idFood.DataPropertyName = "idFood";
+            this.idFood.HeaderText = "ID";
+            this.idFood.MinimumWidth = 6;
+            this.idFood.Name = "idFood";
+            this.idFood.Width = 125;
+            // 
+            // NameFood
+            // 
+            this.NameFood.DataPropertyName = "NameFood";
+            this.NameFood.HeaderText = "Tên Đồ uống";
+            this.NameFood.MinimumWidth = 6;
+            this.NameFood.Name = "NameFood";
+            this.NameFood.Width = 125;
+            // 
+            // count
+            // 
+            this.count.DataPropertyName = "count";
+            this.count.HeaderText = "Số lượng";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 125;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Đơn giá";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Tổng Tiền";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtIdBill);
+            this.panel1.Controls.Add(this.txtTable);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -133,21 +169,22 @@
             this.panel1.Size = new System.Drawing.Size(650, 83);
             this.panel1.TabIndex = 0;
             // 
-            // textBox5
+            // txtIdBill
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox5.Location = new System.Drawing.Point(256, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(385, 34);
-            this.textBox5.TabIndex = 2;
+            this.txtIdBill.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIdBill.Location = new System.Drawing.Point(256, 44);
+            this.txtIdBill.Name = "txtIdBill";
+            this.txtIdBill.Size = new System.Drawing.Size(385, 34);
+            this.txtIdBill.TabIndex = 2;
             // 
-            // textBox4
+            // txtTable
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox4.Location = new System.Drawing.Point(256, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(385, 34);
-            this.textBox4.TabIndex = 2;
+            this.txtTable.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTable.Location = new System.Drawing.Point(256, 3);
+            this.txtTable.Name = "txtTable";
+            this.txtTable.ReadOnly = true;
+            this.txtTable.Size = new System.Drawing.Size(385, 34);
+            this.txtTable.TabIndex = 2;
             // 
             // label6
             // 
@@ -176,7 +213,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(0, 85);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(656, 569);
+            this.groupBox3.Size = new System.Drawing.Size(656, 611);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chi tiết gọi món:";
@@ -190,7 +227,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(650, 453);
+            this.dataGridView1.Size = new System.Drawing.Size(650, 495);
             this.dataGridView1.TabIndex = 1;
             // 
             // panel4
@@ -244,7 +281,8 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.btXoa);
+            this.panel5.Controls.Add(this.btGiam);
             this.panel5.Controls.Add(this.btOrder);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -252,22 +290,21 @@
             this.panel5.Size = new System.Drawing.Size(656, 85);
             this.panel5.TabIndex = 5;
             // 
-            // button1
+            // btGiam
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.button1.Location = new System.Drawing.Point(0, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(656, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Xóa";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btGiam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btGiam.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btGiam.Location = new System.Drawing.Point(0, 40);
+            this.btGiam.Name = "btGiam";
+            this.btGiam.Size = new System.Drawing.Size(326, 40);
+            this.btGiam.TabIndex = 1;
+            this.btGiam.Text = "Giảm món";
+            this.btGiam.UseVisualStyleBackColor = false;
+            this.btGiam.Click += new System.EventHandler(this.btGiam_Click);
             // 
             // btOrder
             // 
             this.btOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btOrder.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btOrder.Location = new System.Drawing.Point(0, 0);
             this.btOrder.Name = "btOrder";
@@ -280,84 +317,25 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.btLuu);
+            this.panel3.Controls.Add(this.btThanhToan);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 654);
+            this.panel3.Location = new System.Drawing.Point(0, 696);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(656, 125);
+            this.panel3.Size = new System.Drawing.Size(656, 83);
             this.panel3.TabIndex = 6;
             // 
-            // comboBox1
+            // btThanhToan
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Phần trăm(%)",
-            "VND"});
-            this.comboBox1.Location = new System.Drawing.Point(473, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 34);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "Phần trăm(%)";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.textBox3.Location = new System.Drawing.Point(128, 6);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(198, 34);
-            this.textBox3.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.label5.Location = new System.Drawing.Point(360, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 27);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Đơn vị:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.label4.Location = new System.Drawing.Point(3, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 27);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Giảm giá:";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.button3.Location = new System.Drawing.Point(0, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(656, 40);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Thanh toán";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.button2.Location = new System.Drawing.Point(0, 85);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(656, 40);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Hủy gọi món";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btThanhToan.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btThanhToan.Location = new System.Drawing.Point(56, 23);
+            this.btThanhToan.Name = "btThanhToan";
+            this.btThanhToan.Size = new System.Drawing.Size(213, 40);
+            this.btThanhToan.TabIndex = 6;
+            this.btThanhToan.Text = "Thanh toán";
+            this.btThanhToan.UseVisualStyleBackColor = false;
+            this.btThanhToan.Click += new System.EventHandler(this.btThanhToan_Click);
             // 
             // grbTable
             // 
@@ -381,44 +359,29 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(684, 746);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // idFood
+            // btXoa
             // 
-            this.idFood.DataPropertyName = "idFood";
-            this.idFood.HeaderText = "ID";
-            this.idFood.MinimumWidth = 6;
-            this.idFood.Name = "idFood";
-            this.idFood.Width = 125;
+            this.btXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btXoa.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btXoa.Location = new System.Drawing.Point(327, 40);
+            this.btXoa.Name = "btXoa";
+            this.btXoa.Size = new System.Drawing.Size(329, 40);
+            this.btXoa.TabIndex = 2;
+            this.btXoa.Text = "Xóa món";
+            this.btXoa.UseVisualStyleBackColor = false;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
-            // NameFood
+            // btLuu
             // 
-            this.NameFood.DataPropertyName = "NameFood";
-            this.NameFood.HeaderText = "Tên Đồ uống";
-            this.NameFood.MinimumWidth = 6;
-            this.NameFood.Name = "NameFood";
-            this.NameFood.Width = 125;
-            // 
-            // count
-            // 
-            this.count.DataPropertyName = "count";
-            this.count.HeaderText = "Số lượng";
-            this.count.MinimumWidth = 6;
-            this.count.Name = "count";
-            this.count.Width = 125;
-            // 
-            // price
-            // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "Đơn giá";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Tổng Tiền";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.Width = 125;
+            this.btLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btLuu.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btLuu.Location = new System.Drawing.Point(383, 23);
+            this.btLuu.Name = "btLuu";
+            this.btLuu.Size = new System.Drawing.Size(213, 40);
+            this.btLuu.TabIndex = 10;
+            this.btLuu.Text = "Lưu";
+            this.btLuu.UseVisualStyleBackColor = false;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // fOrder
             // 
@@ -441,7 +404,6 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.grbTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -460,19 +422,14 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btGiam;
         private System.Windows.Forms.Button btOrder;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btThanhToan;
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtIdBill;
+        private System.Windows.Forms.TextBox txtTable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -481,5 +438,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Button btXoa;
+        private System.Windows.Forms.Button btLuu;
     }
 }

@@ -44,5 +44,49 @@ namespace PBL3.BLL
         {
             Bill_DAL.Instance.edit(b);
         }
+
+
+        public List<Bill> getBills()
+        {
+            return Bill_DAL.Instance.getBills();
+        }
+        public Bill getBillTableByIdTable(int idtable)
+        {
+            return Bill_DAL.Instance.getBillTableByIdTable(idtable);
+        }
+        public List<ItemOrder> getBillInfoByIdTable(int idtable)
+        {
+            return Bill_DAL.Instance.GetBillInfoByIdTable(idtable);
+        }
+        public List<ItemOrder> getBillInfoByIdBill(int idbill)
+        {
+            return Bill_DAL.Instance.GetBillInfoByIdBill(idbill);
+        }
+
+
+
+
+
+
+
+
+
+        //Order
+        public void delItemOrder(string idbill)
+        {
+            Bill_DAL.Instance.delItemOrder(idbill);
+        }
+        public void updateItemOrder(ItemOrder item)
+        {
+            Bill_DAL.Instance.updateItemOrder(item);
+        }
+        public void addBill(Bill b)
+        {
+            Bill_DAL.Instance.addBill(b);
+        }
+        public void removeBill(string idbill)
+        {
+            Bill_DAL.Instance.removeBill(idbill);
+        }
     }
 }

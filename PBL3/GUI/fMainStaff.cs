@@ -66,7 +66,7 @@ namespace PBL3.GUI
         }
         private void btHome_Click(object sender, EventArgs e)
         {
-            openChildForm(new GUI.fOrder(), sender);
+            openChildForm(new GUI.fOrder(acc.idAccount), sender);
         }
 
         private void btTable_Click(object sender, EventArgs e)

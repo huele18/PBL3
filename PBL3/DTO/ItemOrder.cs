@@ -12,12 +12,12 @@ namespace PBL3.DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class BillInfo
+    public partial class ItemOrder
     {
-        public int idBillInfo { get; set; }
-        public int idBill { get; set; }
-        public int idFood { get; set; }
-        public int count { get; set; }
+        public int idorder { get; set; }
+        public Nullable<int> idBill { get; set; }
+        public Nullable<int> idFood { get; set; }
+        public Nullable<int> billquantity { get; set; }
     
         public virtual Bill Bill { get; set; }
         public virtual Food Food { get; set; }

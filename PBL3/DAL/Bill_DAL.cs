@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3.BLL;
 using PBL3.DTO;
 
 namespace PBL3.DAL
@@ -29,14 +31,23 @@ namespace PBL3.DAL
             {
                 DataGridView bill = new DataGridView();
                 bill.DataSource = db.Bills
+                    .Where(p => p.thanhtoan == true)
                     .Select(p => new {
                         p.idBill,
                         p.Customer,
                         p.paymenttime,
-                        p.status,
                         p.TableFood.name,
                         p.idAccount
                     }).ToList();
+                return bill;
+            }
+        }
+        public List<Bill> getBills()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                List<Bill> bill = new List<Bill>();
+                bill = db.Bills.Where(p => p.thanhtoan == true).ToList();
                 return bill;
             }
         }
@@ -45,7 +56,7 @@ namespace PBL3.DAL
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
                 List<CBBItem> items = new List<CBBItem>();
-                foreach (BillInfo d in db.BillInfoes)
+                foreach (ItemOrder d in db.ItemOrders)
                 {
                     if (d.idBill.ToString() == ids)
                     {
@@ -53,7 +64,7 @@ namespace PBL3.DAL
                         items.Add(new CBBItem
                         {
                             Value = (int)d.idFood,
-                            Text = d.Food.NameFood + " (x" + d.count + "):  " + (d.count * d.Food.price) + "đ"
+                            Text = d.Food.NameFood + " (x" + d.billquantity + "):  " + (d.billquantity * d.Food.price) + "đ"
                         });
                     }
                 }
@@ -65,12 +76,12 @@ namespace PBL3.DAL
             int tprice = 0;
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                foreach (BillInfo d in db.BillInfoes)
+                foreach (ItemOrder d in db.ItemOrders)
                 {
                     if (d.idBill.ToString() == s)
                     {
 
-                        tprice += (int)(d.count * d.Food.price);
+                        tprice += (int)(d.billquantity * d.Food.price);
                     }
                 }
             }
@@ -85,6 +96,7 @@ namespace PBL3.DAL
                 db.SaveChanges();
             }
         }
+        
         public void edit(Bill newBill)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
@@ -92,7 +104,7 @@ namespace PBL3.DAL
                 Bill bill = db.Bills.Find(newBill.idBill);
                 bill.Customer = newBill.Customer;
                 bill.paymenttime = newBill.paymenttime;
-                bill.status = newBill.status;
+                bill.thanhtoan = newBill.thanhtoan;
                 bill.idAccount = newBill.idAccount;
                 bill.idTable = newBill.idTable;
                 db.SaveChanges();
@@ -100,9 +112,6 @@ namespace PBL3.DAL
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-
 
         //public DataGridView getBillInfoByIdBillInfo()
         //{
@@ -116,6 +125,112 @@ namespace PBL3.DAL
         //    }
         //    return dgv;
         //}
-        
+
+
+
+
+
+        //tra ve Bill chua thanh toan
+        public Bill getBillTableByIdTable(int idtable)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                foreach (Bill b in db.Bills.Where(p => p.idTable == idtable).ToList())
+                {
+                    if (b.thanhtoan == false)
+                        return b;
+                }
+            }
+            return null;
+        }
+        //tra ve list ItemOrder cho bill chua thanh toan
+        public List<ItemOrder> GetBillInfoByIdTable(int idtable)
+        {
+            List<ItemOrder> list = new List<ItemOrder>();
+            Bill bill = getBillTableByIdTable(idtable);
+            if(bill != null)
+            {
+                using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+                {
+                    foreach (ItemOrder bi in db.ItemOrders)
+                    {
+                        if (bi.idBill == bill.idBill)
+                            list.Add(bi);
+                    }
+                }
+
+            }
+            return list;
+        }
+
+        public List<ItemOrder> GetBillInfoByIdBill(int idbill)
+        {
+            List<ItemOrder> list = new List<ItemOrder>();
+            if (idbill.ToString() != null)
+            {
+                using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+                {
+                    foreach (ItemOrder bi in db.ItemOrders)
+                    {
+                        if (bi.idBill == idbill)
+                            list.Add(bi);
+                    }
+                }
+
+            }
+            return list;
+        }
+
+
+
+
+        public void delItemOrder(string idbill)
+        {
+            if(!string.IsNullOrEmpty(idbill))
+            {
+                int id = Convert.ToInt32(idbill);
+                QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+                //foreach (ItemOrder io in GetBillInfoByIdBill(Convert.ToInt32(idbill)))
+                //{
+                //    delItem(io.idorder);
+                //    MessageBox.Show("aa");
+                //}
+                var item = db.ItemOrders.Where(p => p.idBill == id).ToList();
+                db.ItemOrders.RemoveRange(item);
+                db.SaveChanges();
+            }
+        }
+        public void updateItemOrder(ItemOrder item)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                db.ItemOrders.Add(item);
+                db.SaveChanges();
+            }
+        }
+
+        public void addBill(Bill bill)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                db.Bills.Add(bill);
+                db.SaveChanges();
+            }
+        }
+        public void removeBill(string idbill)
+        {
+            if (!string.IsNullOrEmpty(idbill))
+            {
+                int id = Convert.ToInt32(idbill);
+                QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+                var item = db.ItemOrders.Where(p => p.idBill == id).ToList();
+                db.ItemOrders.RemoveRange(item);
+
+                var bill = db.Bills.FirstOrDefault(b => b.idBill == id);
+                db.Bills.Remove(bill);
+
+                db.SaveChanges();
+            }
+        }
     }
 }

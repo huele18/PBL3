@@ -14,7 +14,7 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Calam" ColumnName="Calam" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -22,21 +22,11 @@
       <EntityTypeMapping TypeName="QLCFModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="idTable" ColumnName="idTable" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
-          <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
           <ScalarProperty Name="Customer" ColumnName="Customer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BillInfoes">
-      <EntityTypeMapping TypeName="QLCFModel.BillInfo">
-        <MappingFragment StoreEntitySet="BillInfo">
-          <ScalarProperty Name="idBillInfo" ColumnName="idBillInfo" />
-          <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="idFood" ColumnName="idFood" />
-          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
+          <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+          <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -56,6 +46,16 @@
         <MappingFragment StoreEntitySet="FoodCategory">
           <ScalarProperty Name="idFoodCategory" ColumnName="idFoodCategory" />
           <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemOrders">
+      <EntityTypeMapping TypeName="QLCFModel.ItemOrder">
+        <MappingFragment StoreEntitySet="ItemOrder">
+          <ScalarProperty Name="idorder" ColumnName="idorder" />
+          <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="idFood" ColumnName="idFood" />
+          <ScalarProperty Name="billquantity" ColumnName="billquantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

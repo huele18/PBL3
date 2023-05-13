@@ -17,7 +17,7 @@ namespace PBL3.DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Food()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
+            this.ItemOrders = new HashSet<ItemOrder>();
         }
     
         public int idFood { get; set; }
@@ -26,8 +26,8 @@ namespace PBL3.DTO
         public double price { get; set; }
         public byte[] imageFood { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
         public virtual FoodCategory FoodCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemOrder> ItemOrders { get; set; }
     }
 }

@@ -106,7 +106,9 @@ namespace PBL3.DAL
                 f.price = after.price;
                 f.imageFood = after.imageFood;
                 db.SaveChanges();
-                MessageBox.Show("Đã cập nhật thành công đồ uống vào Menu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã cập nhật thành công đồ uống vào Menu", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
         public void del(int idfood)

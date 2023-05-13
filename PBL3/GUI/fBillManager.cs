@@ -18,7 +18,7 @@ namespace PBL3.GUI
         {
             InitializeComponent();
             setCBBTable();
-            setDGV();
+            DGV();
         }
         public void setCBBTable()
         {
@@ -35,6 +35,25 @@ namespace PBL3.GUI
             }
         }
 
+        public void DGV()
+        {
+            foreach(Bill b in Bill_BLL.Instance.getBills())
+            {
+                int index = dgvInvoice.Rows.Count;
+                DataGridViewRow row = dgvInvoice.Rows[index - 1];
+                dgvInvoice.Rows.Add();
+                dgvInvoice.Rows[index - 1].Cells["idBill"].Value = b.idBill;
+                dgvInvoice.Rows[index - 1].Cells["Customer"].Value = b.Customer;
+                dgvInvoice.Rows[index - 1].Cells["idAccount"].Value = b.idAccount;
+                dgvInvoice.Rows[index - 1].Cells["paymenttime"].Value = b.paymenttime;
+                dgvInvoice.Rows[index - 1].Cells["name"].Value = Table_BLL.Instance.getTableFoodById(b.idTable).name;
+                dgvInvoice.Rows[index - 1].Cells["tong"].Value = Bill_BLL.Instance.getTotal(b.idBill.ToString());
+                DataGridViewComboBoxCell cbbcell = new DataGridViewComboBoxCell();
+                cbbcell.Items.AddRange(Bill_BLL.Instance.getOrderedDrinnkCBB(b.idBill.ToString()).ToArray());
+                dgvInvoice.Rows[index - 1].Cells["cbborder"] = cbbcell;
+            }
+        }
+
         private void btEdit_Click(object sender, EventArgs e)
         {
             bool check = false;
@@ -47,7 +66,7 @@ namespace PBL3.GUI
                 idBill = Convert.ToInt32(txtIdBill.Text),
                 Customer = txtNameCustomer.Text,
                 paymenttime = (DateTime)billDate.Value,
-                status = check,
+                thanhtoan = check,
                 idTable = ((CBBItem)cbbTable.SelectedItem).Value,
                 idAccount = Convert.ToInt32(txtIdAcc.Text),
             };
@@ -85,22 +104,15 @@ namespace PBL3.GUI
                 txtNameCustomer.Text = dgvInvoice.Rows[index].Cells["Customer"].Value.ToString();
                 txtIdAcc.Text = dgvInvoice.Rows[index].Cells["idAccount"].Value.ToString();
                 billDate.Text = dgvInvoice.Rows[index].Cells["paymenttime"].Value.ToString();
-                if (Convert.ToBoolean(dgvInvoice.Rows[index].Cells["status"].Value))
-                {
-                    rbPaid.Checked = true;
-                }
-                else
-                {
-                    rbUnpaid.Checked = true;
-                }
                 cbbTable.Text = dgvInvoice.Rows[index].Cells["name"].Value.ToString();
+                total.Text = dgvInvoice.Rows[index].Cells["tong"].Value.ToString();
 
 
-                cbborder.DataSource = null;
-                cbborder.DataSource = Bill_BLL.Instance.getOrderedDrinnkCBB(txtIdBill.Text);
-                string tongtien = Bill_BLL.Instance.getTotal(txtIdBill.Text).ToString();
-                total.Text = tongtien;
-                dgvInvoice.Rows[index].Cells["tong"].Value = tongtien;
+                //cbborder.DataSource = null;
+                //cbborder.DataSource = Bill_BLL.Instance.getOrderedDrinnkCBB(txtIdBill.Text);
+                //string tongtien = Bill_BLL.Instance.getTotal(txtIdBill.Text).ToString();
+                //total.Text = tongtien;
+                //dgvInvoice.Rows[index].Cells["tong"].Value = tongtien;
             }
             catch (Exception ex) { }
         }

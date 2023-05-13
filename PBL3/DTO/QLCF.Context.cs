@@ -27,9 +27,9 @@ namespace PBL3.DTO
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
-        public virtual DbSet<BillInfo> BillInfoes { get; set; }
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<FoodCategory> FoodCategories { get; set; }
+        public virtual DbSet<ItemOrder> ItemOrders { get; set; }
         public virtual DbSet<TableFood> TableFoods { get; set; }
     }
 }
