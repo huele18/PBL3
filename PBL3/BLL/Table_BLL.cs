@@ -77,15 +77,22 @@ namespace PBL3.BLL
                 Table_DAL.Instance.add(tb);
             }
         }
-        public void editTable(TableFood tb)
+        public void editTable(TableFood tb, bool oldName)
         {
-            if(!checkTableName(tb.name) == null)
+            if(oldName)
             {
                 Table_DAL.Instance.edit(tb);
             }
-            else
+            else 
             {
-                MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if ((checkTableName(tb.name)))
+                {
+                    MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Table_DAL.Instance.edit(tb);
+                }
             }
         }
         public void delTable(int id)

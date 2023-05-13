@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -153,40 +154,86 @@ namespace PBL3.GUI
 
         private void buttonLuu_Click(object sender, EventArgs e)
         {
-            //thêm bill
-            Bill bill = new Bill();
-            try
+            int index = dgvOrders.Rows.Count - 1;
+            if (index <= 0)
             {
-                bill.idBill = Convert.ToInt32(txtIdBill.Text);
-            }catch(Exception ex)
-            {
-                MessageBox.Show("Sai định dạng ID!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa gọi đồ uống");
             }
-            DateTime td = DateTime.Now;
-            bill.paymenttime = td;
-            bill.thanhtoan = false;
-            bill.idAccount = idacc;
-            bill.idTable = Table_BLL.Instance.getTableIDByName("Bàn " + txtTable.Text);
-            //thêm item order
-            List<ItemOrder> lio = new List<ItemOrder>();
-            for (int i = 0; i < dgvOrders.Rows.Count; i++)
+            else
             {
-                ItemOrder io = new ItemOrder();
-                io.idBill = bill.idBill;
-                io.idFood = Convert.ToInt32(dgvOrders.Rows[i].Cells["idFood"].Value);
-                io.billquantity = Convert.ToInt32(dgvOrders.Rows[i].Cells["count"].Value);
-                lio.Add(io);
+                //thêm bill
+                Bill bill = new Bill();
+                try
+                {
+                    bill.idBill = Convert.ToInt32(txtIdBill.Text); 
+                    bill.paymenttime = DateTime.Now;
+                    bill.thanhtoan = false;
+                    bill.idAccount = idacc;
+                    bill.idTable = Table_BLL.Instance.getTableIDByName("Bàn " + txtTable.Text);
+                    //thêm item order
+                    List<ItemOrder> lio = new List<ItemOrder>();
+                    for (int i = 0; i < dgvOrders.Rows.Count - 1; i++)
+                    {
+                        ItemOrder io = new ItemOrder();
+                        io.idBill = bill.idBill;
+                        io.idFood = Convert.ToInt32(dgvOrders.Rows[i].Cells["idFood"].Value);
+                        io.billquantity = Convert.ToInt32(dgvOrders.Rows[i].Cells["count"].Value);
+                        lio.Add(io);
+                    }
+                    Bill_BLL.Instance.addBill(bill, lio);
+                    //đổi trạng thái bàn có người
+                    TableFood tbf = Table_BLL.Instance.getTableFoodById(bill.idTable);
+                    tbf.status = "Có Người";
+                    Table_BLL.Instance.editTable(tbf, true);
+                    flowLayoutPanel1.Controls.Clear();
+                    getTable();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Sai định dạng ID!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            Bill_BLL.Instance.addBill(bill, lio);
-            //bàn có người
-            TableFood tbf = Table_BLL.Instance.getTableFoodById(bill.idBill);
-            tbf.status = "Có Người";
-            Table_BLL.Instance.editTable(tbf);
         }
 
         private void buttonThanhToan_Click(object sender, EventArgs e)
         {
-
+            int index = dgvOrders.Rows.Count - 1;
+            if (index <= 0)
+            {
+                MessageBox.Show("Chưa gọi đồ uống");
+            }
+            else
+            {
+                try
+                {
+                    int idbill = Convert.ToInt32(txtIdBill.Text);
+                    Bill b = Bill_BLL.Instance.getBillById(idbill);
+                    if (b != null)
+                    {
+                        //thay đổi trạng thái bill
+                        b.paymenttime = DateTime.Now;
+                        b.thanhtoan = true;
+                        Bill_BLL.Instance.editBill(b);
+                        //thay đổi trạng thái bàn
+                        TableFood tbf = Table_BLL.Instance.getTableFoodById(b.idTable);
+                        tbf.status = "Trống";
+                        Table_BLL.Instance.editTable(tbf, true);
+                        //hiện hóa đơn
+                        TableFood table = Table_BLL.Instance.getTableFoodById(Convert.ToInt32(txtTable.Text));
+                        Account acc = Account_BLL.Instance.getAccountByID(idacc);
+                        fBill fbill = new fBill(txtIdBill.Text, table.name, acc.DisplayName, (DataTable)dgvOrders.DataSource);
+                        fbill.ShowDialog();
+                        //thay đổi trên form
+                        txtIdBill.Text = "";
+                        txtTable.Text = "";
+                        dgvOrders.Rows.Clear();
+                        flowLayoutPanel1.Controls.Clear();
+                        getTable();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+            
         }
     }
 }

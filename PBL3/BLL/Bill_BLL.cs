@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,7 +42,10 @@ namespace PBL3.BLL
             Bill_DAL.Instance.edit(b);
         }
 
-
+        public Bill getBillById(int id)
+        {
+            return Bill_DAL.Instance.getBillById(id);
+        }
 
         public Bill getBillTableByIdTable(int idtable)
         {
@@ -57,6 +61,10 @@ namespace PBL3.BLL
         }
         public bool idBillExit(int id)
         {
+            if(getBillById(id) != null) 
+            {
+                return true;
+            }
             return false;
         }
         public void addBill(Bill bill, List<ItemOrder> lio)

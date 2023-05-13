@@ -143,5 +143,19 @@ namespace PBL3.DAL
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        public Bill getBillById(int id)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                foreach (Bill b in db.Bills)
+                {
+                    if (b.idBill == id)
+                    {
+                        return b;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
