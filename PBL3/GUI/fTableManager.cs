@@ -40,13 +40,13 @@ namespace PBL3.GUI
             else
             {
                 string tt;
-                if (rbTrong.Checked == true)
+                if (rbCoNguoi.Checked == true)
                 {
-                    tt = "Trống";
+                    tt = "Có Người";
                 }
                 else
                 {
-                    tt = "Có Người";
+                    tt = "Trống";
                 }
                 TableFood tf = new TableFood
                 {
@@ -63,13 +63,13 @@ namespace PBL3.GUI
         {
             bool oldName = true;
             string tt;
-            if (rbTrong.Checked == true)
+            if (rbCoNguoi.Checked == true)
             {
-                tt = "Trống";
+                tt = "Có Người";
             }
             else
             {
-                tt = "Có Người";
+                tt = "Trống";
             }
             string name = Table_BLL.Instance.getTableFoodById(Convert.ToInt32(txtID.Text)).name;
             TableFood tf = new TableFood

@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5845168e273c4353bb8b73aaab2cd818" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Account" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Bill" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Food" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.FoodCategory" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.ItemOrder" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyQuanCafeModel.TableFood" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Account" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Bill" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.Food" Width="1.5" PointX="4.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.FoodCategory" Width="1.5" PointX="4.625" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.ItemOrder" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyQuanCafeModel.TableFood" Width="1.5" PointX="2.25" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="QuanLyQuanCafeModel.FK__Bill__idAccount__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyQuanCafeModel.FK__Bill__idAccount__398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyQuanCafeModel.FK__ItemOrder__idBil__3D5E1FD2" ManuallyRouted="false" />

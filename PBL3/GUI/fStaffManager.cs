@@ -30,6 +30,9 @@ namespace PBL3.GUI
         public void SetdgvEmployee()
         {
             dgvEmployee.DataSource = Account_BLL.Instance.GetAccounts();
+            dgvEmployee.Columns["Password"].Visible = false;
+            dgvEmployee.Columns["Anh"].Visible = false;
+            dgvEmployee.Columns["Bills"].Visible = false;
         }
         public bool checkDataEmployee()
         {
@@ -41,19 +44,19 @@ namespace PBL3.GUI
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeName.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào tên nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeName.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbShift.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào ca làm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbShift.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeId.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào id", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeId.Focus();
                 return false;
             }
@@ -62,7 +65,7 @@ namespace PBL3.GUI
 
         private void btSearchEmployee_Click(object sender, EventArgs e)
         {
-            if (tbSearchEmployee.Text == "")
+            if (string.IsNullOrWhiteSpace( tbSearchEmployee.Text ))
             {
                 SetdgvEmployee();
             }

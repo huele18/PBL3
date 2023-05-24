@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.browse = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btDeleteEmployee = new System.Windows.Forms.Button();
             this.btUpdateEmployee = new System.Windows.Forms.Button();
@@ -67,7 +68,7 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Calam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.browse = new System.Windows.Forms.Button();
+            this.Anh = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -111,6 +112,19 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết:";
+            // 
+            // browse
+            // 
+            this.browse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.browse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browse.ForeColor = System.Drawing.Color.White;
+            this.browse.Location = new System.Drawing.Point(430, 120);
+            this.browse.Name = "browse";
+            this.browse.Size = new System.Drawing.Size(112, 36);
+            this.browse.TabIndex = 32;
+            this.browse.Text = "Browse";
+            this.browse.UseVisualStyleBackColor = false;
+            this.browse.Click += new System.EventHandler(this.browse_Click);
             // 
             // pictureBox1
             // 
@@ -393,7 +407,8 @@
             this.email,
             this.UserName,
             this.Calam,
-            this.Type});
+            this.Type,
+            this.Anh});
             this.dgvEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEmployee.GridColor = System.Drawing.SystemColors.InfoText;
             this.dgvEmployee.Location = new System.Drawing.Point(0, 0);
@@ -478,18 +493,14 @@
             this.Type.Name = "Type";
             this.Type.Width = 110;
             // 
-            // browse
+            // Anh
             // 
-            this.browse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.browse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browse.ForeColor = System.Drawing.Color.White;
-            this.browse.Location = new System.Drawing.Point(430, 120);
-            this.browse.Name = "browse";
-            this.browse.Size = new System.Drawing.Size(112, 36);
-            this.browse.TabIndex = 32;
-            this.browse.Text = "Browse";
-            this.browse.UseVisualStyleBackColor = false;
-            this.browse.Click += new System.EventHandler(this.browse_Click);
+            this.Anh.DataPropertyName = "Anh";
+            this.Anh.HeaderText = "Anh";
+            this.Anh.MinimumWidth = 6;
+            this.Anh.Name = "Anh";
+            this.Anh.Visible = false;
+            this.Anh.Width = 125;
             // 
             // fStaffManager
             // 
@@ -544,6 +555,8 @@
         private System.Windows.Forms.Button btSearchEmployee;
         private System.Windows.Forms.TextBox tbSearchEmployee;
         private System.Windows.Forms.DataGridView dgvEmployee;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button browse;
         private System.Windows.Forms.DataGridViewTextBoxColumn idAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DisplayName;
         private System.Windows.Forms.DataGridViewTextBoxColumn GT;
@@ -553,7 +566,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Calam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button browse;
+        private System.Windows.Forms.DataGridViewImageColumn Anh;
     }
 }

@@ -29,6 +29,7 @@ namespace PBL3.GUI
         public void setDGVFood()
         {
             dgvFood.DataSource = Drink_BLL.Instance.showDGV().DataSource;
+            dgvFood.Columns["imageFood"].Visible = false;
         }
         public bool checkData()
         {
@@ -130,7 +131,7 @@ namespace PBL3.GUI
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text != "")
+            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 dgvFood.DataSource = Drink_BLL.Instance.searchDrink(txtSearch.Text).DataSource;
             }
