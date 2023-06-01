@@ -93,7 +93,6 @@ namespace PBL3.BLL
         }
         public int addNV(Account nv)
         {
-            Account acc = Account_DAL.Instance.getAccountByID(nv.idAccount);
             if
             (string.IsNullOrWhiteSpace(nv.DisplayName) ||
              string.IsNullOrWhiteSpace(nv.SDT) ||
@@ -106,7 +105,7 @@ namespace PBL3.BLL
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 2;
             }
-            else if ((nv.UserName != acc.UserName) && (Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
+            else if ((Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
             {
                 MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
                  MessageBoxButtons.OK, MessageBoxIcon.Warning);

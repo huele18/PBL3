@@ -285,7 +285,7 @@
             this.paymenttime.MinimumWidth = 6;
             this.paymenttime.Name = "paymenttime";
             this.paymenttime.ReadOnly = true;
-            this.paymenttime.Width = 125;
+            this.paymenttime.Width = 250;
             // 
             // thanhtoan
             // 
