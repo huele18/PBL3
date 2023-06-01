@@ -78,5 +78,14 @@ namespace PBL3.BLL
                 MessageBox.Show("ID hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        public List<Bill> getBillByMonth()
+        {
+            return Bill_DAL.Instance.getBillByMonth();
+        }
+
+        public List<ItemOrder> getDetailedBillByMonth()
+        {
+            return Bill_DAL.Instance.getDetailedBillByMonth(Bill_DAL.Instance.getBillByMonth());
+        }
     }
 }

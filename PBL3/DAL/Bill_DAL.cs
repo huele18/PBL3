@@ -157,5 +157,35 @@ namespace PBL3.DAL
             }
             return null;
         }
+        public List<Bill> getBillByMonth()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                List<Bill> bill = new List<Bill>();
+                foreach(Bill b in db.Bills)
+                {
+                    DateTime mbill = (DateTime)b.paymenttime;
+                    if (mbill.Month == DateTime.Now.Month && mbill.Year == DateTime.Now.Year)
+                    {
+                        bill.Add(b);
+                    }
+                }
+                return bill;
+            }
+        }
+
+        public List<ItemOrder> getDetailedBillByMonth(List<Bill> bill)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                List<ItemOrder> io = new List<ItemOrder>();
+                foreach(Bill b in bill)
+                {
+                    var item = db.ItemOrders.Where(p => p.idBill == b.idBill);
+                    io.AddRange(item);
+                }
+                return io;
+            }
+        }
     }
 }

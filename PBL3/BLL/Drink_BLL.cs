@@ -124,7 +124,8 @@ namespace PBL3.BLL
         public List<ucFood> getMenu(int idcategory)
         {
             List<ucFood> uc = new List<ucFood>();
-            foreach (Food dr in Drink_DAL.Instance.getMenuByCategory(idcategory))
+            List<Food> food = Drink_DAL.Instance.getMenuByCategory(idcategory);
+            foreach (Food dr in sortedMenuByFreqency(food))
             {
                 ucFood f = new ucFood();
                 if (dr.imageFood != null)
@@ -141,6 +142,24 @@ namespace PBL3.BLL
                 uc.Add(f);
             }
             return uc;
+        }
+        public List<Food> sortedMenuByFreqency(List<Food> food)
+        {
+            List<ItemOrder> order = Bill_BLL.Instance.getDetailedBillByMonth();
+            Dictionary<int, int> countMap = new Dictionary<int, int>();
+            foreach (ItemOrder item in order)
+            {
+                if (countMap.ContainsKey(Convert.ToInt32(item.idFood)))
+                {
+                    countMap[Convert.ToInt32(item.idFood)]+= Convert.ToInt32(item.billquantity);
+                }   
+                else
+                    countMap[Convert.ToInt32(item.idFood)] = Convert.ToInt32(item.billquantity);
+                
+            }
+            // Sắp xếp danh sách food dựa trên số lần xuất hiện của idfood trong Dictionary
+            List<Food> sortedFood = food.OrderByDescending(f => countMap.ContainsKey(f.idFood) ? countMap[f.idFood] : 0).ToList();
+            return sortedFood;
         }
     }
 }
