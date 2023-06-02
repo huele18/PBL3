@@ -27,16 +27,12 @@ namespace PBL3.BLL
         {
             return Bill_DAL.Instance.getBill();
         }
-        public List<CBBItem> getOrderedDrinnkCBB(string ids)
-        {
-            return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
-        }
         public int getTotal(string ids)
         {
             return Bill_DAL.Instance.getTotal(ids);
         }
 
-        public void delBill(string id)
+        public void delBill(int id)
         {
             Bill_DAL.Instance.del(id);
         }
@@ -45,26 +41,89 @@ namespace PBL3.BLL
             Bill_DAL.Instance.edit(b);
         }
 
-
-        public List<Bill> getBills()
+        public Bill getBillById(int id)
         {
-            return Bill_DAL.Instance.getBills();
+            return Bill_DAL.Instance.getBillById(id);
         }
+
         public Bill getBillTableByIdTable(int idtable)
         {
             return Bill_DAL.Instance.getBillTableByIdTable(idtable);
-        }
-        public List<ItemOrder> getBillInfoByIdTable(int idtable)
-        {
-            return Bill_DAL.Instance.GetBillInfoByIdTable(idtable);
         }
         public List<ItemOrder> getBillInfoByIdBill(int idbill)
         {
             return Bill_DAL.Instance.GetBillInfoByIdBill(idbill);
         }
+        public DataGridView getDetailBill(string ids)
+        {
+            return Bill_DAL.Instance.getDetailBill(ids);
+        }
+        public bool idBillExit(int id)
+        {
+            if (getBillById(id) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public void addBill(Bill bill, List<ItemOrder> lio)
+        {
+            if (!idBillExit(bill.idBill))
+            {
+                Bill_DAL.Instance.addBill(bill, lio);
+            }
+            else
+            {
+                MessageBox.Show("ID hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        //public DataGridView showDGV()
+        //{
+        //    return Bill_DAL.Instance.getBill();
+        //}
+        //public List<CBBItem> getOrderedDrinnkCBB(string ids)
+        //{
+        //    return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
+        //}
+        //public int getTotal(string ids)
+        //{
+        //    return Bill_DAL.Instance.getTotal(ids);
+        //}
+
+        //public void delBill(string id)
+        //{
+        //    Bill_DAL.Instance.del(id);
+        //}
+        //public void editBill(Bill b)
+        //{
+        //    Bill_DAL.Instance.edit(b);
+        //}
 
 
-
+        //public List<Bill> getBillsPaid()
+        //{
+        //    return Bill_DAL.Instance.getBillsPaid();
+        //}
+        public Bill GetBillById(string id)
+        {
+            foreach (Bill i in Bill_DAL.Instance.getBills())
+            {
+                if (i.idBill.ToString() == id) return i;
+            }
+            return null;
+        }
+        //public Bill getBillTableByIdTable(int idtable)
+        //{
+        //    return Bill_DAL.Instance.getBillTableByIdTable(idtable);
+        //}
+        //public List<ItemOrder> getBillInfoByIdBill(int idbill)
+        //{
+        //    return Bill_DAL.Instance.GetBillInfoByIdBill(idbill);
+        //}
+        //public DataGridView getDetailBill(string ids)
+        //{
+        //    return Bill_DAL.Instance.getDetailBill(ids);
+        //}
 
 
 
@@ -88,5 +147,6 @@ namespace PBL3.BLL
         {
             Bill_DAL.Instance.removeBill(idbill);
         }
+
     }
 }

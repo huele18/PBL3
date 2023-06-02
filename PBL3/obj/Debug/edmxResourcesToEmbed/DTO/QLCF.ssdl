@@ -21,7 +21,6 @@
       <PropertyRef Name="idBill" />
     </Key>
     <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Customer" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="paymenttime" Type="datetime" />
     <Property Name="thanhtoan" Type="bit" />
     <Property Name="idTable" Type="int" Nullable="false" />

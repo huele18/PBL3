@@ -29,12 +29,12 @@ namespace PBL3.BLL
         public List<TableFood> showDGV()
         {
             List<TableFood> list = new List<TableFood>();
-            list = Table_DAL.Instance.getTableFoodList();
+            list = Table_DAL.Instance.getTableFoodList("All");
             return list;
         }
         public TableFood getTableFoodById(int id)
         {
-            foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
+            foreach(TableFood i in Table_DAL.Instance.getTableFoodList("All"))
             {
                 if(i.idTableFood == id)
                     return i;
@@ -79,18 +79,19 @@ namespace PBL3.BLL
             dgv.DataSource = Table_DAL.Instance.search(s).DataSource;
             return dgv;
         }
-        public List<Button> GetTables()
+        public List<Button> GetTables(string str)
         {
             List<Button> tables = new List<Button>();
-            foreach(TableFood i in Table_DAL.Instance.getTableFoodList())
+            foreach(TableFood i in Table_DAL.Instance.getTableFoodList(str))
             {
                 Button uc = new Button();
                 uc.Size = new Size(200, 200);
-                uc.Text = i.idTableFood.ToString();
+                //uc.Text = i.idTableFood.ToString();
+                uc.Text = i.name;
                 if (i.status == "Có Người") 
                     uc.BackColor = Color.FromArgb(176, 125, 55); 
                 else 
-                    uc.BackColor = Color.FromArgb(240, 226, 182);
+                    uc.BackColor = Color.FromArgb(228, 195, 147);
                 uc.Tag = i.idTableFood;
                 tables.Add(uc);
             }
@@ -100,6 +101,41 @@ namespace PBL3.BLL
         public List<CBBItem> setCBBTable()
         {
             return Table_DAL.Instance.GetCBBTable();
+        }
+
+        public void editTable(TableFood tb, bool oldName)
+        {
+            if (oldName)
+            {
+                Table_DAL.Instance.edit(tb);
+            }
+            else
+            {
+                if ((checkTableName(tb.name)))
+                {
+                    MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Table_DAL.Instance.edit(tb);
+                }
+            }
+        }
+        public TableFood getTableByName(string name)
+        {
+            return Table_DAL.Instance.getTableByName(name);
+        }
+        public bool checkTableName(string name)
+        {
+            if (getTableByName(name) == null)
+            {
+                return false; // không tồn tại
+            }
+            return true;
+        }
+        public int getTableIDByName(string name)
+        {
+            return Table_DAL.Instance.getTableIDByName(name);
         }
     }
 }

@@ -21,7 +21,6 @@ namespace PBL3.DTO
         }
     
         public int idBill { get; set; }
-        public string Customer { get; set; }
         public Nullable<System.DateTime> paymenttime { get; set; }
         public Nullable<bool> thanhtoan { get; set; }
         public int idTable { get; set; }

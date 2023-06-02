@@ -22,7 +22,6 @@
       <PropertyRef Name="idBill" />
     </Key>
     <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="paymenttime" Type="DateTime" Precision="3" />
     <Property Name="thanhtoan" Type="Boolean" />
     <Property Name="idTable" Type="Int32" Nullable="false" />

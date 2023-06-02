@@ -17,124 +17,140 @@ namespace PBL3.GUI
         public fTableManager()
         {
             InitializeComponent();
-            setDGVTable();
+            setFLP();
         }
-        public void setDGVTable()
+        public void setFLP()
         {
-            dgvTable.DataSource = Table_BLL.Instance.showDGV();
-            dgvTable.Columns["Bills"].Visible = false;
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Button i in Table_BLL.Instance.GetTables("All"))
+            {
+                i.Margin = new Padding(5, 5, 5, 5);
+                i.Click += BtTable_Click;
+                flowLayoutPanel1.Controls.Add(i);
+            }
+        }
+        private void BtTable_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int idtable = Convert.ToInt32(btn.Tag);
+            txtID.ReadOnly = true;
+            btAdd.Enabled = false;
+            txtID.Text = idtable.ToString();
+            txtName.Text = btn.Text;
+            if (btn.BackColor == Color.FromArgb(176, 125, 55))
+                rbCoNguoi.Checked = true;
+            else if (btn.BackColor == Color.FromArgb(228, 195, 147))
+                rbTrong.Checked = true;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            if (txtID.ReadOnly == false)
             {
-                MessageBox.Show("Chưa nhập vào ID bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtID.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Chưa nhập vào tên bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtName.Focus();
-            }
-            else
-            {
-                string tt;
-                if (rbTrong.Checked == true)
+                if (string.IsNullOrEmpty(txtID.Text))
                 {
-                    tt = "Trống";
+                    MessageBox.Show("Chưa nhập vào ID bàn", "Thông báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtID.Focus();
+                }
+                else if (string.IsNullOrWhiteSpace(txtName.Text))
+                {
+                    MessageBox.Show("Chưa nhập vào tên bàn", "Thông báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtName.Focus();
                 }
                 else
                 {
-                    tt = "Có Người";
+                    string tt;
+                    if (rbCoNguoi.Checked == true)
+                        tt = "Có Người";
+                    else tt = "Trống";
+                    TableFood tf = new TableFood
+                    {
+                        idTableFood = Convert.ToInt32(txtID.Text),
+                        name = txtName.Text,
+                        status = tt
+                    };
+                    Table_BLL.Instance.addTable(tf);
                 }
+                setFLP();
+            }
+            //setDGVTable();
+        }
+
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            if (txtID.ReadOnly == true)
+            {
+                string tt;
+                if (rbTrong.Checked == true)
+                    tt = "Trống";
+                else tt = "Có Người";
                 TableFood tf = new TableFood
                 {
                     idTableFood = Convert.ToInt32(txtID.Text),
                     name = txtName.Text,
                     status = tt
                 };
-                Table_BLL.Instance.addTable(tf);
-            }
-            setDGVTable();
-        }
+                Table_BLL.Instance.editTable(tf);
+                MessageBox.Show("Đã cập nhật thành công thông tin bàn", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        private void btEdit_Click(object sender, EventArgs e)
-        {
-            string tt;
-            if (rbTrong.Checked == true)
-            {
-                tt = "Trống";
+                btAdd.Enabled = true;
+                txtID.ReadOnly = false;
+                txtID.Text = "";
+                txtName.Text = "";
+                rbCoNguoi.Checked = false;
+                rbTrong.Checked = true;
+                //setDGVTable();
+                setFLP();
             }
             else
-            {
-                tt = "Có Người";
-            }
-            TableFood tf = new TableFood
-            {
-                idTableFood = Convert.ToInt32(txtID.Text),
-                name = txtName.Text,
-                status = tt
-            };
-            Table_BLL.Instance.editTable(tf);
-            MessageBox.Show("Đã cập nhật thành công thông tin bàn", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            btAdd.Enabled = true;
-            txtID.ReadOnly = false;
-            txtID.Text = "";
-            txtName.Text = "";
-            rbCoNguoi.Checked = false;
-            rbTrong.Checked = true;
-            setDGVTable();
+                MessageBox.Show("Chưa chọn bàn muốn sửa thông tin", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (dgvTable.SelectedRows.Count > 0)
-            {
-                int idtable;
-                foreach (DataGridViewRow i in dgvTable.SelectedRows)
-                {
-                    idtable = Convert.ToInt32(i.Cells[0].Value.ToString());
-                    Table_BLL.Instance.delTable(idtable);
-                }
-                MessageBox.Show("Đã xóa thành công bàn ra khỏi danh sách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            if (txtID.ReadOnly == false)
+                MessageBox.Show("Chưa chọn bàn muốn xóa", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("Chưa chọn cột muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            setDGVTable();
-        }
-
-        private void btSearch_Click(object sender, EventArgs e)
-        {
-            dgvTable.DataSource = Table_BLL.Instance.searchTable(txtSearch.Text).DataSource;
-            if (string.IsNullOrEmpty(txtSearch.Text))
             {
-                setDGVTable();
+                int idtable = Convert.ToInt32(txtID.Text);
+                Table_BLL.Instance.delTable(idtable);
+                MessageBox.Show("Đã xóa thành công bàn ra khỏi danh sách", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void dgvTable_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void rbUnoccupied_CheckedChanged(object sender, EventArgs e)
         {
-            try
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Button i in Table_BLL.Instance.GetTables("unoccupied"))
             {
-                btAdd.Enabled = false;
-                txtID.ReadOnly = true;
-                int index = e.RowIndex;
-                txtID.Text = dgvTable.Rows[index].Cells[0].Value.ToString();
-                txtName.Text = dgvTable.Rows[index].Cells[1].Value.ToString();
-                string tt;
-                tt = dgvTable.Rows[index].Cells[2].Value.ToString();
-                if (tt == "Trống")
-                    rbTrong.Checked = true;
-                else
-                    rbCoNguoi.Checked = true;
+                i.Margin = new Padding(5, 5, 5, 5);
+                i.Click += BtTable_Click;
+                flowLayoutPanel1.Controls.Add(i);
             }
-            catch (Exception ex)
+
+        }
+
+        private void rbOccupied_CheckedChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Button i in Table_BLL.Instance.GetTables("occupied"))
             {
-                MessageBox.Show("Error: " + ex);
+                i.Margin = new Padding(5, 5, 5, 5);
+                i.Click += BtTable_Click;
+                flowLayoutPanel1.Controls.Add(i);
             }
+
+        }
+
+        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            setFLP();
         }
     }
 }

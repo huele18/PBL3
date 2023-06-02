@@ -37,21 +37,43 @@ namespace PBL3.DAL
         }
         public void update(Account after)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            //using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            //{
+            //    Account acc = db.Accounts.Find(after.idAccount);
+            //    acc.DisplayName = after.DisplayName;
+            //    acc.SDT = after.SDT;
+            //    acc.GT = after.GT;
+            //    acc.address = after.address;
+            //    acc.email = after.email;
+            //    acc.UserName = after.UserName;
+            //    acc.Calam = after.Calam;
+            //    acc.Anh = after.Anh;
+            //    db.SaveChanges();
+            //    MessageBox.Show("Đã cập nhật thành công thông tin tài khoản của bạn", "Thông báo",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            try
             {
-                Account acc = db.Accounts.Find(after.idAccount);
-                acc.DisplayName = after.DisplayName;
-                acc.SDT = after.SDT;
-                acc.GT = after.GT;
-                acc.address = after.address;
-                acc.email = after.email;
-                acc.UserName = after.UserName;
-                acc.Calam = after.Calam;
-                acc.Anh = after.Anh;
-                db.SaveChanges();
-                MessageBox.Show("Đã cập nhật thành công thông tin tài khoản của bạn", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+                {
+                    Account acc = db.Accounts.Find(after.idAccount);
+                    if (acc != null)
+                    {
+                        db.Entry(acc).CurrentValues.SetValues(after);
+                        db.SaveChanges();
+                        MessageBox.Show("Đã cập nhật thành công thông tin tài khoản của bạn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy tài khoản cần cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating the entries: " + ex.InnerException?.Message);
+            }
+
         }
         public void changePassword(int id, string pass)
         {

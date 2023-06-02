@@ -31,11 +31,6 @@
             this.pnOrder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
-            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtIdBill = new System.Windows.Forms.TextBox();
             this.txtTable = new System.Windows.Forms.TextBox();
@@ -49,14 +44,19 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btXoa = new System.Windows.Forms.Button();
             this.btGiam = new System.Windows.Forms.Button();
             this.btOrder = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btLuu = new System.Windows.Forms.Button();
             this.btThanhToan = new System.Windows.Forms.Button();
             this.grbTable = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btXoa = new System.Windows.Forms.Button();
-            this.btLuu = new System.Windows.Forms.Button();
+            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -116,45 +116,6 @@
             this.dgvOrders.RowTemplate.Height = 24;
             this.dgvOrders.Size = new System.Drawing.Size(650, 495);
             this.dgvOrders.TabIndex = 1;
-            // 
-            // idFood
-            // 
-            this.idFood.DataPropertyName = "idFood";
-            this.idFood.HeaderText = "ID";
-            this.idFood.MinimumWidth = 6;
-            this.idFood.Name = "idFood";
-            this.idFood.Width = 125;
-            // 
-            // NameFood
-            // 
-            this.NameFood.DataPropertyName = "NameFood";
-            this.NameFood.HeaderText = "Tên Đồ uống";
-            this.NameFood.MinimumWidth = 6;
-            this.NameFood.Name = "NameFood";
-            this.NameFood.Width = 125;
-            // 
-            // count
-            // 
-            this.count.DataPropertyName = "count";
-            this.count.HeaderText = "Số lượng";
-            this.count.MinimumWidth = 6;
-            this.count.Name = "count";
-            this.count.Width = 125;
-            // 
-            // price
-            // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "Đơn giá";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Tổng Tiền";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.Width = 125;
             // 
             // panel1
             // 
@@ -290,6 +251,18 @@
             this.panel5.Size = new System.Drawing.Size(656, 85);
             this.panel5.TabIndex = 5;
             // 
+            // btXoa
+            // 
+            this.btXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btXoa.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btXoa.Location = new System.Drawing.Point(327, 40);
+            this.btXoa.Name = "btXoa";
+            this.btXoa.Size = new System.Drawing.Size(329, 40);
+            this.btXoa.TabIndex = 2;
+            this.btXoa.Text = "Xóa món";
+            this.btXoa.UseVisualStyleBackColor = false;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            // 
             // btGiam
             // 
             this.btGiam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
@@ -325,6 +298,18 @@
             this.panel3.Size = new System.Drawing.Size(656, 83);
             this.panel3.TabIndex = 6;
             // 
+            // btLuu
+            // 
+            this.btLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btLuu.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btLuu.Location = new System.Drawing.Point(383, 23);
+            this.btLuu.Name = "btLuu";
+            this.btLuu.Size = new System.Drawing.Size(213, 40);
+            this.btLuu.TabIndex = 10;
+            this.btLuu.Text = "Lưu";
+            this.btLuu.UseVisualStyleBackColor = false;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
+            // 
             // btThanhToan
             // 
             this.btThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
@@ -359,29 +344,44 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(684, 746);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // btXoa
+            // idFood
             // 
-            this.btXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btXoa.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.btXoa.Location = new System.Drawing.Point(327, 40);
-            this.btXoa.Name = "btXoa";
-            this.btXoa.Size = new System.Drawing.Size(329, 40);
-            this.btXoa.TabIndex = 2;
-            this.btXoa.Text = "Xóa món";
-            this.btXoa.UseVisualStyleBackColor = false;
-            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            this.idFood.DataPropertyName = "idFood";
+            this.idFood.HeaderText = "ID";
+            this.idFood.MinimumWidth = 6;
+            this.idFood.Name = "idFood";
+            this.idFood.Width = 125;
             // 
-            // btLuu
+            // NameFood
             // 
-            this.btLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btLuu.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.btLuu.Location = new System.Drawing.Point(383, 23);
-            this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(213, 40);
-            this.btLuu.TabIndex = 10;
-            this.btLuu.Text = "Lưu";
-            this.btLuu.UseVisualStyleBackColor = false;
-            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
+            this.NameFood.DataPropertyName = "NameFood";
+            this.NameFood.HeaderText = "Tên Đồ uống";
+            this.NameFood.MinimumWidth = 6;
+            this.NameFood.Name = "NameFood";
+            this.NameFood.Width = 125;
+            // 
+            // count
+            // 
+            this.count.DataPropertyName = "billquantity";
+            this.count.HeaderText = "Số lượng";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 125;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Đơn giá";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Tổng Tiền";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
             // 
             // fOrder
             // 
@@ -426,19 +426,19 @@
         private System.Windows.Forms.Button btOrder;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btThanhToan;
-        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtIdBill;
         private System.Windows.Forms.TextBox txtTable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btXoa;
+        private System.Windows.Forms.Button btLuu;
+        public System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.Button btXoa;
-        private System.Windows.Forms.Button btLuu;
     }
 }

@@ -139,7 +139,7 @@ namespace PBL3.GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex);
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
@@ -173,14 +173,37 @@ namespace PBL3.GUI
         private void label14_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            //PictureBox pb = new PictureBox();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = new Bitmap(ofd.FileName);
-                MemoryStream ms = new MemoryStream();
-                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
+                // Lấy đường dẫn tệp tin ảnh đã chọn
+                string imagePath = ofd.FileName;
+
+                // Cắt ảnh thành hình vuông
+                Image squareImage = CropToSquare(Image.FromFile(imagePath));
+
+                // Hiển thị ảnh cắt được trong PictureBox
+                pictureBox1.Image = squareImage;
+                //pictureBox1.Image = new Bitmap(ofd.FileName);
+                //MemoryStream ms = new MemoryStream();
+                //pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
             }
             else pictureBox1.Image = null;
+        }
+
+        private Image CropToSquare(Image image)
+        {
+            int size = Math.Min(image.Width, image.Height);
+            int x = (image.Width - size) / 2;
+            int y = (image.Height - size) / 2;
+
+            Bitmap squareImage = new Bitmap(size, size);
+            using (Graphics graphics = Graphics.FromImage(squareImage))
+            {
+                graphics.DrawImage(image, new Rectangle(0, 0, size, size), 
+                    new Rectangle(x, y, size, size), GraphicsUnit.Pixel);
+            }
+
+            return squareImage;
         }
     }
 }
