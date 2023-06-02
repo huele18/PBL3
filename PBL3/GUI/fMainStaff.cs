@@ -87,7 +87,7 @@ namespace PBL3.GUI
         {
             this.Close();
         }
-
+        
         private void fMainStaff_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn thoát khỏi chương trình không?", "Thông báo",

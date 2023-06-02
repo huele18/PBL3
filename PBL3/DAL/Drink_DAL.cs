@@ -27,7 +27,7 @@ namespace PBL3.DAL
         public DataGridView getDrink()
         {
             DataGridView drink = new DataGridView();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 drink.DataSource = db.Foods
                     .Select(p => new { p.idFood, p.FoodCategory.Category, p.NameFood, p.price, p.imageFood }).ToList();
@@ -38,7 +38,7 @@ namespace PBL3.DAL
         {
             //QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             List<FoodCategory> fc = new List<FoodCategory>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 fc = db.FoodCategories.Select(p => p).ToList();
             }
@@ -46,7 +46,7 @@ namespace PBL3.DAL
         }
         public void addCategory(FoodCategory fc)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 db.FoodCategories.Add(fc);
                 db.SaveChanges();
@@ -55,7 +55,7 @@ namespace PBL3.DAL
         public List<Food> GetFoods()
         {
             List<Food> lf = new List<Food>();
-            using(QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using(QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 lf = db.Foods.Select(p => p).ToList();
             }
@@ -63,7 +63,7 @@ namespace PBL3.DAL
         }
         public Food getDrinkById(string id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (Food f in db.Foods)
                 {
@@ -89,7 +89,7 @@ namespace PBL3.DAL
         //}
         public void add(Food f)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 db.Foods.Add(f);
                 db.SaveChanges();
@@ -98,7 +98,7 @@ namespace PBL3.DAL
         }
         public void edit(Food after)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Food f = db.Foods.Find(after.idFood);
                 f.NameFood = after.NameFood;
@@ -111,7 +111,7 @@ namespace PBL3.DAL
         }
         public void del(int idfood)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Food f = db.Foods.Find(idfood);
                 db.Foods.Remove(f);
@@ -122,8 +122,8 @@ namespace PBL3.DAL
         {
             //QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
             DataGridView drink = new DataGridView();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
-            {
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
+            {   
                 drink.DataSource = db.Foods.Where
                     (
                         p => p.NameFood.ToUpper().Contains(search.ToUpper()) ||
@@ -137,7 +137,7 @@ namespace PBL3.DAL
         public List<Food> getMenuDrink()
         {
             List<Food> f = new List<Food>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 f = db.Foods.ToList();
             }
@@ -146,8 +146,8 @@ namespace PBL3.DAL
         public List<Food> getMenuByCategory(int idcategory)
         {
             List<Food> f = new List<Food>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
-            {
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
+            {   
                 if (idcategory == 0)
                     f = db.Foods.ToList();
                 else

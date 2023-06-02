@@ -41,19 +41,19 @@ namespace PBL3.GUI
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeName.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào ten nhan vien", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeName.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbShift.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào ca lam ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbShift.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeId.Text))
             {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào id nhan  vien", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeId.Focus();
                 return false;
             }

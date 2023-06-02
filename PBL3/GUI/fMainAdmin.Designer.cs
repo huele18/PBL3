@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btLogout = new System.Windows.Forms.Button();
-            this.btAccount = new System.Windows.Forms.Button();
-            this.btBill = new System.Windows.Forms.Button();
-            this.btStaff = new System.Windows.Forms.Button();
-            this.btMenu = new System.Windows.Forms.Button();
-            this.btTable = new System.Windows.Forms.Button();
-            this.btHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbPosition = new System.Windows.Forms.Label();
             this.lbNameAccount = new System.Windows.Forms.Label();
@@ -43,15 +36,26 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.panelForm = new System.Windows.Forms.Panel();
             this.lbNotify = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btShift = new System.Windows.Forms.Button();
+            this.btLogout = new System.Windows.Forms.Button();
+            this.btAccount = new System.Windows.Forms.Button();
+            this.btBill = new System.Windows.Forms.Button();
+            this.btStaff = new System.Windows.Forms.Button();
+            this.btMenu = new System.Windows.Forms.Button();
+            this.btTable = new System.Windows.Forms.Button();
+            this.btHome = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.panelForm.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.btLogout);
             this.panelMenu.Controls.Add(this.btAccount);
             this.panelMenu.Controls.Add(this.btBill);
@@ -66,6 +70,105 @@
             this.panelMenu.Size = new System.Drawing.Size(260, 903);
             this.panelMenu.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
+            this.panel1.Controls.Add(this.lbPosition);
+            this.panel1.Controls.Add(this.lbNameAccount);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(260, 124);
+            this.panel1.TabIndex = 0;
+            // 
+            // lbPosition
+            // 
+            this.lbPosition.AutoSize = true;
+            this.lbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPosition.Location = new System.Drawing.Point(77, 77);
+            this.lbPosition.Name = "lbPosition";
+            this.lbPosition.Size = new System.Drawing.Size(86, 20);
+            this.lbPosition.TabIndex = 1;
+            this.lbPosition.Text = "<Quản lý>";
+            // 
+            // lbNameAccount
+            // 
+            this.lbNameAccount.AutoSize = true;
+            this.lbNameAccount.Font = new System.Drawing.Font("Lucida Handwriting", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameAccount.Location = new System.Drawing.Point(54, 28);
+            this.lbNameAccount.Name = "lbNameAccount";
+            this.lbNameAccount.Size = new System.Drawing.Size(99, 29);
+            this.lbNameAccount.TabIndex = 0;
+            this.lbNameAccount.Text = "label1";
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.panelTitle.Controls.Add(this.lbTitle);
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.Location = new System.Drawing.Point(260, 0);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(1341, 124);
+            this.panelTitle.TabIndex = 1;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(442, 47);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(507, 40);
+            this.lbTitle.TabIndex = 1;
+            this.lbTitle.Text = "Hệ thống quản lý quán cafe";
+            // 
+            // panelForm
+            // 
+            this.panelForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
+            this.panelForm.Controls.Add(this.lbNotify);
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForm.Location = new System.Drawing.Point(260, 124);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(1341, 779);
+            this.panelForm.TabIndex = 2;
+            // 
+            // lbNotify
+            // 
+            this.lbNotify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbNotify.AutoSize = true;
+            this.lbNotify.Font = new System.Drawing.Font("Lucida Handwriting", 28F, System.Drawing.FontStyle.Bold);
+            this.lbNotify.Location = new System.Drawing.Point(196, 240);
+            this.lbNotify.Name = "lbNotify";
+            this.lbNotify.Size = new System.Drawing.Size(827, 122);
+            this.lbNotify.TabIndex = 0;
+            this.lbNotify.Text = "Chào mừng đến với hệ thống \r\nquản lý quán Cafe";
+            this.lbNotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btShift);
+            this.panel2.Location = new System.Drawing.Point(0, 604);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(254, 78);
+            this.panel2.TabIndex = 9;
+            // 
+            // btShift
+            // 
+            this.btShift.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btShift.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btShift.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
+            this.btShift.Image = global::PBL3.Properties.Resources.user;
+            this.btShift.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btShift.Location = new System.Drawing.Point(0, 0);
+            this.btShift.Name = "btShift";
+            this.btShift.Size = new System.Drawing.Size(254, 80);
+            this.btShift.TabIndex = 8;
+            this.btShift.Text = "Ca làm việc";
+            this.btShift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btShift.UseVisualStyleBackColor = true;
+            this.btShift.Click += new System.EventHandler(this.btShift_Click);
+            // 
             // btLogout
             // 
             this.btLogout.Dock = System.Windows.Forms.DockStyle.Top;
@@ -76,7 +179,7 @@
             this.btLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btLogout.Location = new System.Drawing.Point(0, 604);
             this.btLogout.Name = "btLogout";
-            this.btLogout.Size = new System.Drawing.Size(260, 80);
+            this.btLogout.Size = new System.Drawing.Size(260, 224);
             this.btLogout.TabIndex = 8;
             this.btLogout.Text = " Đăng xuất";
             this.btLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -185,80 +288,6 @@
             this.btHome.UseVisualStyleBackColor = true;
             this.btHome.Click += new System.EventHandler(this.btHome_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
-            this.panel1.Controls.Add(this.lbPosition);
-            this.panel1.Controls.Add(this.lbNameAccount);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 124);
-            this.panel1.TabIndex = 0;
-            // 
-            // lbPosition
-            // 
-            this.lbPosition.AutoSize = true;
-            this.lbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPosition.Location = new System.Drawing.Point(77, 77);
-            this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(86, 20);
-            this.lbPosition.TabIndex = 1;
-            this.lbPosition.Text = "<Quản lý>";
-            // 
-            // lbNameAccount
-            // 
-            this.lbNameAccount.AutoSize = true;
-            this.lbNameAccount.Font = new System.Drawing.Font("Lucida Handwriting", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameAccount.Location = new System.Drawing.Point(54, 28);
-            this.lbNameAccount.Name = "lbNameAccount";
-            this.lbNameAccount.Size = new System.Drawing.Size(99, 29);
-            this.lbNameAccount.TabIndex = 0;
-            this.lbNameAccount.Text = "label1";
-            // 
-            // panelTitle
-            // 
-            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.panelTitle.Controls.Add(this.lbTitle);
-            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitle.Location = new System.Drawing.Point(260, 0);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1341, 124);
-            this.panelTitle.TabIndex = 1;
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(442, 47);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(507, 40);
-            this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "Hệ thống quản lý quán cafe";
-            // 
-            // panelForm
-            // 
-            this.panelForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
-            this.panelForm.Controls.Add(this.lbNotify);
-            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelForm.Location = new System.Drawing.Point(260, 124);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1341, 779);
-            this.panelForm.TabIndex = 2;
-            // 
-            // lbNotify
-            // 
-            this.lbNotify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbNotify.AutoSize = true;
-            this.lbNotify.Font = new System.Drawing.Font("Lucida Handwriting", 28F, System.Drawing.FontStyle.Bold);
-            this.lbNotify.Location = new System.Drawing.Point(196, 240);
-            this.lbNotify.Name = "lbNotify";
-            this.lbNotify.Size = new System.Drawing.Size(827, 122);
-            this.lbNotify.TabIndex = 0;
-            this.lbNotify.Text = "Chào mừng đến với hệ thống \r\nquản lý quán Cafe";
-            this.lbNotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // fMainAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -278,6 +307,7 @@
             this.panelTitle.PerformLayout();
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -292,13 +322,15 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.Button btHome;
-        private System.Windows.Forms.Button btAccount;
         private System.Windows.Forms.Button btBill;
         private System.Windows.Forms.Button btStaff;
         private System.Windows.Forms.Button btMenu;
         private System.Windows.Forms.Button btTable;
         private System.Windows.Forms.Button btLogout;
         private System.Windows.Forms.Label lbNotify;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btShift;
+        private System.Windows.Forms.Button btAccount;
     }
 }
 

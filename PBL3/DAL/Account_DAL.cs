@@ -29,7 +29,7 @@ namespace PBL3.DAL
         public List<Account> getAccountList()
         {
             List<Account> list = new List<Account>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 list = db.Accounts.ToList();
             }
@@ -37,7 +37,7 @@ namespace PBL3.DAL
         }
         public void update(Account after)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Account acc = db.Accounts.Find(after.idAccount);
                 acc.DisplayName = after.DisplayName;
@@ -55,7 +55,7 @@ namespace PBL3.DAL
         }
         public void changePassword(int id, string pass)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Account acc = db.Accounts.Find(id);
                 acc.Password = pass;
@@ -67,7 +67,7 @@ namespace PBL3.DAL
 
         public List<Account> getListAccount()
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 List<Account> ac = new List<Account>();
                 var j = db.Accounts.Select(p => new
@@ -105,7 +105,7 @@ namespace PBL3.DAL
         }
         public Account getAccountByID(int id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (Account i in db.Accounts)
                 {
@@ -120,7 +120,7 @@ namespace PBL3.DAL
         }
         public Account getAccountByUsername(string username)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (Account i in db.Accounts)
                 {
@@ -134,7 +134,7 @@ namespace PBL3.DAL
         }
         public void add(Account nv)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 db.Accounts.Add(nv);
                 db.SaveChanges();
@@ -144,7 +144,7 @@ namespace PBL3.DAL
         }
         public void del(int id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Account nv = db.Accounts.Find(id);
                 db.Accounts.Remove(nv);
@@ -153,7 +153,7 @@ namespace PBL3.DAL
         }
         public List<Account> search(string search)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 List<Account> ac = new List<Account>();
                 var j = db.Accounts.
@@ -193,7 +193,7 @@ namespace PBL3.DAL
         }
         public void resetPass(int id, string pass)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Account acc = db.Accounts.Find(id);
                 acc.Password = pass;

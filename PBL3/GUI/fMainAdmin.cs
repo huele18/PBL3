@@ -109,5 +109,11 @@ namespace PBL3
                 e.Cancel = true;
             }
         }
+
+        private void btShift_Click(object sender, EventArgs e)
+        {
+            openChildForm(new GUI.fShift(), sender);
+
+        }
     }
 }

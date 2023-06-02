@@ -26,7 +26,7 @@ namespace PBL3.GUI
         }
         public void setDGV()
         {
-            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+            QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3();
             dgvInvoice.DataSource = Bill_BLL.Instance.showDGV().DataSource;
             for (int i = 0; i < dgvInvoice.Rows.Count; i++)
             {

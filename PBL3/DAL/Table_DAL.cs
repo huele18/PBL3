@@ -25,7 +25,7 @@ namespace PBL3.DAL
         }
         public TableFood getTableById(int id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (TableFood f in db.TableFoods)
                 {
@@ -39,7 +39,7 @@ namespace PBL3.DAL
         }
         public TableFood getTableByName(string name)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (TableFood f in db.TableFoods)
                 {
@@ -54,7 +54,7 @@ namespace PBL3.DAL
         public List<TableFood> getTableFoodList()
         {
             List<TableFood> table = new List<TableFood>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 table.AddRange(db.TableFoods.ToList());
             }
@@ -62,7 +62,7 @@ namespace PBL3.DAL
         }
         public void add(TableFood tf)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 db.TableFoods.Add(tf);
                 db.SaveChanges();
@@ -73,7 +73,7 @@ namespace PBL3.DAL
         public DataGridView search(string search)
         {
             DataGridView table = new DataGridView();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 table.DataSource = db.TableFoods
                     .Where(p => p.name.ToUpper().Contains(search.ToUpper()))
@@ -83,7 +83,7 @@ namespace PBL3.DAL
         }
         public void edit(TableFood after)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 TableFood tf = db.TableFoods.Find(after.idTableFood);
                 tf.name = after.name;
@@ -95,8 +95,8 @@ namespace PBL3.DAL
         }
         public void del(int idtable)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
-            {
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
+            {   
                 TableFood tf = db.TableFoods.Find(idtable);
                 db.TableFoods.Remove(tf);
                 db.SaveChanges();
@@ -105,7 +105,7 @@ namespace PBL3.DAL
         public List<CBBItem> GetCBBTable()
         {
             List<CBBItem> cbb = new List<CBBItem>();
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (TableFood f in db.TableFoods)
                 {
@@ -120,7 +120,7 @@ namespace PBL3.DAL
         }
         public int getTableIDByName(string name)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (TableFood f in db.TableFoods)
                 {

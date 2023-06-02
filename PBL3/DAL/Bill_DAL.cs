@@ -26,7 +26,7 @@ namespace PBL3.DAL
         }
         public DataGridView getBill()
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 DataGridView bill = new DataGridView();
                 bill.DataSource = db.Bills
@@ -42,7 +42,7 @@ namespace PBL3.DAL
         }
         public DataGridView getDetailBill(string ids)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 DataGridView items = new DataGridView();
                 items.DataSource = db.ItemOrders.
@@ -55,7 +55,7 @@ namespace PBL3.DAL
         public int getTotal(string s)
         {
             int tprice = 0;
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (ItemOrder d in db.ItemOrders)
                 {
@@ -70,7 +70,7 @@ namespace PBL3.DAL
         }
         public void del(int id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach(ItemOrder d in db.ItemOrders)
                 {
@@ -86,7 +86,7 @@ namespace PBL3.DAL
         }
         public void edit(Bill newBill)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 Bill bill = db.Bills.Find(newBill.idBill);
                 bill.paymenttime = newBill.paymenttime;
@@ -103,8 +103,8 @@ namespace PBL3.DAL
         //tra ve Bill chua thanh toan
         public Bill getBillTableByIdTable(int idtable)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
-            {
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
+            {   
                 foreach (Bill b in db.Bills.Where(p => p.idTable == idtable).ToList())
                 {
                     if (b.thanhtoan == false)
@@ -120,7 +120,7 @@ namespace PBL3.DAL
             Bill bill = getBillTableByIdTable(idtable);
             if (bill != null)
             {
-                using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+                using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
                 {
                     foreach (ItemOrder bi in db.ItemOrders)
                     {
@@ -134,7 +134,7 @@ namespace PBL3.DAL
         }
         public void addBill(Bill bill, List<ItemOrder> lio)
         {
-            using(QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using(QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 db.Bills.Add(bill);
                 db.ItemOrders.AddRange(lio);
@@ -145,7 +145,7 @@ namespace PBL3.DAL
         }
         public Bill getBillById(int id)
         {
-            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            using (QuanLyQuanCafeEntities3 db = new QuanLyQuanCafeEntities3())
             {
                 foreach (Bill b in db.Bills)
                 {
