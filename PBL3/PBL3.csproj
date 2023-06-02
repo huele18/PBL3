@@ -243,38 +243,38 @@
     <Compile Include="DAL\Drink_DAL.cs" />
     <Compile Include="DAL\Table_DAL.cs" />
     <Compile Include="DTO\Account.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Bill.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\CBBItem.cs" />
     <Compile Include="DTO\Food.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\FoodCategory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\ItemOrder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\Model1.Context.cs">
+    <Compile Include="DTO\QLCF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>QLCF.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\Model1.cs">
+    <Compile Include="DTO\QLCF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\Model1.Designer.cs">
+    <Compile Include="DTO\QLCF.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>QLCF.edmx</DependentUpon>
     </Compile>
     <Compile Include="DTO\TableFood.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>QLCF.tt</DependentUpon>
     </Compile>
     <Compile Include="GUI\DetailBill.cs">
       <SubType>Form</SubType>
@@ -427,12 +427,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DTO\Model1.edmx">
+    <EntityDeploy Include="DTO\QLCF.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLCF.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DTO\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="DTO\QLCF.edmx.diagram">
+      <DependentUpon>QLCF.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -496,15 +496,15 @@
     <None Include="Resources\Thiết kế chưa có tên.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DTO\Model1.Context.tt">
+    <Content Include="DTO\QLCF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>QLCF.edmx</DependentUpon>
+      <LastGenOutput>QLCF.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DTO\Model1.tt">
+    <Content Include="DTO\QLCF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>QLCF.edmx</DependentUpon>
+      <LastGenOutput>QLCF.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
