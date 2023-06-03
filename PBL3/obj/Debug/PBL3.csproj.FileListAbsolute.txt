@@ -26,8 +26,6 @@ D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fDetailDrink.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fDrinkMenuManager.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.fEditCategoryFood.resources
 D:\visualstudio\PBL3\PBL3\obj\Debug\PBL3.GUI.ucAccountInfo.resources
-D:\visualstudio\PBL3\PBL3\bin\Debug\Bunifu.UI.WinForms.xml
-D:\visualstudio\PBL3\PBL3\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
 D:\visualstudio\PBL3\PBL3\bin\Debug\Microsoft.Win32.Registry.xml
 D:\visualstudio\PBL3\PBL3\bin\Debug\Microsoft.Win32.Registry.AccessControl.xml
 D:\visualstudio\PBL3\PBL3\bin\Debug\Microsoft.Win32.SystemEvents.xml
