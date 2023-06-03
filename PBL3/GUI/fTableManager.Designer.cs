@@ -40,21 +40,19 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.rbOccupied = new System.Windows.Forms.RadioButton();
+            this.rbUnoccupied = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvTable = new System.Windows.Forms.DataGridView();
-            this.idTableFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
             this.groupBox1.Controls.Add(this.btDelete);
             this.groupBox1.Controls.Add(this.btEdit);
             this.groupBox1.Controls.Add(this.btAdd);
@@ -120,7 +118,6 @@
             this.rbCoNguoi.Name = "rbCoNguoi";
             this.rbCoNguoi.Size = new System.Drawing.Size(126, 30);
             this.rbCoNguoi.TabIndex = 8;
-            this.rbCoNguoi.TabStop = true;
             this.rbCoNguoi.Text = "Có Khách";
             this.rbCoNguoi.UseVisualStyleBackColor = true;
             // 
@@ -131,7 +128,6 @@
             this.rbTrong.Name = "rbTrong";
             this.rbTrong.Size = new System.Drawing.Size(89, 30);
             this.rbTrong.TabIndex = 7;
-            this.rbTrong.TabStop = true;
             this.rbTrong.Text = "Trống";
             this.rbTrong.UseVisualStyleBackColor = true;
             // 
@@ -178,94 +174,76 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btSearch);
-            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.BackColor = System.Drawing.SystemColors.Info;
+            this.panel1.Controls.Add(this.rbAll);
+            this.panel1.Controls.Add(this.rbOccupied);
+            this.panel1.Controls.Add(this.rbUnoccupied);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(634, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(531, 100);
+            this.panel1.Size = new System.Drawing.Size(531, 52);
             this.panel1.TabIndex = 1;
             // 
-            // btSearch
+            // rbAll
             // 
-            this.btSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSearch.ForeColor = System.Drawing.Color.White;
-            this.btSearch.Location = new System.Drawing.Point(397, 27);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(122, 47);
-            this.btSearch.TabIndex = 3;
-            this.btSearch.Text = "Tìm kiếm";
-            this.btSearch.UseVisualStyleBackColor = false;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            this.rbAll.AutoSize = true;
+            this.rbAll.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.rbAll.Location = new System.Drawing.Point(389, 12);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(89, 30);
+            this.rbAll.TabIndex = 11;
+            this.rbAll.Text = "Tất cả";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
             // 
-            // txtSearch
+            // rbOccupied
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(6, 35);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(344, 30);
-            this.txtSearch.TabIndex = 2;
-            this.txtSearch.Text = "Nhập từ khóa cần tìm kiếm";
+            this.rbOccupied.AutoSize = true;
+            this.rbOccupied.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.rbOccupied.Location = new System.Drawing.Point(210, 12);
+            this.rbOccupied.Name = "rbOccupied";
+            this.rbOccupied.Size = new System.Drawing.Size(126, 30);
+            this.rbOccupied.TabIndex = 10;
+            this.rbOccupied.Text = "Có Khách";
+            this.rbOccupied.UseVisualStyleBackColor = true;
+            this.rbOccupied.CheckedChanged += new System.EventHandler(this.rbOccupied_CheckedChanged);
+            // 
+            // rbUnoccupied
+            // 
+            this.rbUnoccupied.AutoSize = true;
+            this.rbUnoccupied.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.rbUnoccupied.Location = new System.Drawing.Point(70, 12);
+            this.rbUnoccupied.Name = "rbUnoccupied";
+            this.rbUnoccupied.Size = new System.Drawing.Size(89, 30);
+            this.rbUnoccupied.TabIndex = 9;
+            this.rbUnoccupied.Text = "Trống";
+            this.rbUnoccupied.UseVisualStyleBackColor = true;
+            this.rbUnoccupied.CheckedChanged += new System.EventHandler(this.rbUnoccupied_CheckedChanged);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dgvTable);
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(634, 100);
+            this.panel2.Location = new System.Drawing.Point(634, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(531, 624);
+            this.panel2.Size = new System.Drawing.Size(531, 672);
             this.panel2.TabIndex = 2;
             // 
-            // dgvTable
+            // flowLayoutPanel1
             // 
-            this.dgvTable.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idTableFood,
-            this.name,
-            this.status});
-            this.dgvTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTable.Location = new System.Drawing.Point(0, 0);
-            this.dgvTable.Name = "dgvTable";
-            this.dgvTable.RowHeadersWidth = 51;
-            this.dgvTable.RowTemplate.Height = 24;
-            this.dgvTable.Size = new System.Drawing.Size(531, 624);
-            this.dgvTable.TabIndex = 1;
-            this.dgvTable.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTable_RowHeaderMouseClick);
-            // 
-            // idTableFood
-            // 
-            this.idTableFood.DataPropertyName = "idTableFood";
-            this.idTableFood.HeaderText = "ID Bàn";
-            this.idTableFood.MinimumWidth = 6;
-            this.idTableFood.Name = "idTableFood";
-            this.idTableFood.Width = 125;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Tên bàn";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 125;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Trạng Thái";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.Width = 125;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(531, 672);
+            this.flowLayoutPanel1.TabIndex = 12;
             // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1165, 724);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -277,7 +255,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,11 +274,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btSearch;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dgvTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTableFood;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.RadioButton rbOccupied;
+        private System.Windows.Forms.RadioButton rbUnoccupied;
+        private System.Windows.Forms.RadioButton rbAll;
     }
 }

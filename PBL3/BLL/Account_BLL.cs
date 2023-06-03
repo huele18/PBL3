@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3.DAL;
 using PBL3.DTO;
+using PBL3.GUI;
 
 namespace PBL3.BLL
 {
@@ -93,6 +96,7 @@ namespace PBL3.BLL
         }
         public int addNV(Account nv)
         {
+            Account acc = Account_DAL.Instance.getAccountByID(nv.idAccount);
             if
             (string.IsNullOrWhiteSpace(nv.DisplayName) ||
              string.IsNullOrWhiteSpace(nv.SDT) ||
@@ -105,7 +109,7 @@ namespace PBL3.BLL
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 2;
             }
-            else if ((Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
+            else if ((nv.UserName != acc.UserName) && (Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
             {
                 MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -164,6 +168,40 @@ namespace PBL3.BLL
         public List<Account> searchAccount(string s)
         {
             return Account_DAL.Instance.search(s);
+        }
+
+
+
+
+        public List<ucAccountInfo> GetUcAccountInfos(List<Account> list)
+        {
+            List<ucAccountInfo> uc = new List<ucAccountInfo>();
+            foreach (Account dr in list)
+            {
+                ucAccountInfo f = new ucAccountInfo();
+                if (dr.Anh != null)
+                {
+                    byte[] imageData = (byte[])dr.Anh;
+                    MemoryStream ms = new MemoryStream(imageData);
+                    Image image = Image.FromStream(ms);
+                    f.pbAnh.Image = image;
+                }
+                f.lbName.Text = dr.DisplayName;
+                if (dr.Type == 0)
+                    f.lbChucvu.Text = "Nhân viên";
+                else if (dr.Type == 1)
+                    f.lbChucvu.Text = "Quản lý";
+                f.lbSdt.Text = dr.SDT;
+                f.lbEmail.Text = dr.email;
+                f.lbAddress.Text = dr.address;
+                f.lbCa.Text = dr.Calam;
+                //f.lbID.Text = dr.idFood.ToString();
+                //f.lbNameFood.Text = dr.NameFood;
+                //f.lbPrice.Text = dr.price.ToString();
+                f.Tag = dr.idAccount;
+                uc.Add(f);
+            }
+            return uc;
         }
     }
 }

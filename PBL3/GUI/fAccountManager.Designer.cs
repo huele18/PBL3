@@ -30,12 +30,13 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btUpdateInf = new System.Windows.Forms.Button();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.txtNewPass2 = new System.Windows.Forms.TextBox();
             this.txtNewPass1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -121,10 +121,12 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBox1.Location = new System.Drawing.Point(169, 114);
+            this.pictureBox1.FillColor = System.Drawing.SystemColors.Info;
+            this.pictureBox1.ImageRotate = 0F;
+            this.pictureBox1.Location = new System.Drawing.Point(133, 114);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(162, 216);
+            this.pictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pictureBox1.Size = new System.Drawing.Size(205, 190);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
@@ -194,6 +196,19 @@
             this.label11.Size = new System.Drawing.Size(157, 27);
             this.label11.TabIndex = 20;
             this.label11.Text = "Loại tài khoản:";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label14.Location = new System.Drawing.Point(189, 315);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 22);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Thêm ảnh";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label9
             // 
@@ -500,19 +515,6 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Đổi mật khẩu";
             // 
-            // label14
-            // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label14.Location = new System.Drawing.Point(202, 333);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 22);
-            this.label14.TabIndex = 19;
-            this.label14.Text = "Thêm ảnh";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
             // fAccountManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -561,7 +563,6 @@
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btsetPass;
         private System.Windows.Forms.Label label13;
@@ -571,5 +572,6 @@
         private System.Windows.Forms.TextBox txtNewPass2;
         private System.Windows.Forms.TextBox txtNewPass1;
         private System.Windows.Forms.Label label14;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pictureBox1;
     }
 }

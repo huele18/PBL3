@@ -1,5 +1,4 @@
 ﻿using PBL3.BLL;
-using PBL3.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +20,7 @@ namespace PBL3.GUI
             lbStaff.Text = staffname;
             lbTable.Text = table;
             lbTime.Text = DateTime.Now.ToString();
-            lbTong.Text = TongTien(idbill).ToString();
+
             dgvBillInfo.DataSource = Bill_BLL.Instance.getDetailBill(idbill).DataSource;
             for (int i = 0; i < dgvBillInfo.Rows.Count; i++)
             {
@@ -29,6 +28,8 @@ namespace PBL3.GUI
                 int price = Convert.ToInt32(dgvBillInfo.Rows[i].Cells["price"].Value);
                 dgvBillInfo.Rows[i].Cells["Total"].Value = count * price;
             }
+
+            lbTong.Text = TongTien(idbill).ToString();
         }
         public int TongTien(string idbill)
         {

@@ -71,7 +71,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(908, 211);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
             // 
             // label10
             // 
@@ -172,7 +172,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 667);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(908, 107);
-            this.panel3.TabIndex = 3;
+            this.panel3.TabIndex = 2;
             // 
             // label6
             // 
@@ -222,7 +222,7 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 211);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(908, 456);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết hóa đơn";
             // 
@@ -293,7 +293,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "fBill";
-            this.Text = "Bill";
+            this.Text = "fBill";
             this.Load += new System.EventHandler(this.fBill_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -308,7 +308,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbTong;
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.Label lbStaff;
         private System.Windows.Forms.Label lbTable;
@@ -317,12 +319,10 @@
         private System.Windows.Forms.Label lbIdBill;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lbTong;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label6;
         public System.Windows.Forms.DataGridView dgvBillInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn idFood;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameFood;

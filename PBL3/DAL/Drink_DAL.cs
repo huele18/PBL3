@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3.BLL;
 using PBL3.DTO;
 
 namespace PBL3.DAL
@@ -52,6 +54,15 @@ namespace PBL3.DAL
                 db.SaveChanges();
             }
         }
+        public void editCategory(FoodCategory fc)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                FoodCategory foodCategory = db.FoodCategories.Find(fc.idFoodCategory);
+                foodCategory.Category = fc.Category;
+                db.SaveChanges();
+            }
+        }
         public List<Food> GetFoods()
         {
             List<Food> lf = new List<Food>();
@@ -65,35 +76,22 @@ namespace PBL3.DAL
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
-                foreach (Food f in db.Foods)
-                {
-                    if (f.idFood.ToString() == id)
-                    {
-                        return f;
-                    }
-                }
+                return db.Foods.Where(p => p.idFood.ToString() == id).FirstOrDefault();
             }
-            return null;
         }
-        //public Food getCategoryById(string id)
-        //{
-        //    QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
-        //    foreach (Food f in db.Foods)
-        //    {
-        //        if (f.idCategory.ToString() == id)
-        //        {
-        //            return f;
-        //        }
-        //    }
-        //    return null;
-        //}
+        public FoodCategory getCategoryById(string id)
+        {
+            QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities();
+            return db.FoodCategories.Where(p => p.idFoodCategory.ToString() == id).FirstOrDefault();
+        }
         public void add(Food f)
         {
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
                 db.Foods.Add(f);
                 db.SaveChanges();
-                MessageBox.Show("Đã thêm thành công đồ uống mới vào Menu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã thêm thành công đồ uống mới vào Menu", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         public void edit(Food after)
@@ -106,7 +104,9 @@ namespace PBL3.DAL
                 f.price = after.price;
                 f.imageFood = after.imageFood;
                 db.SaveChanges();
-                MessageBox.Show("Đã cập nhật thành công đồ uống vào Menu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã cập nhật thành công đồ uống vào Menu", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
         public void del(int idfood)
@@ -155,5 +155,21 @@ namespace PBL3.DAL
             }
             return f;
         }
+        public List<IGrouping<int, ItemOrder>> getBestSeller()
+        {
+            List<IGrouping<int, ItemOrder>> f = new List<IGrouping<int, ItemOrder>>();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                f = db.ItemOrders
+                    .GroupBy(p => p.idFood.HasValue ? p.idFood.Value : -1)
+                    .OrderByDescending(p => p.Count()).ToList();
+            }
+
+            return f;
+        }
+
+
+
+
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Drawing;
-
+using Guna.UI2.WinForms;
 
 namespace PBL3.BLL
 {
@@ -63,6 +63,10 @@ namespace PBL3.BLL
         public void addFoodCategory(FoodCategory f)
         {
             Drink_DAL.Instance.addCategory(f);
+        }
+        public void editFoodCategory(FoodCategory f)
+        {
+            Drink_DAL.Instance.editCategory(f);
         }
         public Food getFoodById(string id)
         {
@@ -120,46 +124,66 @@ namespace PBL3.BLL
             dgv.DataSource = Drink_DAL.Instance.search(s).DataSource;
             return dgv;
         }
-        
-        public List<ucFood> getMenu(int idcategory)
+
+        public List<Food> getMenuByCategory(int idcategory)
         {
-            List<ucFood> uc = new List<ucFood>();
-            List<Food> food = Drink_DAL.Instance.getMenuByCategory(idcategory);
-            foreach (Food dr in sortedMenuByFreqency(food))
+            return Drink_DAL.Instance.getMenuByCategory(idcategory);
+        }
+        public FoodCategory GetFoodCategoryByID(string idcategory)
+        {
+            return Drink_DAL.Instance.getCategoryById(idcategory);
+        }
+        public List<Food> getTop3Bestseller()
+        {
+            List<Food> f = new List<Food>();
+            foreach (var i in Drink_DAL.Instance.getBestSeller().Take(3))
             {
-                ucFood f = new ucFood();
+                int idfood = i.Key;
+                Food food = Drink_BLL.Instance.getFoodById(idfood.ToString());
+                f.Add(food);
+            }
+            return f;
+        }
+        public List<ucDrink> getMenuDrink(List<Food> list)
+        {
+            List<ucDrink> uc = new List<ucDrink>();
+            foreach (Food dr in list)
+            {
+                ucDrink f = new ucDrink();
                 if (dr.imageFood != null)
                 {
                     byte[] imageData = (byte[])dr.imageFood;
                     MemoryStream ms = new MemoryStream(imageData);
                     Image image = Image.FromStream(ms);
-                    f.pictureBox1.Image = image;
+                    f.imageDrink.Image = image;
                 }
                 f.lbID.Text = dr.idFood.ToString();
                 f.lbNameFood.Text = dr.NameFood;
                 f.lbPrice.Text = dr.price.ToString();
-                f.btSelect.Tag = dr.idFood;
+                f.imageDrink.Tag = dr.idFood;
                 uc.Add(f);
             }
             return uc;
         }
-        public List<Food> sortedMenuByFreqency(List<Food> food)
+
+        public List<Label> getCategories()
         {
-            List<ItemOrder> order = Bill_BLL.Instance.getDetailedBillByMonth();
-            Dictionary<int, int> countMap = new Dictionary<int, int>();
-            foreach (ItemOrder item in order)
+            List<Label> list = new List<Label>();
+            foreach (FoodCategory fc in Drink_DAL.Instance.getAllFoodCategories())
             {
-                if (countMap.ContainsKey(Convert.ToInt32(item.idFood)))
-                {
-                    countMap[Convert.ToInt32(item.idFood)]+= Convert.ToInt32(item.billquantity);
-                }   
-                else
-                    countMap[Convert.ToInt32(item.idFood)] = Convert.ToInt32(item.billquantity);
-                
+                Label pic = new Label();
+                pic.AutoSize = false;
+                pic.Font = new Font("Times New Roman", 18F);
+                pic.TextAlign = ContentAlignment.MiddleCenter;
+                pic.Text = fc.Category.ToString();
+                pic.Size = new Size(150, 150);
+                pic.Margin = new Padding(10, 10, 10, 10);
+                System.Drawing.Bitmap image = Properties.Resources.Category;
+                pic.Image = image;
+                pic.Tag = fc.idFoodCategory;
+                list.Add(pic);
             }
-            // Sắp xếp danh sách food dựa trên số lần xuất hiện của idfood trong Dictionary
-            List<Food> sortedFood = food.OrderByDescending(f => countMap.ContainsKey(f.idFood) ? countMap[f.idFood] : 0).ToList();
-            return sortedFood;
+            return list;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyQuanCafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="QLCFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
@@ -15,20 +15,20 @@
     <Property Name="Calam" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__3A81B327" FromRole="Account" ToRole="Bill" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__45F365D3" FromRole="Account" ToRole="Bill" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="idBill" />
     </Key>
-    <Property Name="idBill" Type="Int32" Nullable="false" />
+    <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="paymenttime" Type="DateTime" Precision="3" />
     <Property Name="thanhtoan" Type="Boolean" />
     <Property Name="idTable" Type="Int32" Nullable="false" />
     <Property Name="idAccount" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__3A81B327" FromRole="Bill" ToRole="Account" />
-    <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__idAccount__398D8EEE" FromRole="Bill" ToRole="TableFood" />
-    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idBil__3D5E1FD2" FromRole="Bill" ToRole="ItemOrder" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__45F365D3" FromRole="Bill" ToRole="Account" />
+    <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__idTable__44FF419A" FromRole="Bill" ToRole="TableFood" />
+    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idBil__47DBAE45" FromRole="Bill" ToRole="ItemOrder" />
   </EntityType>
   <EntityType Name="Food">
     <Key>
@@ -39,8 +39,8 @@
     <Property Name="idCategory" Type="Int32" />
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="imageFood" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="FoodCategory" Relationship="Self.FK__Food__idCategory__2E1BDC42" FromRole="Food" ToRole="FoodCategory" />
-    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idFoo__3E52440B" FromRole="Food" ToRole="ItemOrder" />
+    <NavigationProperty Name="FoodCategory" Relationship="Self.FK__Food__idCategory__46E78A0C" FromRole="Food" ToRole="FoodCategory" />
+    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idFoo__48CFD27E" FromRole="Food" ToRole="ItemOrder" />
   </EntityType>
   <EntityType Name="FoodCategory">
     <Key>
@@ -48,7 +48,7 @@
     </Key>
     <Property Name="idFoodCategory" Type="Int32" Nullable="false" />
     <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Foods" Relationship="Self.FK__Food__idCategory__2E1BDC42" FromRole="FoodCategory" ToRole="Food" />
+    <NavigationProperty Name="Foods" Relationship="Self.FK__Food__idCategory__46E78A0C" FromRole="FoodCategory" ToRole="Food" />
   </EntityType>
   <EntityType Name="ItemOrder">
     <Key>
@@ -58,8 +58,8 @@
     <Property Name="idBill" Type="Int32" />
     <Property Name="idFood" Type="Int32" />
     <Property Name="billquantity" Type="Int32" />
-    <NavigationProperty Name="Bill" Relationship="Self.FK__ItemOrder__idBil__3D5E1FD2" FromRole="ItemOrder" ToRole="Bill" />
-    <NavigationProperty Name="Food" Relationship="Self.FK__ItemOrder__idFoo__3E52440B" FromRole="ItemOrder" ToRole="Food" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK__ItemOrder__idBil__47DBAE45" FromRole="ItemOrder" ToRole="Bill" />
+    <NavigationProperty Name="Food" Relationship="Self.FK__ItemOrder__idFoo__48CFD27E" FromRole="ItemOrder" ToRole="Food" />
   </EntityType>
   <EntityType Name="TableFood">
     <Key>
@@ -68,9 +68,9 @@
     <Property Name="idTableFood" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__398D8EEE" FromRole="TableFood" ToRole="Bill" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idTable__44FF419A" FromRole="TableFood" ToRole="Bill" />
   </EntityType>
-  <Association Name="FK__Bill__idAccount__3A81B327">
+  <Association Name="FK__Bill__idAccount__45F365D3">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -82,7 +82,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__idAccount__398D8EEE">
+  <Association Name="FK__Bill__idTable__44FF419A">
     <End Role="TableFood" Type="Self.TableFood" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -94,7 +94,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ItemOrder__idBil__3D5E1FD2">
+  <Association Name="FK__ItemOrder__idBil__47DBAE45">
     <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
     <End Role="ItemOrder" Type="Self.ItemOrder" Multiplicity="*" />
     <ReferentialConstraint>
@@ -106,7 +106,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Food__idCategory__2E1BDC42">
+  <Association Name="FK__Food__idCategory__46E78A0C">
     <End Role="FoodCategory" Type="Self.FoodCategory" Multiplicity="0..1" />
     <End Role="Food" Type="Self.Food" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,7 +118,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ItemOrder__idFoo__3E52440B">
+  <Association Name="FK__ItemOrder__idFoo__48CFD27E">
     <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
     <End Role="ItemOrder" Type="Self.ItemOrder" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,23 +137,23 @@
     <EntitySet Name="FoodCategories" EntityType="Self.FoodCategory" />
     <EntitySet Name="ItemOrders" EntityType="Self.ItemOrder" />
     <EntitySet Name="TableFoods" EntityType="Self.TableFood" />
-    <AssociationSet Name="FK__Bill__idAccount__3A81B327" Association="Self.FK__Bill__idAccount__3A81B327">
+    <AssociationSet Name="FK__Bill__idAccount__45F365D3" Association="Self.FK__Bill__idAccount__45F365D3">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="Bill" EntitySet="Bills" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idAccount__398D8EEE" Association="Self.FK__Bill__idAccount__398D8EEE">
+    <AssociationSet Name="FK__Bill__idTable__44FF419A" Association="Self.FK__Bill__idTable__44FF419A">
       <End Role="TableFood" EntitySet="TableFoods" />
       <End Role="Bill" EntitySet="Bills" />
     </AssociationSet>
-    <AssociationSet Name="FK__ItemOrder__idBil__3D5E1FD2" Association="Self.FK__ItemOrder__idBil__3D5E1FD2">
+    <AssociationSet Name="FK__ItemOrder__idBil__47DBAE45" Association="Self.FK__ItemOrder__idBil__47DBAE45">
       <End Role="Bill" EntitySet="Bills" />
       <End Role="ItemOrder" EntitySet="ItemOrders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Food__idCategory__2E1BDC42" Association="Self.FK__Food__idCategory__2E1BDC42">
+    <AssociationSet Name="FK__Food__idCategory__46E78A0C" Association="Self.FK__Food__idCategory__46E78A0C">
       <End Role="FoodCategory" EntitySet="FoodCategories" />
       <End Role="Food" EntitySet="Foods" />
     </AssociationSet>
-    <AssociationSet Name="FK__ItemOrder__idFoo__3E52440B" Association="Self.FK__ItemOrder__idFoo__3E52440B">
+    <AssociationSet Name="FK__ItemOrder__idFoo__48CFD27E" Association="Self.FK__ItemOrder__idFoo__48CFD27E">
       <End Role="Food" EntitySet="Foods" />
       <End Role="ItemOrder" EntitySet="ItemOrders" />
     </AssociationSet>

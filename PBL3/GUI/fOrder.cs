@@ -1,12 +1,13 @@
 ﻿using PBL3.BLL;
+using PBL3.DAL;
 using PBL3.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,8 @@ namespace PBL3.GUI
     public partial class fOrder : Form
     {
         private int idacc;
-        public fOrder(int idacc)
+
+        public fOrder(int id)
         {
             InitializeComponent();
             getTable();
@@ -62,78 +64,84 @@ namespace PBL3.GUI
 
         public void getTable()
         {
-            foreach (Button i in Table_BLL.Instance.GetTables())
+            flowLayoutPanel1.Controls.Clear();
+            foreach(Button i in Table_BLL.Instance.GetTables("All"))
             {
                 i.Click += BtTable_Click;
                 flowLayoutPanel1.Controls.Add(i);
             }
         }
+        public void setDGV(int id)
+        {
+            Bill b = Bill_BLL.Instance.getBillTableByIdTable(id);
+            if (b != null)
+            {
+                txtIdBill.Text = b.idBill.ToString();
+                List<ItemOrder> billInfos = Bill_BLL.Instance.getBillInfoByIdBill(b.idBill);
+                if (billInfos.Count > 0)
+                {
+                    foreach (ItemOrder bInf in billInfos)
+                    {
+                        Food f = Drink_BLL.Instance.getFoodById(bInf.idFood.ToString());
+                        int index = dgvOrders.Rows.Count;
+                        DataGridViewRow row = dgvOrders.Rows[index - 1];
+                        dgvOrders.Rows.Add();
+                        dgvOrders.Rows[index - 1].Cells["idFood"].Value = bInf.idFood;
+                        dgvOrders.Rows[index - 1].Cells["NameFood"].Value = f.NameFood;
+                        dgvOrders.Rows[index - 1].Cells["price"].Value = f.price;
+                        dgvOrders.Rows[index - 1].Cells["count"].Value = bInf.billquantity;
+                        dgvOrders.Rows[index - 1].Cells["Total"].Value = f.price * bInf.billquantity;
+                    }
+                }
+            }
+        }
+
         private void BtTable_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int idtable = Convert.ToInt32(btn.Tag);
-            txtTable.Text = btn.Text;
+            txtTable.Text = idtable.ToString();
 
+            txtIdBill.Text = "";
+            dgvOrders.Rows.Clear();
             Bill b = Bill_BLL.Instance.getBillTableByIdTable(idtable);
             if (b != null)
             {
                 txtIdBill.Text = b.idBill.ToString();
-
-            }
-            List<ItemOrder> billInfos = Bill_BLL.Instance.getBillInfoByIdBill(idtable);
-            dgvOrders.Rows.Clear();
-            if (billInfos.Count > 0)
-            {
-                foreach (ItemOrder bInf in billInfos)
+                List<ItemOrder> billInfos = Bill_BLL.Instance.getBillInfoByIdBill(b.idBill);
+                if (billInfos.Count > 0)
                 {
-                    Food f = Drink_BLL.Instance.getFoodById(bInf.idFood.ToString());
-                    int index = dgvOrders.Rows.Count;
-                    DataGridViewRow row = dgvOrders.Rows[index - 1];
-                    dgvOrders.Rows.Add();
-                    dgvOrders.Rows[index - 1].Cells["idFood"].Value = bInf.idFood;
-                    dgvOrders.Rows[index - 1].Cells["NameFood"].Value = f.NameFood;
-                    dgvOrders.Rows[index - 1].Cells["price"].Value = f.price;
-                    dgvOrders.Rows[index - 1].Cells["count"].Value = bInf.billquantity;
-                    dgvOrders.Rows[index - 1].Cells["Total"].Value = f.price * bInf.billquantity;
+                    foreach (ItemOrder bInf in billInfos)
+                    {
+                        Food f = Drink_BLL.Instance.getFoodById(bInf.idFood.ToString());
+                        int index = dgvOrders.Rows.Count;
+                        DataGridViewRow row = dgvOrders.Rows[index - 1];
+                        dgvOrders.Rows.Add();
+                        dgvOrders.Rows[index - 1].Cells["idFood"].Value = bInf.idFood;
+                        dgvOrders.Rows[index - 1].Cells["NameFood"].Value = f.NameFood;
+                        dgvOrders.Rows[index - 1].Cells["price"].Value = f.price;
+                        dgvOrders.Rows[index - 1].Cells["count"].Value = bInf.billquantity;
+                        dgvOrders.Rows[index - 1].Cells["Total"].Value = f.price * bInf.billquantity;
+                    }
                 }
-            }
-            else
-            {
-                if (b == null)
-                    txtIdBill.Text = "";
             }
         }
 
         private void btOrder_Click(object sender, EventArgs e)
         {
-            fMenu m = new fMenu();
-            m.addDataToGridViewDelegate += new fMenu.AddDataToGridView(AddDGV);
+            fDrinkMenu m = new fDrinkMenu();
+            m.addDataToGridViewDelegate += new fDrinkMenu.AddDataToGridView(AddDGV);
             m.ShowDialog();
             this.Show();
         }
 
-        private void buttoncancel_Click(object sender, EventArgs e)
+        private void btGiam_Click(object sender, EventArgs e)
         {
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow item in dgvOrders.SelectedRows)
                 {
-                    dgvOrders.Rows.RemoveAt(item.Index);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Chọn (những) món muốn hủy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void buttongiam_Click(object sender, EventArgs e)
-        {
-            if (dgvOrders.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow item in dgvOrders.SelectedRows)
-                {
-                    if(Convert.ToInt32(dgvOrders.Rows[item.Index].Cells["count"].Value) > 1)
+                    if (Convert.ToInt32(dgvOrders.Rows[item.Index].Cells["count"].Value) > 1)
                     {
                         dgvOrders.Rows[item.Index].Cells["count"].Value = Convert.ToInt32(dgvOrders.Rows[item.Index].Cells["count"].Value) - 1;
                         int price = Convert.ToInt32(dgvOrders.Rows[item.Index].Cells["price"].Value);
@@ -152,50 +160,22 @@ namespace PBL3.GUI
             }
         }
 
-        private void buttonLuu_Click(object sender, EventArgs e)
+        private void btXoa_Click(object sender, EventArgs e)
         {
-            int index = dgvOrders.Rows.Count - 1;
-            if (index <= 0)
+            if (dgvOrders.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Chưa gọi đồ uống");
+                foreach (DataGridViewRow item in dgvOrders.SelectedRows)
+                {
+                    dgvOrders.Rows.RemoveAt(item.Index);
+                }
             }
             else
             {
-                //thêm bill
-                Bill bill = new Bill();
-                try
-                {
-                    bill.idBill = Convert.ToInt32(txtIdBill.Text); 
-                    bill.paymenttime = DateTime.Now;
-                    bill.thanhtoan = false;
-                    bill.idAccount = idacc;
-                    bill.idTable = Table_BLL.Instance.getTableIDByName("Bàn " + txtTable.Text);
-                    //thêm item order
-                    List<ItemOrder> lio = new List<ItemOrder>();
-                    for (int i = 0; i < dgvOrders.Rows.Count - 1; i++)
-                    {
-                        ItemOrder io = new ItemOrder();
-                        io.idBill = bill.idBill;
-                        io.idFood = Convert.ToInt32(dgvOrders.Rows[i].Cells["idFood"].Value);
-                        io.billquantity = Convert.ToInt32(dgvOrders.Rows[i].Cells["count"].Value);
-                        lio.Add(io);
-                    }
-                    Bill_BLL.Instance.addBill(bill, lio);
-                    //đổi trạng thái bàn có người
-                    TableFood tbf = Table_BLL.Instance.getTableFoodById(bill.idTable);
-                    tbf.status = "Có Người";
-                    Table_BLL.Instance.editTable(tbf, true);
-                    flowLayoutPanel1.Controls.Clear();
-                    getTable();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("ERROR!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                MessageBox.Show("Chọn (những) món muốn hủy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void buttonThanhToan_Click(object sender, EventArgs e)
+        private void btThanhToan_Click(object sender, EventArgs e)
         {
             int index = dgvOrders.Rows.Count - 1;
             if (index <= 0)
@@ -233,7 +213,50 @@ namespace PBL3.GUI
                 }
                 catch (Exception ex) { }
             }
-            
+        }
+
+        private void btLuu_Click(object sender, EventArgs e)
+        {
+            int index = dgvOrders.Rows.Count - 1;
+            if (index <= 0)
+            {
+                MessageBox.Show("Chưa gọi đồ uống");
+            }
+            else
+            {
+                //thêm bill
+                Bill bill = new Bill();
+                try
+                {
+                    bill.idBill = Convert.ToInt32(txtIdBill.Text);
+                    bill.paymenttime = DateTime.Now;
+                    bill.thanhtoan = false;
+                    bill.idAccount = idacc;
+                    bill.idTable = Table_BLL.Instance.getTableIDByName("Bàn " + txtTable.Text);
+                    //thêm item order
+                    List<ItemOrder> lio = new List<ItemOrder>();
+                    for (int i = 0; i < dgvOrders.Rows.Count - 1; i++)
+                    {
+                        ItemOrder io = new ItemOrder();
+                        io.idBill = bill.idBill;
+                        io.idFood = Convert.ToInt32(dgvOrders.Rows[i].Cells["idFood"].Value);
+                        io.billquantity = Convert.ToInt32(dgvOrders.Rows[i].Cells["count"].Value);
+                        lio.Add(io);
+                    }
+                    Bill_BLL.Instance.addBill(bill, lio);
+                    //đổi trạng thái bàn có người
+                    TableFood tbf = Table_BLL.Instance.getTableFoodById(bill.idTable);
+                    tbf.status = "Có Người";
+                    Table_BLL.Instance.editTable(tbf, true);
+                    flowLayoutPanel1.Controls.Clear();
+                    getTable();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
         }
     }
 }

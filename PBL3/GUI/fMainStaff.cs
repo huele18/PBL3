@@ -76,7 +76,7 @@ namespace PBL3.GUI
 
         private void btMenu_Click(object sender, EventArgs e)
         {
-            openChildForm(new GUI.fMenuManager(), sender);
+            openChildForm(new GUI.fDrinkMenuManager(), sender);
         }
         private void btAccount_Click(object sender, EventArgs e)
         {

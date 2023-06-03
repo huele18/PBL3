@@ -19,7 +19,7 @@ namespace PBL3.GUI
         public fStaffManager()
         {
             InitializeComponent();
-            SetdgvEmployee();
+            setFLP();
         }
         private byte[] ImageToByteArray(PictureBox picture)
         {
@@ -27,12 +27,49 @@ namespace PBL3.GUI
             pictureBox1.Image.Save(memoryStream, pictureBox1.Image.RawFormat);
             return memoryStream.ToArray();
         }
-        public void SetdgvEmployee()
+        public void setFLP()
         {
-            dgvEmployee.DataSource = Account_BLL.Instance.GetAccounts();
-            dgvEmployee.Columns["Password"].Visible = false;
-            dgvEmployee.Columns["Anh"].Visible = false;
-            dgvEmployee.Columns["Bills"].Visible = false;
+            flp.Controls.Clear();
+            List<Account> accounts = Account_BLL.Instance.GetAccounts();
+            foreach (ucAccountInfo p in Account_BLL.Instance.GetUcAccountInfos(accounts))
+            {
+                p.Click += uc_Click;
+                flp.Controls.Add(p);
+            }
+        }
+
+        private void uc_Click(object sender, EventArgs e)
+        {
+            ucAccountInfo uca = (ucAccountInfo)sender;
+            tbEmployeeId.ReadOnly = true;
+            btAddEmployee.Enabled = false;
+            int idAcc = Convert.ToInt32(uca.Tag);
+            Account acc = Account_BLL.Instance.getAccountByID(idAcc);
+            tbEmployeeId.Text = acc.idAccount.ToString();
+            tbEmployeeName.Text = acc.DisplayName;
+            if (acc.GT == true)
+                rbMale.Checked = true;
+            else if (acc.GT == false)
+                rbFemale.Checked = true;
+            tbPhoneNumber.Text = acc.SDT;
+            tbAddress.Text = acc.address;
+            tbEmail.Text = acc.email;
+            tbUsername.Text = acc.UserName;
+            tbAccessCode.Text = acc.Type.ToString();
+            tbShift.Text = acc.Calam;
+            if (acc.Anh != null)
+            {
+                byte[] imageData = (byte[])acc.Anh;
+                using (MemoryStream ms1 = new MemoryStream(imageData))
+                {
+                    Image image = Image.FromStream(ms1);
+                    pictureBox1.Image = image;
+                }
+            }
+            else
+            {
+                pictureBox1.Image = null; // Gán giá trị null cho PictureBox.Image
+            }
         }
         public bool checkDataEmployee()
         {
@@ -44,51 +81,38 @@ namespace PBL3.GUI
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeName.Text))
             {
-                MessageBox.Show("Chưa nhập vào tên nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeName.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbShift.Text))
             {
-                MessageBox.Show("Chưa nhập vào ca làm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbShift.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeId.Text))
             {
-                MessageBox.Show("Chưa nhập vào id", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeId.Focus();
                 return false;
             }
             return true;
         }
-
-        private void btSearchEmployee_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace( tbSearchEmployee.Text ))
-            {
-                SetdgvEmployee();
-            }
-            else
-            {
-                dgvEmployee.DataSource = Account_BLL.Instance.searchAccount(tbSearchEmployee.Text);
-            }
-        }
-
         private void btRReset_Click(object sender, EventArgs e)
         {
-            if (dgvEmployee.SelectedRows.Count > 0)
+            if (tbEmployeeId.ReadOnly == true)
             {
-                foreach (DataGridViewRow i in dgvEmployee.SelectedRows)
-                {
-                    int idaccount = Convert.ToInt32(i.Cells[0].Value.ToString());
+                //foreach (DataGridViewRow i in dgvEmployee.SelectedRows)
+                //{
+                    int idaccount = Convert.ToInt32(tbEmployeeId.Text);
                     Account_BLL.Instance.resetPass(idaccount, pw);
                     MessageBox.Show("Đã reset password thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    SetdgvEmployee();
-                }
+                    setFLP();
+                //}
             }
             else
-                MessageBox.Show("Chưa chọn cột muốn reset password", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Chưa chọn nhân viên muốn reset password", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btAddEmployee_Click(object sender, EventArgs e)
@@ -117,7 +141,7 @@ namespace PBL3.GUI
                 switch (add)
                 {
                     case 0:
-                        SetdgvEmployee();
+                        setFLP();
                         break;
                     case 1:
                         tbUsername.Focus();
@@ -161,7 +185,6 @@ namespace PBL3.GUI
                 switch (update)
                 {
                     case 0:
-                        btAddEmployee.Enabled = true;
                         tbEmployeeId.ReadOnly = false;
                         tbEmployeeId.Text = "";
                         tbEmployeeName.Text = "";
@@ -174,7 +197,7 @@ namespace PBL3.GUI
                         tbShift.Text = "";
                         tbAccessCode.Text = "";
                         pictureBox1.Image = null;
-                        SetdgvEmployee();
+                        setFLP();
                         break;
                     case 1:
                         tbUsername.Focus();
@@ -192,71 +215,49 @@ namespace PBL3.GUI
 
         private void btDeleteEmployee_Click(object sender, EventArgs e)
         {
-            if (dgvEmployee.SelectedRows.Count > 0)
+            if (tbEmployeeId.ReadOnly == true)
             {
                 int idstaff;
-                foreach (DataGridViewRow i in dgvEmployee.SelectedRows)
-                {
-                    idstaff = Convert.ToInt32(i.Cells[0].Value.ToString());
+                //foreach (DataGridViewRow i in dgvEmployee.SelectedRows)
+                //{
+                    idstaff = Convert.ToInt32(tbEmployeeId.Text);
                     Account_BLL.Instance.deleteNV(idstaff);
                     MessageBox.Show("Đã xóa thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                SetdgvEmployee();
+                //}
+                setFLP();
             }
             else
             {
-                MessageBox.Show("Chưa chọn cột muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Chưa chọn nhân viên muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        private void dgvEmployee_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            btAddEmployee.Enabled = false;
-            tbEmployeeId.ReadOnly = true;
-            int index = e.RowIndex;
-            tbEmployeeId.Text = dgvEmployee.Rows[index].Cells[0].Value.ToString();
-            tbEmployeeName.Text = dgvEmployee.Rows[index].Cells[1].Value.ToString();
-            if (dgvEmployee.Rows[index].Cells[2].Value != null && Convert.ToBoolean(dgvEmployee.Rows[index].Cells[2].Value.ToString()) == true)
-                rbMale.Checked = true;
-            else if (dgvEmployee.Rows[index].Cells[2].Value != null && Convert.ToBoolean(dgvEmployee.Rows[index].Cells[2].Value.ToString()) == false)
-                rbFemale.Checked = true;
-            else if (dgvEmployee.Rows[index].Cells[2].Value == null)
-            {
-                rbMale.Checked = false;
-                rbFemale.Checked = false;
-            }
-            tbPhoneNumber.Text = dgvEmployee.Rows[index].Cells[3].Value.ToString();
-            tbAddress.Text = dgvEmployee.Rows[index].Cells[4].Value.ToString();
-            tbEmail.Text = dgvEmployee.Rows[index].Cells[5].Value.ToString();
-            tbUsername.Text = dgvEmployee.Rows[index].Cells[6].Value.ToString();
-            tbShift.Text = dgvEmployee.Rows[index].Cells["Calam"].Value.ToString();
-            tbAccessCode.Text = dgvEmployee.Rows[index].Cells["Type"].Value.ToString();
-            if (dgvEmployee.Rows[index].Cells["anh"].Value != null && dgvEmployee.Rows[index].Cells["anh"].Value != DBNull.Value)
-            {
-                byte[] imageData = (byte[])dgvEmployee.Rows[index].Cells["anh"].Value;
-                using (MemoryStream ms1 = new MemoryStream(imageData))
-                {
-                    Image image = Image.FromStream(ms1);
-                    pictureBox1.Image = image;
-                }
-            }
-            else
-            {
-                pictureBox1.Image = null; // Gán giá trị null cho PictureBox.Image
-            }
-        }
-
         private void browse_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            //PictureBox pb = new PictureBox();
-            if (ofd.ShowDialog() == DialogResult.OK)
+            ofd.Title = "Please choose a picture";
+            ofd.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
+            ofd.Multiselect = false;
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                pictureBox1.Image = new Bitmap(ofd.FileName);
-                MemoryStream ms = new MemoryStream();
-                pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
+                this.pictureBox1.ImageLocation = ofd.FileName;
+
             }
-            else pictureBox1.Image = null;
+        }
+
+        private void tbSearchEmployee_TextChanged(object sender, EventArgs e)
+        {
+            flp.Controls.Clear();
+            if (!string.IsNullOrEmpty(tbSearchEmployee.Text))
+            {
+                List<Account> acc = Account_BLL.Instance.searchAccount(tbSearchEmployee.Text);
+                foreach (ucAccountInfo p in Account_BLL.Instance.GetUcAccountInfos(acc))
+                {
+                    p.Click += uc_Click;
+                    flp.Controls.Add(p);
+                }
+            }
+            else
+                setFLP();
         }
     }
 }

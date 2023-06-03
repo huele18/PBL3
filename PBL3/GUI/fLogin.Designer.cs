@@ -65,7 +65,7 @@
             // txtPass
             // 
             this.txtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPass.DefaultText = "";
+            this.txtPass.DefaultText = "1";
             this.txtPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -74,19 +74,19 @@
             this.txtPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPass.ForeColor = System.Drawing.Color.Black;
             this.txtPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPass.Location = new System.Drawing.Point(214, 354);
+            this.txtPass.Location = new System.Drawing.Point(231, 354);
             this.txtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.PlaceholderText = "Password";
             this.txtPass.SelectedText = "";
-            this.txtPass.Size = new System.Drawing.Size(311, 37);
+            this.txtPass.Size = new System.Drawing.Size(296, 37);
             this.txtPass.TabIndex = 6;
             // 
             // txtName
             // 
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.DefaultText = "";
+            this.txtName.DefaultText = "D";
             this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -95,13 +95,13 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtName.ForeColor = System.Drawing.Color.Black;
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Location = new System.Drawing.Point(214, 277);
+            this.txtName.Location = new System.Drawing.Point(231, 277);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
             this.txtName.PlaceholderText = "Username";
             this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(311, 37);
+            this.txtName.Size = new System.Drawing.Size(296, 37);
             this.txtName.TabIndex = 5;
             // 
             // lbPass
@@ -130,9 +130,9 @@
             this.lbName.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(6, 287);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(202, 27);
+            this.lbName.Size = new System.Drawing.Size(210, 27);
             this.lbName.TabIndex = 0;
-            this.lbName.Text = "Tên đăng nhập: ";
+            this.lbName.Text = "Tên  đăng nhập: ";
             // 
             // panel4
             // 
@@ -151,8 +151,8 @@
             this.btExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btExit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btExit.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btExit.ForeColor = System.Drawing.Color.White;
+            this.btExit.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btExit.ForeColor = System.Drawing.Color.Black;
             this.btExit.Location = new System.Drawing.Point(285, 3);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(180, 57);
@@ -168,8 +168,8 @@
             this.btLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btLogin.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btLogin.ForeColor = System.Drawing.Color.White;
+            this.btLogin.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btLogin.ForeColor = System.Drawing.Color.Black;
             this.btLogin.Location = new System.Drawing.Point(77, 3);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(180, 57);

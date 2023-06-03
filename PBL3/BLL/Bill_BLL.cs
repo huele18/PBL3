@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,9 +50,9 @@ namespace PBL3.BLL
         {
             return Bill_DAL.Instance.getBillTableByIdTable(idtable);
         }
-        public List<ItemOrder> getBillInfoByIdBill(int idtable)
+        public List<ItemOrder> getBillInfoByIdBill(int idbill)
         {
-            return Bill_DAL.Instance.GetBillInfoByIdBill(idtable);
+            return Bill_DAL.Instance.GetBillInfoByIdBill(idbill);
         }
         public DataGridView getDetailBill(string ids)
         {
@@ -61,7 +60,7 @@ namespace PBL3.BLL
         }
         public bool idBillExit(int id)
         {
-            if(getBillById(id) != null) 
+            if (getBillById(id) != null)
             {
                 return true;
             }
@@ -69,7 +68,7 @@ namespace PBL3.BLL
         }
         public void addBill(Bill bill, List<ItemOrder> lio)
         {
-            if( !idBillExit(bill.idBill) )
+            if (!idBillExit(bill.idBill))
             {
                 Bill_DAL.Instance.addBill(bill, lio);
             }
@@ -78,14 +77,76 @@ namespace PBL3.BLL
                 MessageBox.Show("ID hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public List<Bill> getBillByMonth()
+        //public DataGridView showDGV()
+        //{
+        //    return Bill_DAL.Instance.getBill();
+        //}
+        //public List<CBBItem> getOrderedDrinnkCBB(string ids)
+        //{
+        //    return Bill_DAL.Instance.getOrderedDrinnkCBB(ids);
+        //}
+        //public int getTotal(string ids)
+        //{
+        //    return Bill_DAL.Instance.getTotal(ids);
+        //}
+
+        //public void delBill(string id)
+        //{
+        //    Bill_DAL.Instance.del(id);
+        //}
+        //public void editBill(Bill b)
+        //{
+        //    Bill_DAL.Instance.edit(b);
+        //}
+
+
+        //public List<Bill> getBillsPaid()
+        //{
+        //    return Bill_DAL.Instance.getBillsPaid();
+        //}
+        public Bill GetBillById(string id)
         {
-            return Bill_DAL.Instance.getBillByMonth();
+            foreach (Bill i in Bill_DAL.Instance.getBills())
+            {
+                if (i.idBill.ToString() == id) return i;
+            }
+            return null;
+        }
+        //public Bill getBillTableByIdTable(int idtable)
+        //{
+        //    return Bill_DAL.Instance.getBillTableByIdTable(idtable);
+        //}
+        //public List<ItemOrder> getBillInfoByIdBill(int idbill)
+        //{
+        //    return Bill_DAL.Instance.GetBillInfoByIdBill(idbill);
+        //}
+        //public DataGridView getDetailBill(string ids)
+        //{
+        //    return Bill_DAL.Instance.getDetailBill(ids);
+        //}
+
+
+
+
+
+
+        //Order
+        public void delItemOrder(string idbill)
+        {
+            Bill_DAL.Instance.delItemOrder(idbill);
+        }
+        public void updateItemOrder(ItemOrder item)
+        {
+            Bill_DAL.Instance.updateItemOrder(item);
+        }
+        public void addBill(Bill b)
+        {
+            Bill_DAL.Instance.addBill(b);
+        }
+        public void removeBill(string idbill)
+        {
+            Bill_DAL.Instance.removeBill(idbill);
         }
 
-        public List<ItemOrder> getDetailedBillByMonth()
-        {
-            return Bill_DAL.Instance.getDetailedBillByMonth(Bill_DAL.Instance.getBillByMonth());
-        }
     }
 }
