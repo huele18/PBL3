@@ -143,16 +143,6 @@ namespace PBL3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ImageCategory {
-            get {
-                object obj = ResourceManager.GetObject("ImageCategory", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap list {
             get {
                 object obj = ResourceManager.GetObject("list", resourceCulture);
@@ -205,7 +195,7 @@ namespace PBL3.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Thiết_kế_chưa_có_tên {
             get {
-                object obj = ResourceManager.GetObject("Thiết kế chưa có tên", resourceCulture);
+                object obj = ResourceManager.GetObject("Thiết_kế_chưa_có_tên", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

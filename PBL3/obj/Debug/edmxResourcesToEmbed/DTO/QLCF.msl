@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLCFModelStoreContainer" CdmEntityContainer="QuanLyQuanCafeEntities">
+  <EntityContainerMapping StorageEntityContainer="QuanLyQuanCafeModelStoreContainer" CdmEntityContainer="QuanLyQuanCafeEntities">
     <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="QLCFModel.Account">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Account">
         <MappingFragment StoreEntitySet="Account">
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="QLCFModel.Bill">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
@@ -30,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Foods">
-      <EntityTypeMapping TypeName="QLCFModel.Food">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Food">
         <MappingFragment StoreEntitySet="Food">
           <ScalarProperty Name="idFood" ColumnName="idFood" />
           <ScalarProperty Name="NameFood" ColumnName="NameFood" />
@@ -41,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FoodCategories">
-      <EntityTypeMapping TypeName="QLCFModel.FoodCategory">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.FoodCategory">
         <MappingFragment StoreEntitySet="FoodCategory">
           <ScalarProperty Name="idFoodCategory" ColumnName="idFoodCategory" />
           <ScalarProperty Name="Category" ColumnName="Category" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ItemOrders">
-      <EntityTypeMapping TypeName="QLCFModel.ItemOrder">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.ItemOrder">
         <MappingFragment StoreEntitySet="ItemOrder">
           <ScalarProperty Name="idorder" ColumnName="idorder" />
           <ScalarProperty Name="idBill" ColumnName="idBill" />
@@ -59,7 +59,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TableFoods">
-      <EntityTypeMapping TypeName="QLCFModel.TableFood">
+      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.TableFood">
         <MappingFragment StoreEntitySet="TableFood">
           <ScalarProperty Name="idTableFood" ColumnName="idTableFood" />
           <ScalarProperty Name="name" ColumnName="name" />

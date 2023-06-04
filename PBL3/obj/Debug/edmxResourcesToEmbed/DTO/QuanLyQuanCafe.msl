@@ -14,7 +14,7 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Calam" ColumnName="Calam" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Anh" ColumnName="Anh" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -26,6 +26,7 @@
           <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
           <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
           <ScalarProperty Name="idTable" ColumnName="idTable" />
+          <ScalarProperty Name="orderedDrink" ColumnName="orderedDrink" />
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -46,16 +47,6 @@
         <MappingFragment StoreEntitySet="FoodCategory">
           <ScalarProperty Name="idFoodCategory" ColumnName="idFoodCategory" />
           <ScalarProperty Name="Category" ColumnName="Category" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ItemOrders">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.ItemOrder">
-        <MappingFragment StoreEntitySet="ItemOrder">
-          <ScalarProperty Name="idorder" ColumnName="idorder" />
-          <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="idFood" ColumnName="idFood" />
-          <ScalarProperty Name="billquantity" ColumnName="billquantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
