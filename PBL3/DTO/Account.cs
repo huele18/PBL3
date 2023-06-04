@@ -18,6 +18,7 @@ namespace PBL3.DTO
         public Account()
         {
             this.Bills = new HashSet<Bill>();
+            this.Phancas = new HashSet<Phanca>();
         }
     
         public int idAccount { get; set; }
@@ -28,11 +29,12 @@ namespace PBL3.DTO
         public string email { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Calam { get; set; }
         public int Type { get; set; }
         public byte[] Anh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Phanca> Phancas { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyQuanCafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="CafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
@@ -12,10 +12,10 @@
     <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Calam" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__44FF419A" FromRole="Account" ToRole="Bill" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__440B1D61" FromRole="Account" ToRole="Bill" />
+    <NavigationProperty Name="Phancas" Relationship="Self.FK__Phanca__idAccoun__4D94879B" FromRole="Account" ToRole="Phanca" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
@@ -26,9 +26,19 @@
     <Property Name="thanhtoan" Type="Boolean" />
     <Property Name="idTable" Type="Int32" Nullable="false" />
     <Property Name="idAccount" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__44FF419A" FromRole="Bill" ToRole="Account" />
-    <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__idAccount__440B1D61" FromRole="Bill" ToRole="TableFood" />
-    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idBil__47DBAE45" FromRole="Bill" ToRole="ItemOrder" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Bill__idAccount__440B1D61" FromRole="Bill" ToRole="Account" />
+    <NavigationProperty Name="TableFood" Relationship="Self.FK__Bill__idAccount__4316F928" FromRole="Bill" ToRole="TableFood" />
+    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idBil__46E78A0C" FromRole="Bill" ToRole="ItemOrder" />
+  </EntityType>
+  <EntityType Name="Calam">
+    <Key>
+      <PropertyRef Name="idShift" />
+    </Key>
+    <Property Name="idShift" Type="Int32" Nullable="false" />
+    <Property Name="Display" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStart" Type="DateTime" Precision="3" />
+    <Property Name="TimeEnd" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Phancas" Relationship="Self.FK__Phanca__idShift__4CA06362" FromRole="Calam" ToRole="Phanca" />
   </EntityType>
   <EntityType Name="Food">
     <Key>
@@ -40,7 +50,7 @@
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="imageFood" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="FoodCategory" Relationship="Self.FK__Food__idCategory__403A8C7D" FromRole="Food" ToRole="FoodCategory" />
-    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idFoo__48CFD27E" FromRole="Food" ToRole="ItemOrder" />
+    <NavigationProperty Name="ItemOrders" Relationship="Self.FK__ItemOrder__idFoo__47DBAE45" FromRole="Food" ToRole="ItemOrder" />
   </EntityType>
   <EntityType Name="FoodCategory">
     <Key>
@@ -58,8 +68,19 @@
     <Property Name="idBill" Type="Int32" />
     <Property Name="idFood" Type="Int32" />
     <Property Name="billquantity" Type="Int32" />
-    <NavigationProperty Name="Bill" Relationship="Self.FK__ItemOrder__idBil__47DBAE45" FromRole="ItemOrder" ToRole="Bill" />
-    <NavigationProperty Name="Food" Relationship="Self.FK__ItemOrder__idFoo__48CFD27E" FromRole="ItemOrder" ToRole="Food" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK__ItemOrder__idBil__46E78A0C" FromRole="ItemOrder" ToRole="Bill" />
+    <NavigationProperty Name="Food" Relationship="Self.FK__ItemOrder__idFoo__47DBAE45" FromRole="ItemOrder" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="Phanca">
+    <Key>
+      <PropertyRef Name="idPhanca" />
+    </Key>
+    <Property Name="idPhanca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idShift" Type="Int32" />
+    <Property Name="idAccount" Type="Int32" />
+    <Property Name="Daywork" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Phanca__idAccoun__4D94879B" FromRole="Phanca" ToRole="Account" />
+    <NavigationProperty Name="Calam" Relationship="Self.FK__Phanca__idShift__4CA06362" FromRole="Phanca" ToRole="Calam" />
   </EntityType>
   <EntityType Name="TableFood">
     <Key>
@@ -68,9 +89,9 @@
     <Property Name="idTableFood" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__440B1D61" FromRole="TableFood" ToRole="Bill" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idAccount__4316F928" FromRole="TableFood" ToRole="Bill" />
   </EntityType>
-  <Association Name="FK__Bill__idAccount__44FF419A">
+  <Association Name="FK__Bill__idAccount__440B1D61">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -82,7 +103,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__idAccount__440B1D61">
+  <Association Name="FK__Phanca__idAccoun__4D94879B">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Phanca" Type="Self.Phanca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="idAccount" />
+      </Principal>
+      <Dependent Role="Phanca">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__idAccount__4316F928">
     <End Role="TableFood" Type="Self.TableFood" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -94,7 +127,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ItemOrder__idBil__47DBAE45">
+  <Association Name="FK__ItemOrder__idBil__46E78A0C">
     <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
     <End Role="ItemOrder" Type="Self.ItemOrder" Multiplicity="*" />
     <ReferentialConstraint>
@@ -103,6 +136,18 @@
       </Principal>
       <Dependent Role="ItemOrder">
         <PropertyRef Name="idBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Phanca__idShift__4CA06362">
+    <End Role="Calam" Type="Self.Calam" Multiplicity="0..1" />
+    <End Role="Phanca" Type="Self.Phanca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calam">
+        <PropertyRef Name="idShift" />
+      </Principal>
+      <Dependent Role="Phanca">
+        <PropertyRef Name="idShift" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -118,7 +163,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ItemOrder__idFoo__48CFD27E">
+  <Association Name="FK__ItemOrder__idFoo__47DBAE45">
     <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
     <End Role="ItemOrder" Type="Self.ItemOrder" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,27 +178,37 @@
   <EntityContainer Name="QuanLyQuanCafeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Accounts" EntityType="Self.Account" />
     <EntitySet Name="Bills" EntityType="Self.Bill" />
+    <EntitySet Name="Calams" EntityType="Self.Calam" />
     <EntitySet Name="Foods" EntityType="Self.Food" />
     <EntitySet Name="FoodCategories" EntityType="Self.FoodCategory" />
     <EntitySet Name="ItemOrders" EntityType="Self.ItemOrder" />
+    <EntitySet Name="Phancas" EntityType="Self.Phanca" />
     <EntitySet Name="TableFoods" EntityType="Self.TableFood" />
-    <AssociationSet Name="FK__Bill__idAccount__44FF419A" Association="Self.FK__Bill__idAccount__44FF419A">
+    <AssociationSet Name="FK__Bill__idAccount__440B1D61" Association="Self.FK__Bill__idAccount__440B1D61">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="Bill" EntitySet="Bills" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idAccount__440B1D61" Association="Self.FK__Bill__idAccount__440B1D61">
+    <AssociationSet Name="FK__Phanca__idAccoun__4D94879B" Association="Self.FK__Phanca__idAccoun__4D94879B">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Phanca" EntitySet="Phancas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__idAccount__4316F928" Association="Self.FK__Bill__idAccount__4316F928">
       <End Role="TableFood" EntitySet="TableFoods" />
       <End Role="Bill" EntitySet="Bills" />
     </AssociationSet>
-    <AssociationSet Name="FK__ItemOrder__idBil__47DBAE45" Association="Self.FK__ItemOrder__idBil__47DBAE45">
+    <AssociationSet Name="FK__ItemOrder__idBil__46E78A0C" Association="Self.FK__ItemOrder__idBil__46E78A0C">
       <End Role="Bill" EntitySet="Bills" />
       <End Role="ItemOrder" EntitySet="ItemOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Phanca__idShift__4CA06362" Association="Self.FK__Phanca__idShift__4CA06362">
+      <End Role="Calam" EntitySet="Calams" />
+      <End Role="Phanca" EntitySet="Phancas" />
     </AssociationSet>
     <AssociationSet Name="FK__Food__idCategory__403A8C7D" Association="Self.FK__Food__idCategory__403A8C7D">
       <End Role="FoodCategory" EntitySet="FoodCategories" />
       <End Role="Food" EntitySet="Foods" />
     </AssociationSet>
-    <AssociationSet Name="FK__ItemOrder__idFoo__48CFD27E" Association="Self.FK__ItemOrder__idFoo__48CFD27E">
+    <AssociationSet Name="FK__ItemOrder__idFoo__47DBAE45" Association="Self.FK__ItemOrder__idFoo__47DBAE45">
       <End Role="Food" EntitySet="Foods" />
       <End Role="ItemOrder" EntitySet="ItemOrders" />
     </AssociationSet>

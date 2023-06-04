@@ -101,7 +101,6 @@ namespace PBL3.DAL
                     p.address,
                     p.email,
                     p.UserName,
-                    p.Calam,
                     p.Type,
                     p.Anh
                 });
@@ -116,7 +115,6 @@ namespace PBL3.DAL
                         address = jacc.address,
                         email = jacc.email,
                         UserName = jacc.UserName,
-                        Calam = jacc.Calam,
                         Type = jacc.Type,
                         Anh = jacc.Anh,
                     };
@@ -189,7 +187,6 @@ namespace PBL3.DAL
                         p.address,
                         p.email,
                         p.UserName,
-                        p.Calam,
                         p.Type,
                         p.Anh
                     });
@@ -204,7 +201,6 @@ namespace PBL3.DAL
                         address = jacc.address,
                         email = jacc.email,
                         UserName = jacc.UserName,
-                        Calam = jacc.Calam,
                         Type = jacc.Type,
                         Anh = jacc.Anh,
                     };

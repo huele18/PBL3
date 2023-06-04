@@ -39,12 +39,7 @@ namespace PBL3.GUI
             txtEmail.Text = acc.email;
             txtUserName.Text = acc.UserName;
             txtPass.Text = acc.Password;
-            txtCalam.Text = acc.Calam;
             txtType.Text = acc.Type.ToString();
-            if (acc.Type == 1)
-            {
-                txtCalam.ReadOnly = false;
-            }
             if (acc.Anh != null)
             {
                 byte[] imageData = (byte[])acc.Anh;
@@ -123,7 +118,6 @@ namespace PBL3.GUI
                     acc.email = txtEmail.Text;
                     acc.UserName = txtUserName.Text;
                     acc.Password = txtPass.Text;
-                    acc.Calam = txtCalam.Text;
                     acc.Type = Convert.ToInt32(txtType.Text);
                     if (pictureBox1.Image != null)
                     {
@@ -146,7 +140,8 @@ namespace PBL3.GUI
 
         private void btsetPass_Click(object sender, EventArgs e)
         {
-            if(txtPass.Text != txtOldPass.Text)
+            string oldpass = Account_BLL.Instance.GetMD5(txtOldPass.Text);
+            if(txtPass.Text != oldpass)
             {
                 MessageBox.Show("Mật khẩu cũ không đúng. Vui lòng nhập lại.", "Cảnh báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -162,7 +157,7 @@ namespace PBL3.GUI
                 else
                 {
                     Account_BLL.Instance.changePassword(Convert.ToInt32(txtIDAccount.Text), txtNewPass1.Text);
-                    txtPass.Text = txtNewPass1.Text;
+                    txtPass.Text = Account_BLL.Instance.GetMD5(txtNewPass1.Text);
                     txtOldPass.Text = "";
                     txtNewPass1.Text = "";
                     txtNewPass2.Text = "";

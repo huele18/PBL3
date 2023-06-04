@@ -109,5 +109,10 @@ namespace PBL3
                 e.Cancel = true;
             }
         }
+
+        private void btCa_Click(object sender, EventArgs e)
+        {
+            openChildForm(new GUI.fCa(), sender);
+        }
     }
 }

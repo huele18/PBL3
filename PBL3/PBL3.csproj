@@ -237,16 +237,20 @@
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Bill_BLL.cs" />
     <Compile Include="BLL\Drink_BLL.cs" />
-    <Compile Include="BLL\QLCF_BLL.cs" />
+    <Compile Include="BLL\Shift_BLL.cs" />
     <Compile Include="BLL\Table_BLL.cs" />
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Bill_DAL.cs" />
     <Compile Include="DAL\Drink_DAL.cs" />
+    <Compile Include="DAL\Shift_DAL.cs" />
     <Compile Include="DAL\Table_DAL.cs" />
     <Compile Include="DTO\Account.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Bill.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Calam.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\CBBItem.cs" />
@@ -274,6 +278,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Phanca.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DTO\TableFood.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -288,6 +295,18 @@
     </Compile>
     <Compile Include="GUI\fAccountManager.Designer.cs">
       <DependentUpon>fAccountManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fAddShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fAddShift.Designer.cs">
+      <DependentUpon>fAddShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\fCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fCa.Designer.cs">
+      <DependentUpon>fCa.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\fEditCategoryFood.cs">
       <SubType>Form</SubType>
@@ -361,6 +380,12 @@
     <Compile Include="GUI\fTableManager.Designer.cs">
       <DependentUpon>fTableManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\fViewShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\fViewShift.Designer.cs">
+      <DependentUpon>fViewShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ucAccountInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -373,6 +398,12 @@
     <Compile Include="GUI\ucDrink.Designer.cs">
       <DependentUpon>ucDrink.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucShift.Designer.cs">
+      <DependentUpon>ucShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\DetailBill.resx">
@@ -380,6 +411,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fAccountManager.resx">
       <DependentUpon>fAccountManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fAddShift.resx">
+      <DependentUpon>fAddShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fCa.resx">
+      <DependentUpon>fCa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fEditCategoryFood.resx">
       <DependentUpon>fEditCategoryFood.cs</DependentUpon>
@@ -417,11 +454,17 @@
     <EmbeddedResource Include="GUI\fTableManager.resx">
       <DependentUpon>fTableManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\fViewShift.resx">
+      <DependentUpon>fViewShift.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucAccountInfo.resx">
       <DependentUpon>ucAccountInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDrink.resx">
       <DependentUpon>ucDrink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucShift.resx">
+      <DependentUpon>ucShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -507,6 +550,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\shift.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />

@@ -56,6 +56,11 @@ namespace PBL3.BLL
                 MessageBox.Show("ID bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            else if (checkTableName(tb.name))
+            {
+                MessageBox.Show("Tên bàn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             return true;
         }
         public void addTable(TableFood tb)

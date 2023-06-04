@@ -77,6 +77,23 @@ namespace PBL3.BLL
                 MessageBox.Show("ID hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        //bill filter
+        public DataGridView getBillbyDay()
+        {
+            return Bill_DAL.Instance.getBillbyDay();
+        }
+        public DataGridView getBillbyMonth()
+        {
+            return Bill_DAL.Instance.getBillbyMonth();
+        }
+        public DataGridView getBillbyYear()
+        {
+            return Bill_DAL.Instance.getBillbyYear();
+        }
+        public DataGridView searchBill(DateTime dateTime)
+        {
+            return Bill_DAL.Instance.searchBill(dateTime);
+        }
         //public DataGridView showDGV()
         //{
         //    return Bill_DAL.Instance.getBill();
@@ -104,14 +121,16 @@ namespace PBL3.BLL
         //{
         //    return Bill_DAL.Instance.getBillsPaid();
         //}
-        public Bill GetBillById(string id)
+
+        /*public Bill GetBillById(string id)
         {
             foreach (Bill i in Bill_DAL.Instance.getBills())
             {
                 if (i.idBill.ToString() == id) return i;
             }
             return null;
-        }
+        }*/
+
         //public Bill getBillTableByIdTable(int idtable)
         //{
         //    return Bill_DAL.Instance.getBillTableByIdTable(idtable);
@@ -131,7 +150,7 @@ namespace PBL3.BLL
 
 
         //Order
-        public void delItemOrder(string idbill)
+        /*public void delItemOrder(string idbill)
         {
             Bill_DAL.Instance.delItemOrder(idbill);
         }
@@ -146,7 +165,18 @@ namespace PBL3.BLL
         public void removeBill(string idbill)
         {
             Bill_DAL.Instance.removeBill(idbill);
+        }*/
+
+        
+        /*public List<Bill> getBillByMonth()
+        {
+            return Bill_DAL.Instance.getListBillByMonth();
         }
+
+        public List<ItemOrder> getDetailedBillByMonth()
+        {
+            return Bill_DAL.Instance.getDetailedBillByMonth(Bill_DAL.Instance.getListBillByMonth());
+        }*/
 
     }
 }

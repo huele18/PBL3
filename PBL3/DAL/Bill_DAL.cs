@@ -365,5 +365,146 @@ namespace PBL3.DAL
                 db.SaveChanges();
             }
         }
+        // bill manager
+        /*public List<Bill> getListBillByMonth()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                List<Bill> bill = new List<Bill>();
+                foreach (Bill b in db.Bills)
+                {
+                    DateTime mbill = (DateTime)b.paymenttime;
+                    if (mbill.Month == DateTime.Now.Month && mbill.Year == DateTime.Now.Year)
+                    {
+                        bill.Add(b);
+                    }
+                }
+                return bill;
+            }
+        }
+
+        public List<ItemOrder> getDetailedBillByMonth(List<Bill> bill)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                List<ItemOrder> io = new List<ItemOrder>();
+                foreach (Bill b in bill)
+                {
+                    var item = db.ItemOrders.Where(p => p.idBill == b.idBill);
+                    io.AddRange(item);
+                }
+                return io;
+            }
+        }*/
+        public DataGridView getBillbyDay()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                DataGridView bill = new DataGridView();
+                var j = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList();
+                var vbill = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList();
+                foreach (var b in j)
+                {
+                    DateTime dbill = (DateTime)b.paymenttime;
+                    if (dbill.Day != DateTime.Now.Day || dbill.Month != DateTime.Now.Month || dbill.Year != DateTime.Now.Year)
+                    {
+                        vbill.Remove(b);
+                    }
+                }
+                bill.DataSource = vbill;
+                return bill;
+            }
+        }
+        public DataGridView getBillbyMonth()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                DataGridView bill = new DataGridView();
+                var j = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList();
+                var vbill = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList(); ;
+                foreach (var b in j)
+                {
+                    DateTime mbill = (DateTime)b.paymenttime;
+                    if (mbill.Month != DateTime.Now.Month || mbill.Year != DateTime.Now.Year)
+                    {
+                        vbill.Remove(b);
+                    }
+                }
+                bill.DataSource = vbill;
+                return bill;
+            }
+        }
+        public DataGridView getBillbyYear()
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                DataGridView bill = new DataGridView();
+                var j = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList();
+                var vbill = db.Bills.Select(p => new {
+                    p.idBill,
+                    p.idAccount,
+                    p.paymenttime,
+                    p.thanhtoan,
+                    p.TableFood.name
+                }).ToList();
+                foreach (var b in j)
+                {
+                    DateTime ybill = (DateTime)b.paymenttime;
+                    if (ybill.Year != DateTime.Now.Year)
+                    {
+                        vbill.Remove(b);
+                    }
+                }
+                bill.DataSource = vbill;
+                return bill;
+            }
+        }
+        public DataGridView searchBill(DateTime dateTime)
+        {
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                DataGridView bill = new DataGridView();
+                bill.DataSource = db.Bills
+                    .Where(p => ((DateTime)p.paymenttime).Day == dateTime.Day && ((DateTime)p.paymenttime).Month == dateTime.Month && ((DateTime)p.paymenttime).Year == dateTime.Year)
+                    .Select(p => new {
+                        p.idBill,
+                        p.idAccount,
+                        p.paymenttime,
+                        p.thanhtoan,
+                        p.TableFood.name
+                    }).ToList();
+                return bill;
+            }
+        }
     }
 }

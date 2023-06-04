@@ -18,6 +18,7 @@ namespace PBL3.GUI
         {
             InitializeComponent();
             setCBBTable();
+            setCBB();
             setDGV();
         }
         public void setCBBTable()
@@ -113,6 +114,59 @@ namespace PBL3.GUI
             string idbill = dgvInvoice.Rows[e.RowIndex].Cells["idBill"].Value.ToString();
             DetailBill dtb = new DetailBill(idbill);
             dtb.ShowDialog();
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = ((CBBItem)cbFilter.SelectedItem).Value;
+            switch (index)
+            {
+                case 0:
+                    dgvInvoice.DataSource = Bill_BLL.Instance.showDGV().DataSource;
+                    break;
+                case 1:
+                    dgvInvoice.DataSource = Bill_BLL.Instance.getBillbyDay().DataSource;
+                    break;
+                case 2:
+                    dgvInvoice.DataSource = Bill_BLL.Instance.getBillbyMonth().DataSource;
+                    break;
+                case 3:
+                    dgvInvoice.DataSource = Bill_BLL.Instance.getBillbyYear().DataSource;
+                    break;
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime dateTime = (DateTime)searchDate.Value;
+            dgvInvoice.DataSource = Bill_BLL.Instance.searchBill(dateTime).DataSource;
+        }
+        public void setCBB()
+        {
+            List<CBBItem> list = new List<CBBItem>
+            {
+                new CBBItem
+                {
+                    Value = 0,
+                    Text = "Tất cả"
+                },
+                new CBBItem
+                {
+                    Value = 1,
+                    Text = "Theo ngày"
+                },
+                new CBBItem
+                {
+                    Value = 2,
+                    Text = "Theo tháng"
+                },
+                new CBBItem
+                {
+                    Value = 3,
+                    Text = "Theo năm"
+                },
+            };
+            cbFilter.DataSource = list;
+            cbFilter.SelectedIndex = 0;
         }
     }
 }

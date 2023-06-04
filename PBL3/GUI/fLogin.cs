@@ -24,7 +24,9 @@ namespace PBL3.GUI
             //this.Hide();
             //m.ShowDialog();
             //this.Show();
-            int login = Account_BLL.Instance.checkLogin(txtName.Text, txtPass.Text);
+
+            //int login = Account_BLL.Instance.checkLogin(txtName.Text, txtPass.Text);
+            int login = Account_BLL.Instance.checkLogin(txtName.Text, Account_BLL.Instance.GetMD5(txtPass.Text));
             if (login == 1)
             {
                 fMainAdmin f = new fMainAdmin(txtName.Text);

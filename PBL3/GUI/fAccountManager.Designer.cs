@@ -37,7 +37,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +49,6 @@
             this.txtDisplayName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCalam = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -92,7 +90,6 @@
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label3);
@@ -105,7 +102,6 @@
             this.tabPage1.Controls.Add(this.txtDisplayName);
             this.tabPage1.Controls.Add(this.txtAddress);
             this.tabPage1.Controls.Add(this.txtEmail);
-            this.tabPage1.Controls.Add(this.txtCalam);
             this.tabPage1.Controls.Add(this.txtUserName);
             this.tabPage1.Controls.Add(this.txtSDT);
             this.tabPage1.Controls.Add(this.txtPass);
@@ -191,7 +187,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(417, 538);
+            this.label11.Location = new System.Drawing.Point(417, 497);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(157, 27);
             this.label11.TabIndex = 20;
@@ -209,18 +205,6 @@
             this.label14.TabIndex = 19;
             this.label14.Text = "Thêm ảnh";
             this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(417, 492);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 27);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Ca làm:";
             // 
             // label4
             // 
@@ -320,7 +304,7 @@
             // 
             this.txtType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtType.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.txtType.Location = new System.Drawing.Point(632, 531);
+            this.txtType.Location = new System.Drawing.Point(632, 490);
             this.txtType.Name = "txtType";
             this.txtType.ReadOnly = true;
             this.txtType.Size = new System.Drawing.Size(345, 34);
@@ -352,16 +336,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(345, 34);
             this.txtEmail.TabIndex = 7;
-            // 
-            // txtCalam
-            // 
-            this.txtCalam.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCalam.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.txtCalam.Location = new System.Drawing.Point(632, 486);
-            this.txtCalam.Name = "txtCalam";
-            this.txtCalam.ReadOnly = true;
-            this.txtCalam.Size = new System.Drawing.Size(345, 34);
-            this.txtCalam.TabIndex = 6;
             // 
             // txtUserName
             // 
@@ -546,7 +520,6 @@
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
@@ -559,7 +532,6 @@
         private System.Windows.Forms.TextBox txtDisplayName;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtCalam;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtPass;

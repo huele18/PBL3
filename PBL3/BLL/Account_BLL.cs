@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 using PBL3.DAL;
 using PBL3.DTO;
 using PBL3.GUI;
@@ -86,7 +87,7 @@ namespace PBL3.BLL
         }
         public void changePassword(int id, string passNew)
         {
-            Account_DAL.Instance.changePassword(id, passNew);
+            Account_DAL.Instance.changePassword(id, GetMD5(passNew));
         }
 
         // staffManager
@@ -96,7 +97,6 @@ namespace PBL3.BLL
         }
         public int addNV(Account nv)
         {
-            Account acc = Account_DAL.Instance.getAccountByID(nv.idAccount);
             if
             (string.IsNullOrWhiteSpace(nv.DisplayName) ||
              string.IsNullOrWhiteSpace(nv.SDT) ||
@@ -109,7 +109,7 @@ namespace PBL3.BLL
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 2;
             }
-            else if ((nv.UserName != acc.UserName) && (Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
+            else if ((Account_DAL.Instance.getAccountByUsername(nv.UserName) != null))
             {
                 MessageBox.Show("Username đã tồn tại. Vui lòng nhập lại.", "Cảnh báo",
                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -122,6 +122,7 @@ namespace PBL3.BLL
             }
             else
             {
+                nv.Password = GetMD5(nv.Password);
                 Account_DAL.Instance.add(nv);
                 return 0;
             }
@@ -140,6 +141,7 @@ namespace PBL3.BLL
             }
             else
             {
+                after.Password = GetMD5(after.Password);
                 Account_DAL.Instance.update(after);
                 return 0;
             }
@@ -194,7 +196,6 @@ namespace PBL3.BLL
                 f.lbSdt.Text = dr.SDT;
                 f.lbEmail.Text = dr.email;
                 f.lbAddress.Text = dr.address;
-                f.lbCa.Text = dr.Calam;
                 //f.lbID.Text = dr.idFood.ToString();
                 //f.lbNameFood.Text = dr.NameFood;
                 //f.lbPrice.Text = dr.price.ToString();
@@ -202,6 +203,17 @@ namespace PBL3.BLL
                 uc.Add(f);
             }
             return uc;
+        }
+        public string GetMD5(string text)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] hash = md5.ComputeHash(Encoding.UTF8.GetBytes(text));
+            StringBuilder hashSb = new StringBuilder();
+            foreach (byte b in hash)
+            {
+                hashSb.Append(b.ToString("X2"));
+            }
+            return hashSb.ToString();
         }
     }
 }

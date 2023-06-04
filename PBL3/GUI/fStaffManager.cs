@@ -56,7 +56,6 @@ namespace PBL3.GUI
             tbEmail.Text = acc.email;
             tbUsername.Text = acc.UserName;
             tbAccessCode.Text = acc.Type.ToString();
-            tbShift.Text = acc.Calam;
             if (acc.Anh != null)
             {
                 byte[] imageData = (byte[])acc.Anh;
@@ -83,12 +82,6 @@ namespace PBL3.GUI
             {
                 MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbEmployeeName.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(tbShift.Text))
-            {
-                MessageBox.Show("Chưa nhập vào teen nhaan vieen", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbShift.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(tbEmployeeId.Text))
@@ -134,7 +127,6 @@ namespace PBL3.GUI
                 nv.email = tbEmail.Text;
                 nv.UserName = tbUsername.Text;
                 nv.Password = pw;
-                nv.Calam = tbShift.Text;
                 nv.Type = Convert.ToInt32(tbAccessCode.Text);
                 nv.Anh = ImageToByteArray(pictureBox1);
                 int add = Account_BLL.Instance.addNV(nv);
@@ -179,7 +171,6 @@ namespace PBL3.GUI
                 nv.address = tbAddress.Text;
                 nv.UserName = tbUsername.Text;
                 nv.Anh = ImageToByteArray(pictureBox1);
-                nv.Calam = tbShift.Text;
                 int Type = Convert.ToInt32(tbAccessCode.Text);
                 int update = Account_BLL.Instance.updateAccount(nv);
                 switch (update)
@@ -194,7 +185,6 @@ namespace PBL3.GUI
                         tbAddress.Text = "";
                         tbEmail.Text = "";
                         tbUsername.Text = "";
-                        tbShift.Text = "";
                         tbAccessCode.Text = "";
                         pictureBox1.Image = null;
                         setFLP();

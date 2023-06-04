@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QuanLyQuanCafeModelStoreContainer" CdmEntityContainer="QuanLyQuanCafeEntities">
+  <EntityContainerMapping StorageEntityContainer="CafeModelStoreContainer" CdmEntityContainer="QuanLyQuanCafeEntities">
     <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Account">
+      <EntityTypeMapping TypeName="CafeModel.Account">
         <MappingFragment StoreEntitySet="Account">
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -12,14 +12,13 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Calam" ColumnName="Calam" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Anh" ColumnName="Anh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Bill">
+      <EntityTypeMapping TypeName="CafeModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="paymenttime" ColumnName="paymenttime" />
@@ -29,8 +28,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Calams">
+      <EntityTypeMapping TypeName="CafeModel.Calam">
+        <MappingFragment StoreEntitySet="Calam">
+          <ScalarProperty Name="idShift" ColumnName="idShift" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+          <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Foods">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.Food">
+      <EntityTypeMapping TypeName="CafeModel.Food">
         <MappingFragment StoreEntitySet="Food">
           <ScalarProperty Name="idFood" ColumnName="idFood" />
           <ScalarProperty Name="NameFood" ColumnName="NameFood" />
@@ -41,7 +50,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FoodCategories">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.FoodCategory">
+      <EntityTypeMapping TypeName="CafeModel.FoodCategory">
         <MappingFragment StoreEntitySet="FoodCategory">
           <ScalarProperty Name="idFoodCategory" ColumnName="idFoodCategory" />
           <ScalarProperty Name="Category" ColumnName="Category" />
@@ -49,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ItemOrders">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.ItemOrder">
+      <EntityTypeMapping TypeName="CafeModel.ItemOrder">
         <MappingFragment StoreEntitySet="ItemOrder">
           <ScalarProperty Name="idorder" ColumnName="idorder" />
           <ScalarProperty Name="idBill" ColumnName="idBill" />
@@ -58,8 +67,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Phancas">
+      <EntityTypeMapping TypeName="CafeModel.Phanca">
+        <MappingFragment StoreEntitySet="Phanca">
+          <ScalarProperty Name="idPhanca" ColumnName="idPhanca" />
+          <ScalarProperty Name="idShift" ColumnName="idShift" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="Daywork" ColumnName="Daywork" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableFoods">
-      <EntityTypeMapping TypeName="QuanLyQuanCafeModel.TableFood">
+      <EntityTypeMapping TypeName="CafeModel.TableFood">
         <MappingFragment StoreEntitySet="TableFood">
           <ScalarProperty Name="idTableFood" ColumnName="idTableFood" />
           <ScalarProperty Name="name" ColumnName="name" />
