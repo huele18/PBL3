@@ -136,5 +136,19 @@ namespace PBL3.DAL
             }
             return 0;
         }
+
+        public string rateOfTable()
+        {
+            string count;
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var query = db.TableFoods.Count();
+                var queryuse = db.TableFoods
+                    .Where(p => p.status == "Có Người")
+                    .Count();
+                count = queryuse + "/" + query;
+            }
+            return count;
+        }
     }
 }

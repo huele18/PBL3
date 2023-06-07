@@ -47,7 +47,7 @@ namespace PBL3.BLL
             foreach(string i in thu)
             {
                 ucShift uc = new ucShift();
-                uc.Margin = new System.Windows.Forms.Padding(20, 10, 5, 3);
+                uc.Margin = new System.Windows.Forms.Padding(20, 3, 5, 3);
                 uc.lbThu.Text = i;
                 foreach(Phanca phanca in getPhancaByThu(i))
                 {

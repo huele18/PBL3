@@ -36,14 +36,15 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.panelForm = new System.Windows.Forms.Panel();
             this.lbNotify = new System.Windows.Forms.Label();
+            this.btLogout = new System.Windows.Forms.Button();
+            this.btAccount = new System.Windows.Forms.Button();
             this.btCa = new System.Windows.Forms.Button();
+            this.btStatistic = new System.Windows.Forms.Button();
             this.btBill = new System.Windows.Forms.Button();
             this.btStaff = new System.Windows.Forms.Button();
             this.btMenu = new System.Windows.Forms.Button();
             this.btTable = new System.Windows.Forms.Button();
             this.btHome = new System.Windows.Forms.Button();
-            this.btAccount = new System.Windows.Forms.Button();
-            this.btLogout = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTitle.SuspendLayout();
@@ -56,6 +57,7 @@
             this.panelMenu.Controls.Add(this.btLogout);
             this.panelMenu.Controls.Add(this.btAccount);
             this.panelMenu.Controls.Add(this.btCa);
+            this.panelMenu.Controls.Add(this.btStatistic);
             this.panelMenu.Controls.Add(this.btBill);
             this.panelMenu.Controls.Add(this.btStaff);
             this.panelMenu.Controls.Add(this.btMenu);
@@ -70,34 +72,34 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
             this.panel1.Controls.Add(this.lbPosition);
             this.panel1.Controls.Add(this.lbNameAccount);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 124);
+            this.panel1.Size = new System.Drawing.Size(260, 90);
             this.panel1.TabIndex = 0;
             // 
             // lbPosition
             // 
-            this.lbPosition.AutoSize = true;
             this.lbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPosition.Location = new System.Drawing.Point(77, 77);
+            this.lbPosition.Location = new System.Drawing.Point(0, 51);
             this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(86, 20);
+            this.lbPosition.Size = new System.Drawing.Size(260, 20);
             this.lbPosition.TabIndex = 1;
             this.lbPosition.Text = "<Quản lý>";
+            this.lbPosition.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbNameAccount
             // 
-            this.lbNameAccount.AutoSize = true;
             this.lbNameAccount.Font = new System.Drawing.Font("Lucida Handwriting", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameAccount.Location = new System.Drawing.Point(54, 28);
+            this.lbNameAccount.Location = new System.Drawing.Point(0, 9);
             this.lbNameAccount.Name = "lbNameAccount";
-            this.lbNameAccount.Size = new System.Drawing.Size(99, 29);
+            this.lbNameAccount.Size = new System.Drawing.Size(260, 29);
             this.lbNameAccount.TabIndex = 0;
             this.lbNameAccount.Text = "label1";
+            this.lbNameAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTitle
             // 
@@ -106,41 +108,75 @@
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(260, 0);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1341, 124);
+            this.panelTitle.Size = new System.Drawing.Size(1341, 90);
             this.panelTitle.TabIndex = 1;
             // 
             // lbTitle
             // 
-            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTitle.AutoSize = true;
+            this.lbTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTitle.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(442, 47);
+            this.lbTitle.Location = new System.Drawing.Point(0, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(507, 40);
+            this.lbTitle.Size = new System.Drawing.Size(1341, 90);
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "Hệ thống quản lý quán cafe";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelForm
             // 
             this.panelForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
             this.panelForm.Controls.Add(this.lbNotify);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelForm.Location = new System.Drawing.Point(260, 124);
+            this.panelForm.Location = new System.Drawing.Point(260, 90);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1341, 779);
+            this.panelForm.Size = new System.Drawing.Size(1341, 813);
             this.panelForm.TabIndex = 2;
             // 
             // lbNotify
             // 
-            this.lbNotify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbNotify.AutoSize = true;
+            this.lbNotify.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbNotify.Font = new System.Drawing.Font("Lucida Handwriting", 28F, System.Drawing.FontStyle.Bold);
-            this.lbNotify.Location = new System.Drawing.Point(196, 240);
+            this.lbNotify.Image = global::PBL3.Properties.Resources.HNT;
+            this.lbNotify.Location = new System.Drawing.Point(0, 0);
             this.lbNotify.Name = "lbNotify";
-            this.lbNotify.Size = new System.Drawing.Size(827, 122);
+            this.lbNotify.Size = new System.Drawing.Size(1341, 813);
             this.lbNotify.TabIndex = 0;
-            this.lbNotify.Text = "Chào mừng đến với hệ thống \r\nquản lý quán Cafe";
             this.lbNotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btLogout
+            // 
+            this.btLogout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLogout.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
+            this.btLogout.Image = global::PBL3.Properties.Resources.logout;
+            this.btLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btLogout.Location = new System.Drawing.Point(0, 730);
+            this.btLogout.Name = "btLogout";
+            this.btLogout.Size = new System.Drawing.Size(260, 80);
+            this.btLogout.TabIndex = 25;
+            this.btLogout.Text = " Đăng xuất";
+            this.btLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btLogout.UseVisualStyleBackColor = true;
+            this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
+            // 
+            // btAccount
+            // 
+            this.btAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btAccount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAccount.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
+            this.btAccount.Image = global::PBL3.Properties.Resources.user;
+            this.btAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAccount.Location = new System.Drawing.Point(0, 650);
+            this.btAccount.Name = "btAccount";
+            this.btAccount.Size = new System.Drawing.Size(260, 80);
+            this.btAccount.TabIndex = 24;
+            this.btAccount.Text = " Tài khoản";
+            this.btAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btAccount.UseVisualStyleBackColor = true;
+            this.btAccount.Click += new System.EventHandler(this.btAccount_Click);
             // 
             // btCa
             // 
@@ -150,14 +186,31 @@
             this.btCa.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btCa.Image = global::PBL3.Properties.Resources.shift;
             this.btCa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btCa.Location = new System.Drawing.Point(0, 524);
+            this.btCa.Location = new System.Drawing.Point(0, 570);
             this.btCa.Name = "btCa";
             this.btCa.Size = new System.Drawing.Size(260, 80);
-            this.btCa.TabIndex = 17;
+            this.btCa.TabIndex = 23;
             this.btCa.Text = "Ca làm";
             this.btCa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btCa.UseVisualStyleBackColor = true;
             this.btCa.Click += new System.EventHandler(this.btCa_Click);
+            // 
+            // btStatistic
+            // 
+            this.btStatistic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btStatistic.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
+            this.btStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btStatistic.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
+            this.btStatistic.Image = global::PBL3.Properties.Resources.trend;
+            this.btStatistic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btStatistic.Location = new System.Drawing.Point(0, 490);
+            this.btStatistic.Name = "btStatistic";
+            this.btStatistic.Size = new System.Drawing.Size(260, 80);
+            this.btStatistic.TabIndex = 22;
+            this.btStatistic.Text = "Thống kê";
+            this.btStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btStatistic.UseVisualStyleBackColor = true;
+            this.btStatistic.Click += new System.EventHandler(this.btStatistic_Click);
             // 
             // btBill
             // 
@@ -167,7 +220,7 @@
             this.btBill.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btBill.Image = global::PBL3.Properties.Resources.bill;
             this.btBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btBill.Location = new System.Drawing.Point(0, 444);
+            this.btBill.Location = new System.Drawing.Point(0, 410);
             this.btBill.Name = "btBill";
             this.btBill.Size = new System.Drawing.Size(260, 80);
             this.btBill.TabIndex = 14;
@@ -184,7 +237,7 @@
             this.btStaff.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btStaff.Image = global::PBL3.Properties.Resources.team;
             this.btStaff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btStaff.Location = new System.Drawing.Point(0, 364);
+            this.btStaff.Location = new System.Drawing.Point(0, 330);
             this.btStaff.Name = "btStaff";
             this.btStaff.Size = new System.Drawing.Size(260, 80);
             this.btStaff.TabIndex = 13;
@@ -201,7 +254,7 @@
             this.btMenu.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btMenu.Image = global::PBL3.Properties.Resources.list;
             this.btMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMenu.Location = new System.Drawing.Point(0, 284);
+            this.btMenu.Location = new System.Drawing.Point(0, 250);
             this.btMenu.Name = "btMenu";
             this.btMenu.Size = new System.Drawing.Size(260, 80);
             this.btMenu.TabIndex = 12;
@@ -218,7 +271,7 @@
             this.btTable.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btTable.Image = global::PBL3.Properties.Resources.dining_table;
             this.btTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btTable.Location = new System.Drawing.Point(0, 204);
+            this.btTable.Location = new System.Drawing.Point(0, 170);
             this.btTable.Name = "btTable";
             this.btTable.Size = new System.Drawing.Size(260, 80);
             this.btTable.TabIndex = 11;
@@ -235,7 +288,7 @@
             this.btHome.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
             this.btHome.Image = global::PBL3.Properties.Resources.home;
             this.btHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btHome.Location = new System.Drawing.Point(0, 124);
+            this.btHome.Location = new System.Drawing.Point(0, 90);
             this.btHome.Name = "btHome";
             this.btHome.Size = new System.Drawing.Size(260, 80);
             this.btHome.TabIndex = 10;
@@ -243,40 +296,6 @@
             this.btHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btHome.UseVisualStyleBackColor = true;
             this.btHome.Click += new System.EventHandler(this.btHome_Click);
-            // 
-            // btAccount
-            // 
-            this.btAccount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btAccount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAccount.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
-            this.btAccount.Image = global::PBL3.Properties.Resources.user;
-            this.btAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAccount.Location = new System.Drawing.Point(0, 604);
-            this.btAccount.Name = "btAccount";
-            this.btAccount.Size = new System.Drawing.Size(260, 80);
-            this.btAccount.TabIndex = 19;
-            this.btAccount.Text = " Tài khoản";
-            this.btAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btAccount.UseVisualStyleBackColor = true;
-            this.btAccount.Click += new System.EventHandler(this.btAccount_Click);
-            // 
-            // btLogout
-            // 
-            this.btLogout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(125)))), ((int)(((byte)(55)))));
-            this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogout.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold);
-            this.btLogout.Image = global::PBL3.Properties.Resources.logout;
-            this.btLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btLogout.Location = new System.Drawing.Point(0, 684);
-            this.btLogout.Name = "btLogout";
-            this.btLogout.Size = new System.Drawing.Size(260, 80);
-            this.btLogout.TabIndex = 21;
-            this.btLogout.Text = " Đăng xuất";
-            this.btLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btLogout.UseVisualStyleBackColor = true;
-            this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
             // fMainAdmin
             // 
@@ -292,11 +311,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fMain_FormClosing);
             this.panelMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panelTitle.ResumeLayout(false);
-            this.panelTitle.PerformLayout();
             this.panelForm.ResumeLayout(false);
-            this.panelForm.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -311,14 +327,15 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.Label lbNotify;
-        private System.Windows.Forms.Button btCa;
         private System.Windows.Forms.Button btBill;
         private System.Windows.Forms.Button btStaff;
         private System.Windows.Forms.Button btMenu;
         private System.Windows.Forms.Button btTable;
         private System.Windows.Forms.Button btHome;
+        private System.Windows.Forms.Button btStatistic;
         private System.Windows.Forms.Button btLogout;
         private System.Windows.Forms.Button btAccount;
+        private System.Windows.Forms.Button btCa;
     }
 }
 

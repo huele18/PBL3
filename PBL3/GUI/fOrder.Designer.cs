@@ -31,6 +31,11 @@
             this.pnOrder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtIdBill = new System.Windows.Forms.TextBox();
             this.txtTable = new System.Windows.Forms.TextBox();
@@ -52,11 +57,6 @@
             this.btThanhToan = new System.Windows.Forms.Button();
             this.grbTable = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.idFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnOrder.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -116,6 +116,45 @@
             this.dgvOrders.RowTemplate.Height = 24;
             this.dgvOrders.Size = new System.Drawing.Size(650, 495);
             this.dgvOrders.TabIndex = 1;
+            // 
+            // idFood
+            // 
+            this.idFood.DataPropertyName = "idFood";
+            this.idFood.HeaderText = "ID";
+            this.idFood.MinimumWidth = 6;
+            this.idFood.Name = "idFood";
+            this.idFood.Width = 125;
+            // 
+            // NameFood
+            // 
+            this.NameFood.DataPropertyName = "NameFood";
+            this.NameFood.HeaderText = "Tên Đồ uống";
+            this.NameFood.MinimumWidth = 6;
+            this.NameFood.Name = "NameFood";
+            this.NameFood.Width = 125;
+            // 
+            // count
+            // 
+            this.count.DataPropertyName = "billquantity";
+            this.count.HeaderText = "Số lượng";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 125;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Đơn giá";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Tổng Tiền";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
             // 
             // panel1
             // 
@@ -324,7 +363,7 @@
             // 
             // grbTable
             // 
-            this.grbTable.BackColor = System.Drawing.SystemColors.Info;
+            this.grbTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(226)))), ((int)(((byte)(182)))));
             this.grbTable.Controls.Add(this.flowLayoutPanel1);
             this.grbTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbTable.Font = new System.Drawing.Font("Times New Roman", 14F);
@@ -338,50 +377,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Info;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(684, 746);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // idFood
-            // 
-            this.idFood.DataPropertyName = "idFood";
-            this.idFood.HeaderText = "ID";
-            this.idFood.MinimumWidth = 6;
-            this.idFood.Name = "idFood";
-            this.idFood.Width = 125;
-            // 
-            // NameFood
-            // 
-            this.NameFood.DataPropertyName = "NameFood";
-            this.NameFood.HeaderText = "Tên Đồ uống";
-            this.NameFood.MinimumWidth = 6;
-            this.NameFood.Name = "NameFood";
-            this.NameFood.Width = 125;
-            // 
-            // count
-            // 
-            this.count.DataPropertyName = "billquantity";
-            this.count.HeaderText = "Số lượng";
-            this.count.MinimumWidth = 6;
-            this.count.Name = "count";
-            this.count.Width = 125;
-            // 
-            // price
-            // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "Đơn giá";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Tổng Tiền";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.Width = 125;
             // 
             // fOrder
             // 

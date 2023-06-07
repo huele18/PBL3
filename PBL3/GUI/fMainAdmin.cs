@@ -114,5 +114,10 @@ namespace PBL3
         {
             openChildForm(new GUI.fCa(), sender);
         }
+
+        private void btStatistic_Click(object sender, EventArgs e)
+        {
+            openChildForm(new GUI.fStatisticManager(), sender);
+        }
     }
 }

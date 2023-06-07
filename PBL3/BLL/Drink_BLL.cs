@@ -136,7 +136,7 @@ namespace PBL3.BLL
         public List<Food> getTop3Bestseller()
         {
             List<Food> f = new List<Food>();
-            foreach (var i in Drink_DAL.Instance.getBestSeller().Take(3))
+            foreach (var i in Drink_DAL.Instance.sortDrink().Take(3))
             {
                 int idfood = i.Key;
                 Food food = Drink_BLL.Instance.getFoodById(idfood.ToString());
@@ -184,6 +184,13 @@ namespace PBL3.BLL
                 list.Add(pic);
             }
             return list;
+        }
+
+
+
+        public List<KeyValuePair<string, int>> Sort()
+        {
+            return Drink_DAL.Instance.Sort().Take(8).ToList();
         }
     }
 }

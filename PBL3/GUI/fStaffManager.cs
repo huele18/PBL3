@@ -223,15 +223,46 @@ namespace PBL3.GUI
         }
         private void browse_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Please choose a picture";
-            ofd.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
-            ofd.Multiselect = false;
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.pictureBox1.ImageLocation = ofd.FileName;
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Title = "Please choose a picture";
+            //ofd.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
+            //ofd.Multiselect = false;
+            //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    this.pictureBox1.ImageLocation = ofd.FileName;
 
+            //}
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Lấy đường dẫn tệp tin ảnh đã chọn
+                string imagePath = ofd.FileName;
+
+                // Cắt ảnh thành hình vuông
+                Image squareImage = CropToSquare(Image.FromFile(imagePath));
+
+                // Hiển thị ảnh cắt được trong PictureBox
+                pictureBox1.Image = squareImage;
+                //pictureBox1.Image = new Bitmap(ofd.FileName);
+                //MemoryStream ms = new MemoryStream();
+                //pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
             }
+            else pictureBox1.Image = null;
+        }
+        private Image CropToSquare(Image image)
+        {
+            int size = Math.Min(image.Width, image.Height);
+            int x = (image.Width - size) / 2;
+            int y = (image.Height - size) / 2;
+
+            Bitmap squareImage = new Bitmap(size, size);
+            using (Graphics graphics = Graphics.FromImage(squareImage))
+            {
+                graphics.DrawImage(image, new Rectangle(0, 0, size, size),
+                    new Rectangle(x, y, size, size), GraphicsUnit.Pixel);
+            }
+
+            return squareImage;
         }
 
         private void tbSearchEmployee_TextChanged(object sender, EventArgs e)

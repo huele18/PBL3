@@ -142,5 +142,10 @@ namespace PBL3.BLL
         {
             return Table_DAL.Instance.getTableIDByName(name);
         }
+
+        public string rateOfTable()
+        {
+            return Table_DAL.Instance.rateOfTable();
+        }
     }
 }

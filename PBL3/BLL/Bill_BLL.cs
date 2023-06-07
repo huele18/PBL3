@@ -167,7 +167,7 @@ namespace PBL3.BLL
             Bill_DAL.Instance.removeBill(idbill);
         }*/
 
-        
+
         /*public List<Bill> getBillByMonth()
         {
             return Bill_DAL.Instance.getListBillByMonth();
@@ -177,6 +177,21 @@ namespace PBL3.BLL
         {
             return Bill_DAL.Instance.getDetailedBillByMonth(Bill_DAL.Instance.getListBillByMonth());
         }*/
-
+        public List<KeyValuePair<int, int>> hourly(DateTime start, DateTime end)
+        {
+            return Bill_DAL.Instance.hourly(start, end);
+        }
+        public double totalRevenue()
+        {
+            return Bill_DAL.Instance.totalRevenue();
+        }
+        public int totalDrink()
+        {
+            return Bill_DAL.Instance.totalDrink();
+        }
+        public int totalBill()
+        {
+            return Bill_DAL.Instance.totalBill();
+        }
     }
 }

@@ -37,8 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbPosition = new System.Windows.Forms.Label();
             this.lbNameAccount = new System.Windows.Forms.Label();
-            this.lbTitle = new System.Windows.Forms.Label();
             this.panelTitle = new System.Windows.Forms.Panel();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.panelForm = new System.Windows.Forms.Panel();
             this.lbNotify = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
@@ -160,34 +160,23 @@
             // 
             // lbPosition
             // 
-            this.lbPosition.AutoSize = true;
             this.lbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPosition.Location = new System.Drawing.Point(67, 78);
+            this.lbPosition.Location = new System.Drawing.Point(0, 76);
             this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(103, 20);
-            this.lbPosition.TabIndex = 1;
+            this.lbPosition.Size = new System.Drawing.Size(260, 20);
+            this.lbPosition.TabIndex = 3;
             this.lbPosition.Text = "<Nhân viên>";
+            this.lbPosition.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbNameAccount
             // 
-            this.lbNameAccount.AutoSize = true;
             this.lbNameAccount.Font = new System.Drawing.Font("Lucida Handwriting", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameAccount.Location = new System.Drawing.Point(49, 28);
+            this.lbNameAccount.Location = new System.Drawing.Point(0, 28);
             this.lbNameAccount.Name = "lbNameAccount";
-            this.lbNameAccount.Size = new System.Drawing.Size(99, 29);
-            this.lbNameAccount.TabIndex = 0;
+            this.lbNameAccount.Size = new System.Drawing.Size(260, 29);
+            this.lbNameAccount.TabIndex = 2;
             this.lbNameAccount.Text = "label1";
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(442, 47);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(507, 40);
-            this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "Hệ thống quản lý quán cafe";
+            this.lbNameAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTitle
             // 
@@ -198,6 +187,17 @@
             this.panelTitle.Name = "panelTitle";
             this.panelTitle.Size = new System.Drawing.Size(1341, 124);
             this.panelTitle.TabIndex = 2;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTitle.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(0, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(1341, 124);
+            this.lbTitle.TabIndex = 2;
+            this.lbTitle.Text = "Hệ thống quản lý quán cafe";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelForm
             // 
@@ -211,14 +211,13 @@
             // 
             // lbNotify
             // 
-            this.lbNotify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbNotify.AutoSize = true;
+            this.lbNotify.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbNotify.Font = new System.Drawing.Font("Lucida Handwriting", 28F, System.Drawing.FontStyle.Bold);
-            this.lbNotify.Location = new System.Drawing.Point(196, 240);
+            this.lbNotify.Image = global::PBL3.Properties.Resources.HNT;
+            this.lbNotify.Location = new System.Drawing.Point(0, 0);
             this.lbNotify.Name = "lbNotify";
-            this.lbNotify.Size = new System.Drawing.Size(827, 122);
-            this.lbNotify.TabIndex = 0;
-            this.lbNotify.Text = "Chào mừng đến với hệ thống \r\nquản lý quán Cafe";
+            this.lbNotify.Size = new System.Drawing.Size(1341, 779);
+            this.lbNotify.TabIndex = 1;
             this.lbNotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fMainStaff
@@ -235,11 +234,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fMainStaff_FormClosing);
             this.panelMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panelTitle.ResumeLayout(false);
-            this.panelTitle.PerformLayout();
             this.panelForm.ResumeLayout(false);
-            this.panelForm.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,11 +249,11 @@
         private System.Windows.Forms.Button btTable;
         private System.Windows.Forms.Button btHome;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelTitle;
+        private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.Label lbPosition;
         private System.Windows.Forms.Label lbNameAccount;
         private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Panel panelTitle;
-        private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.Label lbNotify;
     }
 }

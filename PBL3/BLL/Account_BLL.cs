@@ -141,7 +141,6 @@ namespace PBL3.BLL
             }
             else
             {
-                after.Password = GetMD5(after.Password);
                 Account_DAL.Instance.update(after);
                 return 0;
             }
@@ -165,7 +164,7 @@ namespace PBL3.BLL
         }
         public void resetPass(int id, string pass)
         {
-            Account_DAL.Instance.resetPass(id, pass);
+            Account_DAL.Instance.resetPass(id, GetMD5(pass));
         }
         public List<Account> searchAccount(string s)
         {

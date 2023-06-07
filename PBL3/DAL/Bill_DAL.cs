@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -505,6 +506,66 @@ namespace PBL3.DAL
                     }).ToList();
                 return bill;
             }
+        }
+
+
+        public List<KeyValuePair<int, int>> hourly(DateTime start, DateTime end)
+        {
+            List<KeyValuePair<int, int>> f = new List<KeyValuePair<int, int>>();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var queryResult = db.ItemOrders
+                    .Where(io => io.Bill.thanhtoan == true 
+                        && DbFunctions.TruncateTime(io.Bill.paymenttime) >= start 
+                        && DbFunctions.TruncateTime(io.Bill.paymenttime) <= end) // Lấy dữ liệu đã thanh toán
+                    .GroupBy(io => io.Bill.paymenttime.Value.Hour)
+                    .Select(group => new { HourOfDay = group.Key, FoodQuantity = group.Sum(io => io.billquantity) })
+                    .ToList();
+
+                foreach (var item in queryResult)
+                {
+                    f.Add(new KeyValuePair<int, int>(item.HourOfDay, item.FoodQuantity.Value));
+                }
+            }
+            return f;
+        }
+        public double totalRevenue()
+        {
+            double sum = 0;
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var queryresult = db.ItemOrders
+                    .Where(p => p.Bill.thanhtoan == true)
+                    .Join(db.Foods,
+                      itemorder => itemorder.idFood,
+                      food => food.idFood,
+                      (itemorder, food) => new { itemOrder = itemorder, Food = food })
+                    .Sum(p => p.itemOrder.billquantity * p.Food.price);
+                sum = queryresult.Value;
+            }
+            return sum;
+        }
+        public int totalDrink()
+        {
+            int sum;
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var queryresult = db.ItemOrders
+                    .Where(p => p.Bill.thanhtoan == true)
+                    .Sum(p => p.billquantity);
+                sum = queryresult.Value;
+            }
+            return sum;
+        }
+        public int totalBill()
+        {
+            int sum;
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var queryresult = db.Bills.Where(p => p.thanhtoan == true).Count();
+                sum = queryresult;
+            }
+            return sum;
         }
     }
 }

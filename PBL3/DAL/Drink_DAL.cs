@@ -155,21 +155,54 @@ namespace PBL3.DAL
             }
             return f;
         }
-        public List<IGrouping<int, ItemOrder>> getBestSeller()
+        public List<IGrouping<int, ItemOrder>> sortDrink()
         {
             List<IGrouping<int, ItemOrder>> f = new List<IGrouping<int, ItemOrder>>();
             using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
             {
                 f = db.ItemOrders
-                    .GroupBy(p => p.idFood.HasValue ? p.idFood.Value : -1)
-                    .OrderByDescending(p => p.Count()).ToList();
+                    .Where(p => p.idFood != null && p.Bill.thanhtoan == true)
+                    .GroupBy(p => p.idFood.Value)
+                    .OrderByDescending(p => p.Sum(io => io.billquantity))
+                    .ToList();
             }
-
             return f;
         }
 
 
+        //public List<KeyValuePair<string, int>> Sort()
+        //{
+        //    List<KeyValuePair<string, int>> f = new List<KeyValuePair<string, int>>();
+        //    using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+        //    {
+        //        f = db.ItemOrders
+        //            .Where(p => p.idFood != null && p.Bill.thanhtoan == true)
+        //            .GroupBy(io => io.Food.NameFood)
+        //            .Select(group => new KeyValuePair<string, int>(group.Key, group.Sum(io => io.billquantity).Value))
+        //            .OrderByDescending(io => io.Value)
+        //            .ToList();
+        //    }
+        //    return f;
+        //}
 
+        public List<KeyValuePair<string, int>> Sort()
+        {
+            List<KeyValuePair<string, int>> f = new List<KeyValuePair<string, int>>();
+            using (QuanLyQuanCafeEntities db = new QuanLyQuanCafeEntities())
+            {
+                var queryResult = db.ItemOrders
+                    .Where(p => p.idFood != null && p.Bill.thanhtoan == true)
+                    .GroupBy(io => io.Food.NameFood)
+                    .Select(group => new { Name = group.Key, Quantity = group.Sum(io => io.billquantity) })
+                    .OrderByDescending(io => io.Quantity)
+                    .ToList();
 
+                foreach (var item in queryResult)
+                {
+                    f.Add(new KeyValuePair<string, int>(item.Name, item.Quantity.Value));
+                }
+            }
+            return f;
+        }
     }
 }
